@@ -17,20 +17,15 @@ import I18n from "react-native-i18n";
 export const AppNavigator = StackNavigator({
   Home: {
     screen: HomeScreen,
-    navigationOptions: navigation => {
-      console.log("navigation", navigation);
-      return {
-        title: I18n.t("home", { locale: navigation.screenProps.language })
-      };
-    }
+    navigationOptions: navigation => ({
+      title: I18n.t("home")
+    })
   },
   News: {
     screen: NewsScreen,
-    navigationOptions: {
-      title: navigation => {
-        return navigation.state.params.title;
-      }
-    }
+    navigationOptions: navigation => ({
+      title: I18n.t("news")
+    })
   }
 });
 

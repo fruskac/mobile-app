@@ -19,7 +19,7 @@ class Home extends PureComponent<Props, State> {
         <Text>
           {this.props.language} {I18n.locale}
         </Text>
-        <Text>{I18n.t("home", { locale: language })}</Text>
+        <Text>{I18n.t("home")}</Text>
         <Button
           onPress={e => {
             this.props.onChangeLanguage("sr");
