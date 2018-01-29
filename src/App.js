@@ -7,6 +7,9 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
+
+import "./I18n/I18n"; // keep before RootContainer
+
 import configureStore from "./store/configureStore";
 import Navigation from "./Navigation";
 

@@ -46,6 +46,8 @@ target 'Fruskac' do
   # Mapbox
   pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
 
+  # Translations
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
 
 end

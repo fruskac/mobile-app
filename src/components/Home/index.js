@@ -1,16 +1,12 @@
 // @flow
 
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { Text } from "react-native";
+import { connect } from "react-redux";
+import Home from "./Home";
+import { onChangeLanguage } from "../../actions/settings";
 
-type Props = {};
-type State = {};
+const mapDispatchToProps = {
+  onChangeLanguage
+};
+const mapStateToProps = state => ({ language: state.settings.language });
 
-class Home extends PureComponent<Props, State> {
-  render() {
-    return <Text>Home</Text>;
-  }
-}
-
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

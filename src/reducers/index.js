@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import tempReducer from "./tempReducer";
 import navReducer from "./navReducer";
+import settingsReducer from "./settingsReducer";
 // Root Reducer
 const rootReducer = combineReducers({
-  temp: tempReducer,
-  nav: navReducer
+  nav: navReducer,
+  settings: settingsReducer
 });
 
 export default rootReducer;
