@@ -3,5 +3,5 @@ import { CHANGE_LANGUAGE } from "../store/types";
 import { updateLanguage } from "./settingsSaga";
 
 export default function* root() {
-  yield [takeLatest(CHANGE_LANGUAGE, updateLanguage)];
+  yield all([takeLatest(CHANGE_LANGUAGE, updateLanguage)]);
 }

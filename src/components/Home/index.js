@@ -7,6 +7,6 @@ import { onChangeLanguage } from "../../actions/settings";
 const mapDispatchToProps = {
   onChangeLanguage
 };
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({ language: state.settings.language });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,4 +1,9 @@
 {
   "home": "Home",
-  "news": "News"
+  "news": "Good to know",
+  "map": "Map",
+  "locations": "Locations",
+  "trails": "Trails",
+  "info": "Info",
+  "donate": "Donate"
 }

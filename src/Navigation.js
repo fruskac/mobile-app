@@ -13,18 +13,23 @@ import TrailsScreen from "./components/Trails";
 import InfoScreen from "./components/Info";
 import DonateScreen from "./components/Donate";
 import I18n from "react-native-i18n";
+import Styles from "./Styles";
 
 export const AppNavigator = StackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: navigation => ({
-      title: I18n.t("home")
+      title: I18n.t("home"),
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
     })
   },
   News: {
     screen: NewsScreen,
     navigationOptions: navigation => ({
-      title: I18n.t("news")
+      title: I18n.t("news"),
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
     })
   }
 });

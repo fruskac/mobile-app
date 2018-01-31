@@ -12,6 +12,7 @@ import "./I18n/I18n"; // keep before RootContainer
 
 import configureStore from "./store/configureStore";
 import Navigation from "./Navigation";
+import Styles from "./Styles";
 
 MapBox.setAccessToken(
   "pk.eyJ1IjoiYWxleGd2b3pkZW4iLCJhIjoiY2pjN2tvM2p1MGV0dzJ3bzcwNzRpNnZ1MyJ9.6vel6zy35B2t9dB3VywO9g"
@@ -34,9 +35,3 @@ class App extends Component<{}> {
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject
-  }
-});
