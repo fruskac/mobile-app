@@ -7,6 +7,6 @@ import { onNavigateBack } from "../../actions/navigation";
 const mapDispatchToProps = {
   onNavigateBack
 };
-const mapStateToProps = state => ({ language: state.settings.language });
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BackButton);

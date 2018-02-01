@@ -16,6 +16,7 @@ import I18n from "react-native-i18n";
 import Styles from "../Styles";
 
 import BackButton from "../components/BackButton";
+import MenuButton from "../components/MenuButton";
 
 export const AppNavigator = StackNavigator({
   Home: {
@@ -32,7 +33,8 @@ export const AppNavigator = StackNavigator({
     screen: NewsScreen,
     navigationOptions: navigation => ({
       title: I18n.t("news"),
-      headerLeft: BackButton,
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
       headerStyle: Styles.header,
       headerTitleStyle: Styles.headerTitle
     })

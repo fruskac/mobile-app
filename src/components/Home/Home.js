@@ -2,7 +2,14 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { Alert, Image, View, Text, Button } from "react-native";
+import {
+  Alert,
+  Image,
+  View,
+  Text,
+  Button,
+  TouchableOpacity
+} from "react-native";
 import I18n from "react-native-i18n";
 import AutoHeightImage from "react-native-auto-height-image";
 import NewsScreen from "../News";
@@ -41,15 +48,14 @@ class Home extends PureComponent<Props, State> {
         <View style={[CommonStyles.viewMargin, Styles.menuHolder]}>
           <View>
             {menuItems.map((item, index) => (
-              <Text
-                style={Styles.menuItem}
+              <TouchableOpacity
                 key={index}
                 onPress={() => {
                   onNavigate("/news");
                 }}
               >
-                {I18n.t(item)}
-              </Text>
+                <Text style={Styles.menuItem}>{I18n.t(item)}</Text>
+              </TouchableOpacity>
             ))}
           </View>
           <Text
