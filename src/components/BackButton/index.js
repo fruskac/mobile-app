@@ -1,7 +1,7 @@
 // @flow
 
 import { connect } from "react-redux";
-import News from "./News";
+import BackButton from "./BackButton";
 import { onNavigateBack } from "../../actions/navigation";
 
 const mapDispatchToProps = {
@@ -9,4 +9,4 @@ const mapDispatchToProps = {
 };
 const mapStateToProps = state => ({ language: state.settings.language });
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(BackButton);

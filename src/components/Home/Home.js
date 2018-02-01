@@ -12,6 +12,8 @@ import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
 import { NavigationActions } from "react-navigation";
 
+const menuItems = ["news", "map", "locations", "trails", "info", "donate"];
+
 type Props = {
   onChangeLanguage: (lang: string) => void,
   language: string,
@@ -19,8 +21,6 @@ type Props = {
   onNavigateBack: () => void
 };
 type State = {};
-
-const menuItems = ["news", "map", "locations", "trails", "info", "donate"];
 
 class Home extends PureComponent<Props, State> {
   render() {
@@ -45,7 +45,7 @@ class Home extends PureComponent<Props, State> {
                 style={Styles.menuItem}
                 key={index}
                 onPress={() => {
-                  onNavigate("News");
+                  onNavigate("/news");
                 }}
               >
                 {I18n.t(item)}

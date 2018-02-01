@@ -15,8 +15,11 @@ import DonateScreen from "../components/Donate";
 import I18n from "react-native-i18n";
 import Styles from "../Styles";
 
+import BackButton from "../components/BackButton";
+
 export const AppNavigator = StackNavigator({
   Home: {
+    path: "/",
     screen: HomeScreen,
     navigationOptions: navigation => ({
       title: I18n.t("home"),
@@ -25,10 +28,11 @@ export const AppNavigator = StackNavigator({
     })
   },
   News: {
+    path: "/news",
     screen: NewsScreen,
     navigationOptions: navigation => ({
       title: I18n.t("news"),
-      headerBackTitle: I18n.t("back"),
+      headerLeft: BackButton,
       headerStyle: Styles.header,
       headerTitleStyle: Styles.headerTitle
     })
