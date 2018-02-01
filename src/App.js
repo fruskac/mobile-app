@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import "./I18n/I18n"; // keep before RootContainer
 
 import configureStore from "./store/configureStore";
-import Navigation from "./Navigation";
+import Navigation from "./navigators/Navigation";
 import Styles from "./Styles";
 
 MapBox.setAccessToken(

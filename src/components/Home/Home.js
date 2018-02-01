@@ -15,7 +15,8 @@ import { NavigationActions } from "react-navigation";
 type Props = {
   onChangeLanguage: (lang: string) => void,
   language: string,
-  navigation: any
+  onNavigate: (route: string) => void,
+  onNavigateBack: () => void
 };
 type State = {};
 
@@ -23,8 +24,12 @@ const menuItems = ["news", "map", "locations", "trails", "info", "donate"];
 
 class Home extends PureComponent<Props, State> {
   render() {
-    const { language, onChangeLanguage, navigation } = this.props;
-    console.log(typeof this.props.navigation);
+    const {
+      language,
+      onChangeLanguage,
+      onNavigate,
+      onNavigateBack
+    } = this.props;
 
     return (
       <View style={Styles.container}>
@@ -40,14 +45,7 @@ class Home extends PureComponent<Props, State> {
                 style={Styles.menuItem}
                 key={index}
                 onPress={() => {
-                  const navigateAction = NavigationActions.navigate({
-                    navigationOptions: navigation => ({
-                      title: I18n.t(item)
-                    }),
-                    screen: NewsScreen
-                  });
-                  // NavigationActions.navigate({ screen: NewsScreen });
-                  navigation.dispatch(navigateAction);
+                  onNavigate("News");
                 }}
               >
                 {I18n.t(item)}
@@ -57,7 +55,6 @@ class Home extends PureComponent<Props, State> {
           <Text
             style={Styles.menuItem}
             onPress={() => {
-              Alert.alert(language);
               onChangeLanguage(language === "en" ? "sr" : "en");
             }}
           >
