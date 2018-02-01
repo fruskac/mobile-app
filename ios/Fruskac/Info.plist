@@ -42,6 +42,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Ionicons.ttf</string>
 		<string>Merriweather-Light.ttf</string>
 		<string>Merriweather-LightItalic.ttf</string>
 	</array>

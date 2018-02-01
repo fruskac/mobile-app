@@ -49,6 +49,9 @@ target 'Fruskac' do
   # Translations
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
+  # Vector icons
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 
 end
 
