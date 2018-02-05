@@ -1,6 +1,8 @@
-import { NAVIGATE, NAVIGATE_BACK } from "../store/types";
+// @flow
 
-export function onNavigate(route) {
+import { NAVIGATE, NAVIGATE_BACK, OPEN_AD } from "../store/types";
+
+export function onNavigate(route: string) {
   return { type: NAVIGATE, route: route };
 }
 

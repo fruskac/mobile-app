@@ -7,6 +7,7 @@ import { addNavigationHelpers, StackNavigator } from "react-navigation";
 
 import HomeScreen from "../components/Home";
 import NewsScreen from "../components/News";
+import SingleNewsScreen from "../components/NewsSingle";
 import MapScreen from "../components/Map";
 import LocationsScreen from "../components/Locations";
 import TrailsScreen from "../components/Trails";
@@ -31,6 +32,17 @@ export const AppNavigator = StackNavigator({
   News: {
     path: "/news",
     screen: NewsScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("news"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  SingleNews: {
+    path: "/news/:id",
+    screen: SingleNewsScreen,
     navigationOptions: navigation => ({
       title: I18n.t("news"),
       headerLeft: <BackButton />,

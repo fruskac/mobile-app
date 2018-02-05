@@ -2,14 +2,7 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import {
-  Alert,
-  Image,
-  View,
-  Text,
-  Button,
-  TouchableOpacity
-} from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import I18n from "react-native-i18n";
 import AutoHeightImage from "react-native-auto-height-image";
 

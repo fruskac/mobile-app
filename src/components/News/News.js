@@ -33,7 +33,7 @@ class News extends PureComponent<Props, State> {
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemList data={data} />
+        <ItemList data={data} slug="/news/" />
       </View>
     );
   }
