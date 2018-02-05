@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addNavigationHelpers, StackNavigator } from "react-navigation";
 
-import HomeScreen from "../components/Home";
-import NewsScreen from "../components/News";
-import SingleNewsScreen from "../components/NewsSingle";
+import HomeScreen from "../routes/Home";
+import NewsScreen from "../routes/News";
+import SingleNewsScreen from "../routes/NewsSingle";
 import MapScreen from "../components/Map";
 import LocationsScreen from "../components/Locations";
 import TrailsScreen from "../components/Trails";

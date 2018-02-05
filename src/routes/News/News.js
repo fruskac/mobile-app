@@ -4,10 +4,8 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { View } from "react-native";
 
-import newsDemoData from "../../assets/Demo/news";
-
-import HeaderAd from "../HeaderAd/";
-import ItemList from "../ItemList/";
+import HeaderAd from "../../components/HeaderAd/";
+import ItemList from "../../components/ItemList/";
 
 import CommonStyles from "../../styles/CommonStyles";
 
@@ -24,12 +22,8 @@ type Props = {
 type State = {};
 
 class News extends PureComponent<Props, State> {
-  static defaultProps = {
-    data: newsDemoData
-  };
   render() {
     const { data } = this.props;
-
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />

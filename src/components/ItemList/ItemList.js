@@ -9,7 +9,7 @@ import {
   TouchableOpacity
 } from "react-native";
 
-import { NewsData } from "../News/News";
+import { NewsData } from "../../routes/News/News";
 import * as Screen from "../../utils/Screen";
 import Styles from "./Styles";
 

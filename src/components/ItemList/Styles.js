@@ -19,6 +19,7 @@ export default StyleSheet.create({
   itemText: {
     color: textColor,
     padding: 5,
+    paddingLeft: 8,
     flex: 1,
     fontFamily: "Merriweather-Light"
   }

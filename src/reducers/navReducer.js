@@ -7,7 +7,7 @@ const initialState = AppNavigator.router.getStateForAction(firstAction);
 
 const navReducer = (state = initialState, action) => {
   let nextState;
-  console.log("nav red", action);
+  // console.log("nav red", action);
 
   switch (action.type) {
     case NAVIGATE_BACK:

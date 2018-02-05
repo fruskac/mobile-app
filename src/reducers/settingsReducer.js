@@ -12,7 +12,6 @@ const settingsReducer = (state: Object = initialState, action: Object) => {
         ...state,
         language: action.language
       };
-      break;
   }
   return state;
 };
