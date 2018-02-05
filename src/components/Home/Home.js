@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import I18n from "react-native-i18n";
 import AutoHeightImage from "react-native-auto-height-image";
-import NewsScreen from "../News";
 
 import * as Screen from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
@@ -39,7 +38,7 @@ class Home extends PureComponent<Props, State> {
     } = this.props;
 
     return (
-      <View style={Styles.container}>
+      <View style={CommonStyles.container}>
         {/* TODO replace with image supplied by API */}
         <AutoHeightImage
           width={Screen.width}

@@ -22,7 +22,6 @@ const navReducer = (state = initialState, action) => {
         AppNavigator.router.getActionForPathAndParams(action.route),
         state
       );
-      console.log(action.route, nextState);
       break;
   }
 

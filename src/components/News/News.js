@@ -2,17 +2,40 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { Text } from "react-native";
+import { View } from "react-native";
 
+import newsDemoData from "../../assets/Demo/news";
+
+import HeaderAd from "../HeaderAd/";
+import ItemList from "../ItemList/";
+
+import CommonStyles from "../../styles/CommonStyles";
+
+export type NewsData = {
+  title_en: string,
+  title_sr: string,
+  id: string,
+  content: string,
+  imageUrl: string
+};
 type Props = {
-  onNavigateBack: () => void
+  data: Array<NewsData>
 };
 type State = {};
 
 class News extends PureComponent<Props, State> {
+  static defaultProps = {
+    data: newsDemoData
+  };
   render() {
-    const { onNavigateBack } = this.props;
-    return <Text onPress={onNavigateBack}>News</Text>;
+    const { data } = this.props;
+
+    return (
+      <View style={CommonStyles.container}>
+        <HeaderAd />
+        <ItemList data={data} />
+      </View>
+    );
   }
 }
 

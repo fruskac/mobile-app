@@ -7,3 +7,7 @@ export function onNavigate(route) {
 export function onNavigateBack() {
   return { type: NAVIGATE_BACK };
 }
+
+export function onOpenAd() {
+  return { type: OPEN_AD };
+}
