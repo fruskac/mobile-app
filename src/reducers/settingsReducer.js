@@ -1,8 +1,9 @@
 import I18n from "react-native-i18n";
-import { CHANGE_LANGUAGE } from "../store/types";
+import { CHANGE_LANGUAGE, TOGGLE_DRAWER } from "../store/types";
 
 const initialState = {
-  language: I18n.locale.substr(0, 2) === "en" ? "en" : "sr"
+  language: I18n.locale.substr(0, 2) === "en" ? "en" : "sr",
+  drawerOpen: false
 };
 
 const settingsReducer = (state: Object = initialState, action: Object) => {
@@ -12,6 +13,12 @@ const settingsReducer = (state: Object = initialState, action: Object) => {
         ...state,
         language: action.language
       };
+    case TOGGLE_DRAWER: {
+      return {
+        ...state,
+        drawerOpen: !state.drawerOpen
+      };
+    }
   }
   return state;
 };
