@@ -1,13 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import {
-  FlatList,
-  Image,
-  View,
-  Text,
-  Alert,
-  TouchableOpacity
-} from "react-native";
+import { FlatList, Image, View, Text, TouchableOpacity } from "react-native";
 
 import { NewsData } from "../../routes/News/News";
 import * as Screen from "../../utils/Screen";

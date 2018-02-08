@@ -4,6 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { View, Text } from "react-native";
 
+import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
 
 type Props = {
@@ -16,7 +17,7 @@ class HeaderAd extends PureComponent<Props, State> {
     const { onOpenAd } = this.props;
     return (
       <View style={Styles.adHolder} onPress={onOpenAd}>
-        <Text style={Styles.adText}>HeaderAd</Text>
+        <Text style={CommonStyles.text}>HeaderAd</Text>
       </View>
     );
   }

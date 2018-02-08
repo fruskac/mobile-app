@@ -7,5 +7,17 @@
   "info": "Info",
   "donate": "Donate",
   "back": "nazad",
-  "menu": "Meni"
+  "menu": "Meni",
+  "type": "Type",
+  "place": "Place",
+  "misc": "Misc",
+  "springs": "Springs",
+  "picnic-areas": "Picnic-areas",
+  "monuments": "Monuments",
+  "lakes": "Lakes",
+  "monasteries": "Monasteries",
+  "lookouts": "Lookouts",
+  "meadows": "Meadows",
+  "waterfalls": "Waterfalls",
+  "fishponds": "Fishponds"
 }

@@ -1,5 +1,6 @@
 export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
 export const OPEN_AD = "OPEN_AD";
+export const TOGGLE_DRAWER = "TOGGLE_DRAWER";
 export const NAVIGATE = "NAVIGATE";
 export const NAVIGATE_BACK = "NAVIGATE_BACK";
 export const NEWS_LOADING = "NEWS_LOADING";

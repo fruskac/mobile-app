@@ -6,13 +6,17 @@ import I18n from "react-native-i18n";
 
 import Styles from "./Styles";
 
-type Props = {};
+type Props = {
+  onToggleDrawer: () => void
+};
 type State = {};
 
 class MenuButton extends PureComponent<Props, State> {
   render() {
+    const { onToggleDrawer } = this.props;
+
     return (
-      <TouchableOpacity style={Styles.buttonHolder}>
+      <TouchableOpacity style={Styles.buttonHolder} onPress={onToggleDrawer}>
         <Text style={Styles.text}>{I18n.t("menu")}</Text>
       </TouchableOpacity>
     );

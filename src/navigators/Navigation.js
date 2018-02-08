@@ -3,18 +3,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addNavigationHelpers, StackNavigator } from "react-navigation";
+import {
+  addNavigationHelpers,
+  StackNavigator,
+  DrawerNavigator
+} from "react-navigation";
+import I18n from "react-native-i18n";
 
 import HomeScreen from "../routes/Home";
 import NewsScreen from "../routes/News";
 import SingleNewsScreen from "../routes/NewsSingle";
-import MapScreen from "../components/Map";
-import LocationsScreen from "../components/Locations";
-import TrailsScreen from "../components/Trails";
-import InfoScreen from "../components/Info";
-import DonateScreen from "../components/Donate";
-import I18n from "react-native-i18n";
-import Styles from "../Styles";
+import MapScreen from "../routes/Map";
+import LocationsScreen from "../routes/Locations";
+import TrailsScreen from "../routes/Trails";
+import InfoScreen from "../routes/Info";
+import DonateScreen from "../routes/Donate";
+import Styles from "./Styles";
 
 import BackButton from "../components/BackButton";
 import MenuButton from "../components/MenuButton";
@@ -45,6 +49,17 @@ export const AppNavigator = StackNavigator({
     screen: SingleNewsScreen,
     navigationOptions: navigation => ({
       title: I18n.t("news"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  Locations: {
+    path: "/locations",
+    screen: LocationsScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("locations"),
       headerLeft: <BackButton />,
       headerRight: <MenuButton />,
       headerStyle: Styles.header,

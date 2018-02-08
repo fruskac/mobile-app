@@ -20,8 +20,9 @@ const navReducer = (state = initialState, action) => {
       nextState = AppNavigator.router.getStateForAction(
         // NavigationActions.navigate({ routeName: action.route }),
         AppNavigator.router.getActionForPathAndParams(action.route),
-        state
+        action.reset ? initialState : state
       );
+
       break;
   }
 

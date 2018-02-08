@@ -12,6 +12,7 @@ import "./I18n/I18n"; // keep before RootContainer
 
 import configureStore from "./store/configureStore";
 import Navigation from "./navigators/Navigation";
+import Drawer from "./components/Drawer/";
 import Styles from "./Styles";
 
 MapBox.setAccessToken(
@@ -28,7 +29,12 @@ class App extends Component<{}> {
   render() {
     return (
       <Provider store={store}>
-        <Navigation />
+        <View
+          style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}
+        >
+          <Navigation />
+          <Drawer />
+        </View>
       </Provider>
     );
   }
