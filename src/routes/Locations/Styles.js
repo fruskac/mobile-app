@@ -8,10 +8,12 @@ import {
   borderColor
 } from "../../styles/CommonStyles";
 
+export const menuHeight: number = 40;
+
 export default StyleSheet.create({
   topMenu: {
     width: "100%",
-    height: 40,
+    height: menuHeight,
     flexDirection: "row"
   },
   topMenuItem: {
@@ -33,8 +35,5 @@ export default StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     flexWrap: "wrap"
-  },
-  menuItem: {
-    height: 95
   }
 });
