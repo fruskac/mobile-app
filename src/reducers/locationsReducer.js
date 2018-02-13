@@ -37,8 +37,6 @@ const initialState = {
   tagsEn: tagsEn
 };
 
-console.log(tagsSr);
-
 const locationsReducer = (state: Object = initialState, action: Object) => {
   switch (action.type) {
     default:

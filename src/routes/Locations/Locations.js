@@ -60,7 +60,7 @@ class Locations extends PureComponent<Props, State> {
                 width={50}
                 height={45}
                 source={Icons[t.replace("-", "")]}
-                fill={"#ff0000"}
+                fill={Icons.colors[t.replace("-", "")]}
               />
               <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
             </View>

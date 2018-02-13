@@ -1,7 +1,7 @@
-import { takeLatest, all } from "redux-saga/effects";
-import { CHANGE_LANGUAGE } from "../store/types";
+import { all, call } from "redux-saga/effects";
 import { updateLanguage } from "./settingsSaga";
+import { cache } from "./cacheSaga";
 
 export default function* root() {
-  yield all([takeLatest(CHANGE_LANGUAGE, updateLanguage)]);
+  yield all([call(cache), call(updateLanguage)]);
 }

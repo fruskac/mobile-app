@@ -10,7 +10,7 @@ export const waterfalls = require("../assets/icons/waterfalls.svg");
 export const fishponds = require("../assets/icons/fishponds.svg");
 
 export const colors = {
-  misc: "#CE356A",
+  misc: "#DC175F",
   springs: "#5982A2",
   picnicareas: "#433C2C",
   monuments: "#54B0B4",

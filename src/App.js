@@ -3,17 +3,17 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+
 import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 
 import "./I18n/I18n"; // keep before RootContainer
 
 import configureStore from "./store/configureStore";
-import Navigation from "./navigators/Navigation";
-import Drawer from "./components/Drawer/";
-import Styles from "./Styles";
+import AppWithActions from "./AppWithActions";
 
 MapBox.setAccessToken(
   "pk.eyJ1IjoiYWxleGd2b3pkZW4iLCJhIjoiY2pjN2tvM2p1MGV0dzJ3bzcwNzRpNnZ1MyJ9.6vel6zy35B2t9dB3VywO9g"
@@ -21,20 +21,16 @@ MapBox.setAccessToken(
 
 // Store & Router
 const store = configureStore({});
+const persistor = persistStore(store);
+persistor.flush();
 
 class App extends Component<{}> {
-  static navigationOptions = {
-    title: "Welcome"
-  };
   render() {
     return (
       <Provider store={store}>
-        <View
-          style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}
-        >
-          <Navigation />
-          <Drawer />
-        </View>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppWithActions />
+        </PersistGate>
       </Provider>
     );
   }
