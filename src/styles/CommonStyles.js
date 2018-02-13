@@ -4,6 +4,7 @@
 import { StyleSheet, Platform } from "react-native";
 
 export const fontSizeHeader = Platform.OS === "ios" ? 18 : 16;
+export const backgroundColor = "#F6F7F1";
 export const defaultMargin = 20;
 export const navHeaderHeight = 45;
 export const headerAdHeight = 40;
@@ -22,7 +23,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: backgroundColor
   },
   text: {
     color: textColor,

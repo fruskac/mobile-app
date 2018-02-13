@@ -2,10 +2,13 @@ import {
   CACHING_UPDATE,
   CACHING_DONE,
   CACHING_START,
-  INTERNET_STATUS
+  INTERNET_STATUS,
+  SCREEN_INIT
 } from "../store/types";
 
 const initialState = {
+  // current caching scren
+  screen: SCREEN_INIT,
   // all cache loaded
   done: false,
   // does phone have internet
@@ -29,13 +32,13 @@ const initialState = {
 const cacheReducer = (state = initialState, action) => {
   switch (action.type) {
     case INTERNET_STATUS:
-      ({ ...state, hasInternet: action.hasInternet });
+      return { ...state, hasInternet: action.hasInternet };
     case CACHING_START:
-      ({ ...state, loading: true, progress: 0 });
+      return { ...state, loading: true, progress: 0 };
     case CACHING_DONE:
-      ({ ...state, done: true, loading: false, progress: 100 });
+      return { ...state, done: true, loading: false, progress: 100 };
     case CACHING_UPDATE:
-      ({ ...state, ...action.payload });
+      return { ...state, ...action.payload };
   }
   return state;
 };

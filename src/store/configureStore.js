@@ -20,6 +20,7 @@ const configureStore = (initialState: Object) => {
 
   const persistConfig = {
     key: "root",
+    blackList: ["cache"],
     storage
   };
 

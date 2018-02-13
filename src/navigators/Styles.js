@@ -2,11 +2,16 @@
  * @flow
  */
 import { StyleSheet } from "react-native";
-import { fontSizeHeader, navHeaderHeight } from "../styles/CommonStyles";
+import {
+  fontSizeHeader,
+  navHeaderHeight,
+  backgroundColor
+} from "../styles/CommonStyles";
 
 export default StyleSheet.create({
   header: {
-    height: navHeaderHeight
+    height: navHeaderHeight,
+    backgroundColor: backgroundColor
   },
   headerTitle: {
     fontSize: fontSizeHeader,
