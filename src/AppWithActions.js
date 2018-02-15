@@ -65,7 +65,7 @@ class AppWithActions extends PureComponent {
       >
         <Navigation />
         <Drawer />
-        {!cachingDone && <CacheScreen />}
+        <CacheScreen />
       </View>
     );
   }

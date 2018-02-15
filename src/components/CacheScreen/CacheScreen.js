@@ -12,7 +12,8 @@ type Props = {
   progress: number
 };
 type State = {
-  opacity: Animated.Value
+  opacity: Animated.Value,
+  hidden: boolean
 };
 
 class CacheScreen extends PureComponent<Props, State> {
@@ -23,7 +24,8 @@ class CacheScreen extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      opacity: new Animated.Value(1)
+      opacity: new Animated.Value(1),
+      hidden: false
     };
 
     this.onFadeOutStart = this.onFadeOutStart.bind(this);
@@ -31,10 +33,7 @@ class CacheScreen extends PureComponent<Props, State> {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    if (
-      this.props.cachingDone != nextProps.cachingDone &&
-      nextProps.cachingDone
-    ) {
+    if (this.props.done != nextProps.done && nextProps.done) {
       this.onFadeOutStart();
     }
   }
@@ -46,17 +45,22 @@ class CacheScreen extends PureComponent<Props, State> {
         toValue: 0,
         easing: Easing.out(Easing.ease),
         useNativeDriver: true,
-        duration: 150
+        duration: 300
       }
     ).start(this.onFadeOutFinish);
   }
 
   onFadeOutFinish() {
     // disable the cache screen
+    this.setState({ hidden: true });
   }
 
   render() {
     const { progress } = this.props;
+    const { hidden } = this.state;
+
+    if (hidden) return null;
+
     return (
       <Animated.View style={[Styles.holder, { opacity: this.state.opacity }]}>
         <Text style={[CommonStyles.text, Styles.topText]}>Map...a</Text>
