@@ -25,6 +25,7 @@ export function* cache(action) {
 
   if (!cache.done) {
     const mapCached = yield isMapCached();
+    console.log("MAP CACHED", mapCached);
     if (!mapCached) {
       // create channel for caching map
       const channel = yield call(cacheMap);
@@ -44,13 +45,15 @@ export function* cache(action) {
         }
         yield put({ type: CACHING_UPDATE, payload: { progress: progress } });
       }
+    } else {
+      yield put({ type: CACHING_DONE });
     }
   }
 }
 
 function* isMapCached() {
   // get cached packs
-  yield MapBox.offlineManager.deletePack("FruskaGora");
+  // yield MapBox.offlineManager.deletePack("FruskaGora");
   const offlineMaps = yield MapBox.offlineManager.getPacks();
 
   return offlineMaps.length > 0;
