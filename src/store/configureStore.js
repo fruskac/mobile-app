@@ -1,9 +1,10 @@
 import "regenerator-runtime/runtime";
 // Redux Store Configuration
 import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 import { composeWithDevTools } from "remote-redux-devtools";
 
-import { persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import createSagaMiddleware from "redux-saga";
@@ -14,27 +15,24 @@ import rootSaga from "../sagas";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-const configureStore = (initialState: Object) => {
-  const composeEnhancers = composeWithDevTools({ realtime: true });
-  const middleware = applyMiddleware(sagaMiddleware);
+const composeEnhancers = composeWithDevTools({ suppressConnectErrors: false });
+const middleware = applyMiddleware(sagaMiddleware);
 
-  const persistConfig = {
-    key: "root",
-    blackList: ["cache"],
-    storage
-  };
-
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-  const store = createStore(
-    persistedReducer,
-    initialState,
-    composeEnhancers(middleware)
-  );
-
-  sagaMiddleware.run(rootSaga);
-
-  return store;
+const persistConfig = {
+  key: "root",
+  storage,
+  blacklist: ["cache"]
 };
 
-export default configureStore;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const initialState = {};
+
+export const store = createStore(
+  persistedReducer,
+  initialState,
+  composeEnhancers(middleware)
+);
+
+sagaMiddleware.run(rootSaga);
+
+export const persistor = persistStore(store);

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { onInternetStatus } from "./actions/cache";
 import Navigation from "./navigators/Navigation";
 import Drawer from "./components/Drawer/";
+import CacheScreen from "./components/CacheScreen/";
 
 class AppWithActions extends PureComponent {
   setupListenerOnline: () => void;
@@ -51,6 +52,7 @@ class AppWithActions extends PureComponent {
   }
 
   render() {
+    const { cachingDone } = this.props;
     return (
       <View
         style={{
@@ -63,12 +65,13 @@ class AppWithActions extends PureComponent {
       >
         <Navigation />
         <Drawer />
+        {!cachingDone && <CacheScreen />}
       </View>
     );
   }
 }
 
 const mapDispatchToProps = { onInternetStatus };
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({ cachingDone: state.cache.done });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppWithActions);
