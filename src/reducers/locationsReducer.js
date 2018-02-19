@@ -1,3 +1,5 @@
+import { LOCATION_FILTER_CHANGE } from "../store/types";
+
 //@flow
 type LocationData = {
   lat: string,
@@ -32,13 +34,27 @@ locationDataEn.forEach(el => {
   if (tagsEn.indexOf(el.tag) === -1) tagsEn.push(el.tag);
 });
 
-const initialState = {
-  tagsSr: tagsSr,
-  tagsEn: tagsEn
+export type LocationFilter = "type" | "place";
+
+type LocationState = {
+  tagsSr: Array<string>,
+  tagsEn: Array<string>,
+  locationFilter: LocationFilter
 };
 
-const locationsReducer = (state: Object = initialState, action: Object) => {
+const initialState = {
+  tagsSr: tagsSr,
+  tagsEn: tagsEn,
+  locationFilter: "type"
+};
+
+const locationsReducer = (
+  state: LocationState = initialState,
+  action: Object
+) => {
   switch (action.type) {
+    case LOCATION_FILTER_CHANGE:
+      return { ...state, locationFilter: action.filter };
     default:
       break;
   }

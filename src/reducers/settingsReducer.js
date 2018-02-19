@@ -1,3 +1,5 @@
+// @flow
+
 import I18n from "react-native-i18n";
 import {
   CHANGE_LANGUAGE,
@@ -6,12 +8,17 @@ import {
   NAVIGATE_BACK
 } from "../store/types";
 
-const initialState = {
+type Settings = {
+  language: string,
+  drawerOpen: boolean
+};
+
+const initialState: Settings = {
   language: I18n.locale.substr(0, 2) === "en" ? "en" : "sr",
   drawerOpen: false
 };
 
-const settingsReducer = (state: Object = initialState, action: Object) => {
+const settingsReducer = (state: Settings = initialState, action: Object) => {
   switch (action.type) {
     case CHANGE_LANGUAGE:
       return {

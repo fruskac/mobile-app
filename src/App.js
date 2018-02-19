@@ -4,10 +4,10 @@
 
 import React, { Component } from "react";
 
-import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import MapBox from "@mapbox/react-native-mapbox-gl";
 
 import "./I18n/I18n"; // keep before RootContainer
 

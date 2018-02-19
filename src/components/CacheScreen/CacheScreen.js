@@ -9,7 +9,9 @@ import { width as ScreenWidth } from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
 
 type Props = {
-  progress: number
+  progress: number,
+  done: boolean,
+  screen: string
 };
 type State = {
   opacity: Animated.Value,

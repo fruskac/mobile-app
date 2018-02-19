@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import I18n from "react-native-i18n";
 import SvgUri from "react-native-svg-uri";
 
@@ -10,20 +10,22 @@ import HeaderAd from "../../components/HeaderAd/";
 
 import CommonStyles, {
   navHeaderHeight,
-  headerAdHeight
+  headerAdHeight,
+  accentColor
 } from "../../styles/CommonStyles";
 import Styles, { menuHeight } from "./Styles";
 import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
-  tags: Array<string>
+  tags: Array<string>,
+  locationFilter: string
 };
 type State = {};
 
 class Locations extends PureComponent<Props, State> {
   render() {
-    const { tags } = this.props;
+    const { tags, locationFilter } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -34,18 +36,35 @@ class Locations extends PureComponent<Props, State> {
         10) /
       Math.floor((tags.length + 1) / 2);
 
+    let typeStyle = {},
+      placeStyle = {};
+
+    const underlineStyle = {
+      borderBottomColor: accentColor,
+      borderBottomWidth: 2
+    };
+
+    console.log("location", locationFilter, locationFilter == "type");
+
+    locationFilter == "type"
+      ? (typeStyle = underlineStyle)
+      : (placeStyle = underlineStyle);
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
         <View style={Styles.topMenu}>
-          <View key="type" style={[Styles.topMenuItem, Styles.withRightBorder]}>
+          <View
+            key="type"
+            style={[Styles.topMenuItem, Styles.withRightBorder, typeStyle]}
+          >
             <Text style={CommonStyles.text}>{I18n.t("type")}</Text>
           </View>
-          <View key="place" style={Styles.topMenuItem}>
+          <View key="place" style={[Styles.topMenuItem, placeStyle]}>
             <Text style={CommonStyles.text}>{I18n.t("place")}</Text>
           </View>
         </View>
-        {/* <ScrollView style={[Styles.scrollView]}> */}
+
         <View style={Styles.menu}>
           {tags.map((t, index) => (
             <View
@@ -66,7 +85,6 @@ class Locations extends PureComponent<Props, State> {
             </View>
           ))}
         </View>
-        {/* </ScrollView> */}
       </View>
     );
   }
