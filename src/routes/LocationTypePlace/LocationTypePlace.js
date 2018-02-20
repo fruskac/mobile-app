@@ -2,35 +2,44 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemList from "../../components/ItemList/";
 
 import CommonStyles from "../../styles/CommonStyles";
+import Styles from "./Styles";
 
-export type NewsData = {
-  title_en: string,
-  title_sr: string,
+export type LocationData = {
+  title: string,
   id: string,
-  content: string,
-  imageUrl: string
+  link: string,
+  description: string,
+  image: string
 };
+
 type Props = {
-  data: Array<NewsData>
+  items: Array<LocationData>
 };
 type State = {};
 
-class News extends PureComponent<Props, State> {
+class LocationTypePlace extends PureComponent<Props, State> {
   render() {
-    const { data } = this.props;
+    const { items } = this.props;
+
+    // console.log("ITEMS LOCATION", items);
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemList data={data} slug="/news/" />
+        <Text style={Styles.text}>
+          To be added later... diaspora per lorem ad astera astra borum dorum
+          tulipsen
+        </Text>
+        <ItemList items={items} slug="/location-single/" />
       </View>
     );
   }
 }
 
-export default News;
+export default LocationTypePlace;

@@ -16,10 +16,10 @@ type LocationData = {
 };
 
 // load demo data
-const locationDataSr: Array<
+export const locationDataSr: Array<
   LocationData
 > = require("../assets//Demo/locations-rs.json");
-const locationDataEn: Array<
+export const locationDataEn: Array<
   LocationData
 > = require("../assets//Demo/locations-rs.json");
 
@@ -39,13 +39,13 @@ export type LocationFilter = "type" | "place";
 type LocationState = {
   tagsSr: Array<string>,
   tagsEn: Array<string>,
-  locationFilter: LocationFilter
+  filter: LocationFilter
 };
 
 const initialState = {
   tagsSr: tagsSr,
   tagsEn: tagsEn,
-  locationFilter: "type"
+  filter: "type"
 };
 
 const locationsReducer = (
@@ -54,7 +54,7 @@ const locationsReducer = (
 ) => {
   switch (action.type) {
     case LOCATION_FILTER_CHANGE:
-      return { ...state, locationFilter: action.filter };
+      return { ...state, filter: action.filter };
     default:
       break;
   }

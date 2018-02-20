@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import I18n from "react-native-i18n";
 import SvgUri from "react-native-svg-uri";
 
@@ -19,13 +19,14 @@ import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
   tags: Array<string>,
-  locationFilter: string
+  filter: string,
+  onNavigate: (route: string) => void
 };
 type State = {};
 
 class Locations extends PureComponent<Props, State> {
   render() {
-    const { tags, locationFilter } = this.props;
+    const { tags, filter, onNavigate } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -44,9 +45,9 @@ class Locations extends PureComponent<Props, State> {
       borderBottomWidth: 2
     };
 
-    console.log("location", locationFilter, locationFilter == "type");
+    console.log("location", filter, filter == "type");
 
-    locationFilter == "type"
+    filter == "type"
       ? (typeStyle = underlineStyle)
       : (placeStyle = underlineStyle);
 
@@ -67,7 +68,10 @@ class Locations extends PureComponent<Props, State> {
 
         <View style={Styles.menu}>
           {tags.map((t, index) => (
-            <View
+            <TouchableOpacity
+              onPress={() => {
+                onNavigate("/location/" + t);
+              }}
               key={index}
               style={[
                 Styles.topMenuItem,
@@ -82,7 +86,7 @@ class Locations extends PureComponent<Props, State> {
                 fill={Icons.colors[t.replace("-", "")]}
               />
               <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>

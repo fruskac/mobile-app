@@ -5,7 +5,7 @@ import News from "./News";
 
 const mapDispatchToProps = {};
 const mapStateToProps = state => ({
-  data: state.news.data,
+  items: state.news.data,
   language: state.settings.language
 });
 

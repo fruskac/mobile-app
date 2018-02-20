@@ -7,8 +7,8 @@ import {
 } from "../store/types";
 import { LocationFilter } from "../reducers/locationsReducer";
 
-export function onLocationTypeChange(locationFilter: LocationFilter) {
-  return { type: LOCATION_FILTER_CHANGE, locationFilter };
+export function onLocationTypeChange(filter: LocationFilter) {
+  return { type: LOCATION_FILTER_CHANGE, filter };
 }
 
 export function onOpenLocationType(type: string) {

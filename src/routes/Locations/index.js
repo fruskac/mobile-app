@@ -2,10 +2,11 @@
 
 import { connect } from "react-redux";
 import Locations from "./Locations";
+import { onNavigate } from "../../actions/navigation";
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { onNavigate };
 const mapStateToProps = state => ({
-  locationFilter: state.locations.locationFilter,
+  filter: state.locations.filter,
   tags:
     state.settings.language == "sr"
       ? state.locations.tagsSr

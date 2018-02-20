@@ -15,6 +15,7 @@ import NewsScreen from "../routes/News";
 import SingleNewsScreen from "../routes/NewsSingle";
 import MapScreen from "../routes/Map";
 import LocationsScreen from "../routes/Locations";
+import LocationTypePlace from "../routes/LocationTypePlace";
 import TrailsScreen from "../routes/Trails";
 import InfoScreen from "../routes/Info";
 import DonateScreen from "../routes/Donate";
@@ -65,6 +66,20 @@ export const AppNavigator = StackNavigator({
       headerStyle: Styles.header,
       headerTitleStyle: Styles.headerTitle
     })
+  },
+  LocationType: {
+    path: "/location/:id",
+    screen: LocationTypePlace,
+    navigationOptions: navigation => {
+      console.log("NAVIGATION", navigation);
+      return {
+        title: I18n.t(navigation.navigation.state.params.id),
+        headerLeft: <BackButton />,
+        headerRight: <MenuButton />,
+        headerStyle: Styles.header,
+        headerTitleStyle: Styles.headerTitle
+      };
+    }
   }
 });
 

@@ -3,7 +3,11 @@
  */
 import { StyleSheet, Platform } from "react-native";
 
-import { textColor, bgColorHeaderAd } from "../../styles/CommonStyles";
+import {
+  textColor,
+  bgColorHeaderAd,
+  borderBottomColor
+} from "../../styles/CommonStyles";
 import * as Screen from "../../utils/Screen";
 
 export default StyleSheet.create({
@@ -13,7 +17,9 @@ export default StyleSheet.create({
     marginBottom: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
+    borderTopWidth: 1,
+    borderTopColor: borderBottomColor
   },
   itemImg: { width: Screen.width / 2, height: "100%" },
   itemText: {

@@ -17,17 +17,17 @@ export type NewsData = {
   imageUrl: string
 };
 type Props = {
-  data: Array<NewsData>
+  items: Array<NewsData>
 };
 type State = {};
 
 class News extends PureComponent<Props, State> {
   render() {
-    const { data } = this.props;
+    const { items } = this.props;
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemList data={data} slug="/news/" />
+        <ItemList items={items} slug="/news/" />
       </View>
     );
   }

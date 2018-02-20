@@ -2,12 +2,13 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { FlatList, Image, View, Text, TouchableOpacity } from "react-native";
 
-import { NewsData } from "../../routes/News/News";
+import type NewsData from "../../routes/News/News";
+import type LocationData from "../../routes/LocationTypePlace/LocationTypePlace";
 import * as Screen from "../../utils/Screen";
 import Styles from "./Styles";
 
 type Props = {
-  data: NewsData,
+  items: NewsData | LocationData,
   slug: string,
   language: string,
   onNavigate: (route: string) => void
@@ -30,11 +31,11 @@ class ItemList extends PureComponent<Props> {
         <View style={Styles.itemHolder}>
           <Image
             style={Styles.itemImg}
-            source={{ uri: item.imageUrl }}
+            source={{ uri: item.image || item.imageUrl }}
             resizeMode="cover"
           />
           <Text style={Styles.itemText}>
-            {item["title_" + language]} asdasdas
+            {item.title || item["title_" + language]}
           </Text>
         </View>
       </TouchableOpacity>
@@ -42,11 +43,14 @@ class ItemList extends PureComponent<Props> {
   };
 
   render() {
-    const { data, language } = this.props;
+    const { items, language } = this.props;
+
+    console.log("items", items, language);
 
     return (
       <FlatList
-        data={data}
+        style={{ flex: 1 }}
+        data={items}
         extraData={{ language }}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
