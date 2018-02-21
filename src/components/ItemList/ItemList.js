@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import type { Node } from "react";
 import PropTypes from "prop-types";
 import { FlatList, Image, View, Text, TouchableOpacity } from "react-native";
 
@@ -11,17 +12,27 @@ type Props = {
   items: NewsData | LocationData,
   slug: string,
   language: string,
+  header: Node,
+  footer: Node,
   onNavigate: (route: string) => void
 };
 type State = {};
 
 class ItemList extends PureComponent<Props> {
-  static defaultProps = {};
+  static defaultProps = {
+    header: null,
+    footer: null
+  };
 
   _keyExtractor = (item, index) => index;
 
   _renderItem = ({ item }) => {
     const { slug, onNavigate, language } = this.props;
+
+    // for rendering header and footer elements which can be null
+    // of if present they would not have id
+    if (!item || !("id" in item)) return item;
+
     return (
       <TouchableOpacity
         onPress={() => {
@@ -43,14 +54,12 @@ class ItemList extends PureComponent<Props> {
   };
 
   render() {
-    const { items, language } = this.props;
-
-    console.log("items", items, language);
+    const { items, language, header, footer } = this.props;
 
     return (
       <FlatList
         style={{ flex: 1 }}
-        data={items}
+        data={[header].concat(items).concat(footer)}
         extraData={{ language }}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}

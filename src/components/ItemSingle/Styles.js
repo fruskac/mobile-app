@@ -1,9 +1,9 @@
 /**
  * @flow
  */
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 
-import { textColor, bgColorHeaderAd } from "../../styles/CommonStyles";
+import { textColor } from "../../styles/CommonStyles";
 import * as Screen from "../../utils/Screen";
 
 export default StyleSheet.create({

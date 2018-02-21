@@ -1,7 +1,7 @@
 import { LOCATION_FILTER_CHANGE } from "../store/types";
 
 //@flow
-type LocationData = {
+type LocationFullData = {
   lat: string,
   lon: string,
   tag: string,
@@ -17,11 +17,11 @@ type LocationData = {
 
 // load demo data
 export const locationDataSr: Array<
-  LocationData
+  LocationFullData
 > = require("../assets//Demo/locations-rs.json");
 export const locationDataEn: Array<
-  LocationData
-> = require("../assets//Demo/locations-rs.json");
+  LocationFullData
+> = require("../assets//Demo/locations-en.json");
 
 // find all tags for both languages
 let tagsSr: Array<string> = [];

@@ -15,7 +15,8 @@ import NewsScreen from "../routes/News";
 import SingleNewsScreen from "../routes/NewsSingle";
 import MapScreen from "../routes/Map";
 import LocationsScreen from "../routes/Locations";
-import LocationTypePlace from "../routes/LocationTypePlace";
+import LocationTypePlaceScreen from "../routes/LocationTypePlace";
+import LocationSingleScreen from "../routes/LocationSingle";
 import TrailsScreen from "../routes/Trails";
 import InfoScreen from "../routes/Info";
 import DonateScreen from "../routes/Donate";
@@ -45,6 +46,17 @@ export const AppNavigator = StackNavigator({
       headerTitleStyle: Styles.headerTitle
     })
   },
+  Map: {
+    path: "/map",
+    screen: MapScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("map"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
   SingleNews: {
     path: "/news/:id",
     screen: SingleNewsScreen,
@@ -67,13 +79,27 @@ export const AppNavigator = StackNavigator({
       headerTitleStyle: Styles.headerTitle
     })
   },
-  LocationType: {
+  LocationTypePlace: {
     path: "/location/:id",
-    screen: LocationTypePlace,
+    screen: LocationTypePlaceScreen,
     navigationOptions: navigation => {
       console.log("NAVIGATION", navigation);
       return {
         title: I18n.t(navigation.navigation.state.params.id),
+        headerLeft: <BackButton />,
+        headerRight: <MenuButton />,
+        headerStyle: Styles.header,
+        headerTitleStyle: Styles.headerTitle
+      };
+    }
+  },
+  LocationSingle: {
+    path: "/location-single/:id",
+    screen: LocationSingleScreen,
+    navigationOptions: navigation => {
+      console.log("NAVIGATION", navigation);
+      return {
+        title: I18n.t("location"),
         headerLeft: <BackButton />,
         headerRight: <MenuButton />,
         headerStyle: Styles.header,

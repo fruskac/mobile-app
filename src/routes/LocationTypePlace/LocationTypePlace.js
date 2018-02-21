@@ -32,11 +32,17 @@ class LocationTypePlace extends PureComponent<Props, State> {
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <Text style={Styles.text}>
-          To be added later... diaspora per lorem ad astera astra borum dorum
-          tulipsen
-        </Text>
-        <ItemList items={items} slug="/location-single/" />
+
+        <ItemList
+          header={
+            <Text style={Styles.text}>
+              To be added later... diaspora per lorem ad astera astra borum
+              dorum tulipsen
+            </Text>
+          }
+          items={items}
+          slug="/location-single/"
+        />
       </View>
     );
   }

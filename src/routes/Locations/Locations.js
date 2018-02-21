@@ -45,7 +45,7 @@ class Locations extends PureComponent<Props, State> {
       borderBottomWidth: 2
     };
 
-    console.log("location", filter, filter == "type");
+    // console.log("location", filter, filter == "type");
 
     filter == "type"
       ? (typeStyle = underlineStyle)

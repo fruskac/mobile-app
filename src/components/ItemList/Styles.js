@@ -14,7 +14,7 @@ export default StyleSheet.create({
   itemHolder: {
     width: Screen.width,
     height: 95,
-    marginBottom: 1,
+    // marginBottom: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",

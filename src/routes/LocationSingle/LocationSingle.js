@@ -9,32 +9,29 @@ import ItemSingle from "../../components/ItemSingle/";
 import * as Screen from "../../utils/Screen";
 
 import CommonStyles from "../../styles/CommonStyles";
-import type { NewsData } from "../News/News";
+import type { LocationData } from "../LocationTypePlace/LocationTypePlace";
 
 type Props = {
-  language: string,
   id: string,
-  data: NewsData,
+  data: LocationData,
   navigation: any
 };
 type State = {};
 
-class NewsItem extends PureComponent<Props, State> {
+class LocationSingle extends PureComponent<Props, State> {
   render() {
-    const { data, language, navigation } = this.props;
+    const { data } = this.props;
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
         <ItemSingle
-          image={
-            "https://fruskac.net/sites/default/files/styles/thumbnail/public/thumb/locations/fruskac-lubenice-9.jpg?itok=VmGpdDjb"
-          }
-          title={data[`title_${language}`]}
-          text={data[`content_${language}`]}
+          image={data.image}
+          title={data.title}
+          text={data.description}
         />
       </View>
     );
   }
 }
 
-export default NewsItem;
+export default LocationSingle;

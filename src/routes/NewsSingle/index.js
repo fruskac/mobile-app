@@ -5,7 +5,6 @@ import NewsSingle from "./NewsSingle";
 
 const mapDispatchToProps = {};
 const mapStateToProps = (state, ownProps) => {
-  console.log("ownProps", ownProps);
   return {
     language: state.settings.language,
     data: state.news.data
