@@ -10,9 +10,10 @@ const _getLocationFilter = state => state.locations.filter;
 const _getLocationTypePlaceId = (state, props) =>
   props.navigation.state.params.id;
 
-// export const getLocations = createSelector([_getLocations], locations => {
-//   return locations;
-// });
+export const getLocations = createSelector(
+  [_getLocations],
+  locations => locations
+);
 
 export const getLocationSingle = createSelector(
   [_getLocations, _getLocationId],
