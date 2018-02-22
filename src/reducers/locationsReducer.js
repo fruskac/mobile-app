@@ -4,10 +4,10 @@ import type { LocationFullData, LocationFilter } from "../types/";
 //@flow
 
 // load demo data
-export const locationDataSr: Array<
+const locationDataSr: Array<
   LocationFullData
 > = require("../assets//Demo/locations-rs.json");
-export const locationDataEn: Array<
+const locationDataEn: Array<
   LocationFullData
 > = require("../assets//Demo/locations-en.json");
 
@@ -25,13 +25,17 @@ locationDataEn.forEach(el => {
 type LocationState = {
   tagsSr: Array<string>,
   tagsEn: Array<string>,
-  filter: LocationFilter
+  filter: LocationFilter,
+  locations_sr: Array<LocationFullData>,
+  locations_en: Array<LocationFullData>
 };
 
 const initialState = {
   tagsSr: tagsSr,
   tagsEn: tagsEn,
-  filter: "type"
+  filter: "type",
+  locations_sr: locationDataSr,
+  locations_en: locationDataEn
 };
 
 const locationsReducer = (

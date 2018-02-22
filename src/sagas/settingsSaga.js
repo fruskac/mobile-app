@@ -1,5 +1,5 @@
 import I18n from "react-native-i18n";
-import { takeLatest, take } from "redux-saga/effects";
+import { take } from "redux-saga/effects";
 import { CHANGE_LANGUAGE } from "../actions/actionTypes";
 
 export function* updateLanguage() {

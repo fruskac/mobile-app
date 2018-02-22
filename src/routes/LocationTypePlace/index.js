@@ -2,29 +2,14 @@
 
 import { connect } from "react-redux";
 import LocationTypePlace from "./LocationTypePlace";
-
-import {
-  locationDataSr,
-  locationDataEn
-} from "../../reducers/locationsReducer";
+import { getLocationsFiltered } from "../../selectors/locations";
 
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state, ownProps) => {
-  const currFilter = state.locations.filter;
-  //TODO implement selectors
-
-  // get current list items based on language
-  const items =
-    state.settings.language === "en" ? locationDataEn : locationDataSr;
-
-  // get items for current selected location type or place
-  const filteredItems = items
-    .slice(0)
-    .filter(item => item.tag === ownProps.navigation.state.params.id)
-    .map(i => i.data);
+  console.log("ownProps", ownProps);
   return {
-    items: filteredItems
+    items: getLocationsFiltered(state, ownProps)
   };
 };
 
