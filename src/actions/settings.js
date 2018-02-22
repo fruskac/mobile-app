@@ -4,7 +4,7 @@ import {
   TOGGLE_DRAWER,
   CHANGE_LANGUAGE,
   LOCATION_FILTER_CHANGE
-} from "../store/types";
+} from "./actionTypes";
 
 import type LocationType from "../reducers/settingsReducer";
 

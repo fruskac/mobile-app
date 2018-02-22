@@ -1,6 +1,6 @@
 import { AppNavigator } from "../navigators/Navigation";
 import { NavigationActions } from "react-navigation";
-import { NAVIGATE, NAVIGATE_BACK } from "../store/types";
+import { NAVIGATE, NAVIGATE_BACK } from "../actions/actionTypes";
 
 const firstAction = AppNavigator.router.getActionForPathAndParams("/");
 const initialState = AppNavigator.router.getStateForAction(firstAction);

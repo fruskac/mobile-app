@@ -10,7 +10,7 @@ import {
   SCREEN_CACHING_MAP,
   SCREEN_CACHING_ERROR,
   CACHING_DONE
-} from "../store/types";
+} from "../actions/actionTypes";
 
 let neLat = 45.211,
   neLng = 19.935,

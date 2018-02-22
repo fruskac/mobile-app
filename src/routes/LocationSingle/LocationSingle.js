@@ -9,7 +9,7 @@ import ItemSingle from "../../components/ItemSingle/";
 import * as Screen from "../../utils/Screen";
 
 import CommonStyles from "../../styles/CommonStyles";
-import type { LocationData } from "../LocationTypePlace/LocationTypePlace";
+import type LocationData from "../../types";
 
 type Props = {
   id: string,

@@ -9,14 +9,7 @@ import ItemList from "../../components/ItemList/";
 
 import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
-
-export type LocationData = {
-  title: string,
-  id: string,
-  link: string,
-  description: string,
-  image: string
-};
+import type LocationData from "../../types";
 
 type Props = {
   items: Array<LocationData>

@@ -8,14 +8,8 @@ import HeaderAd from "../../components/HeaderAd/";
 import ItemList from "../../components/ItemList/";
 
 import CommonStyles from "../../styles/CommonStyles";
+import type NewsData from "../../types";
 
-export type NewsData = {
-  title_en: string,
-  title_sr: string,
-  id: string,
-  content: string,
-  imageUrl: string
-};
 type Props = {
   items: Array<NewsData>
 };

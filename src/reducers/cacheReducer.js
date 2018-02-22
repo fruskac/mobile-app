@@ -4,7 +4,7 @@ import {
   CACHING_START,
   INTERNET_STATUS,
   SCREEN_INIT
-} from "../store/types";
+} from "../actions/actionTypes";
 
 const initialState = {
   // current caching scren

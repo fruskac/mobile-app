@@ -6,7 +6,7 @@ import {
   TOGGLE_DRAWER,
   NAVIGATE,
   NAVIGATE_BACK
-} from "../store/types";
+} from "../actions/actionTypes";
 
 type Settings = {
   language: string,

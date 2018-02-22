@@ -1,19 +1,7 @@
-import { LOCATION_FILTER_CHANGE } from "../store/types";
+import { LOCATION_FILTER_CHANGE } from "../actions/actionTypes";
+import type { LocationFullData, LocationFilter } from "../types/";
 
 //@flow
-type LocationFullData = {
-  lat: string,
-  lon: string,
-  tag: string,
-  data: {
-    title: string,
-    id: string,
-    link: string,
-    description: string,
-    image: string
-  },
-  options: {}
-};
 
 // load demo data
 export const locationDataSr: Array<
@@ -33,8 +21,6 @@ locationDataSr.forEach(el => {
 locationDataEn.forEach(el => {
   if (tagsEn.indexOf(el.tag) === -1) tagsEn.push(el.tag);
 });
-
-export type LocationFilter = "type" | "place";
 
 type LocationState = {
   tagsSr: Array<string>,

@@ -4,8 +4,9 @@ import {
   LOCATION_FILTER_CHANGE,
   OPEN_LOCATION_TYPE,
   OPEN_LOCATION_PLACE
-} from "../store/types";
-import { LocationFilter } from "../reducers/locationsReducer";
+} from "./actionTypes";
+
+import { LocationFilter } from "../types/";
 
 export function onLocationTypeChange(filter: LocationFilter) {
   return { type: LOCATION_FILTER_CHANGE, filter };

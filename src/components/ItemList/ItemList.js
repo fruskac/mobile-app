@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { FlatList, Image, View, Text, TouchableOpacity } from "react-native";
 
 import type NewsData from "../../routes/News/News";
-import type LocationData from "../../routes/LocationTypePlace/LocationTypePlace";
+import type LocationData from "../../types";
 import * as Screen from "../../utils/Screen";
 import Styles from "./Styles";
 

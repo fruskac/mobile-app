@@ -9,7 +9,7 @@ import ItemSingle from "../../components/ItemSingle/";
 import * as Screen from "../../utils/Screen";
 
 import CommonStyles from "../../styles/CommonStyles";
-import type { NewsData } from "../News/News";
+import type NewsData from "../../types";
 
 type Props = {
   language: string,

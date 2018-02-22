@@ -54,6 +54,7 @@ class Map extends PureComponent<Props, State> {
       300
     );
   }
+
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this._watchPositionId);
     timer.clearTimeout("show");

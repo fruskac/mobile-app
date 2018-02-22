@@ -2,6 +2,7 @@
 
 import { connect } from "react-redux";
 import LocationTypePlace from "./LocationTypePlace";
+
 import {
   locationDataSr,
   locationDataEn
@@ -10,8 +11,8 @@ import {
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("ownProps ", ownProps);
   const currFilter = state.locations.filter;
+  //TODO implement selectors
 
   // get current list items based on language
   const items =
