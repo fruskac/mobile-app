@@ -5,9 +5,11 @@ export const NAVIGATE = "NAVIGATE";
 export const NAVIGATE_BACK = "NAVIGATE_BACK";
 export const NEWS_LOADING = "NEWS_LOADING";
 export const NEWS_LOADING_COMPLETE = "NEWS_LOADING_COMPLETE";
+
 export const CACHING_START = "CACHING_START";
 export const CACHING_DONE = "CACHING_DONE";
 export const CACHING_UPDATE = "CACHING_UPDATE";
+export const CACHING_ERROR = "CACHING_ERROR";
 export const INTERNET_STATUS = "INTERNET_STATUS";
 
 // screens while caching
@@ -18,5 +20,7 @@ export const SCREEN_CACHING_ERROR = "SCREEN_CACHING_ERROR";
 
 // change of type or place in Locations
 export const LOCATION_FILTER_CHANGE = "LOCATION_FILTER_CHANGE";
+export const LOCATIONS_UPDATE_EN = "LOCATIONS_UPDATE_EN";
+export const LOCATIONS_UPDATE_SR = "LOCATIONS_UPDATE_SR";
 export const OPEN_LOCATION_TYPE = "OPEN_LOCATION_TYPE";
 export const OPEN_LOCATION_PLACE = "OPEN_LOCATION_PLACE";

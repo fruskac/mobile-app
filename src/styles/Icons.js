@@ -9,6 +9,17 @@ export const meadows = require("../assets/icons/meadows.svg");
 export const waterfalls = require("../assets/icons/waterfalls.svg");
 export const fishponds = require("../assets/icons/fishponds.svg");
 
+export const miscMap = require("../assets/icons-png/misc.png");
+export const springsMap = require("../assets/icons-png/springs.png");
+export const picnicareasMap = require("../assets/icons-png/picnic-areas.png");
+export const monumentsMap = require("../assets/icons-png/monuments.png");
+export const lakesMap = require("../assets/icons-png/lakes.png");
+export const monasteriesMap = require("../assets/icons-png/monasteries.png");
+export const lookoutsMap = require("../assets/icons-png/lookouts.png");
+export const meadowsMap = require("../assets/icons-png/meadows.png");
+export const waterfallsMap = require("../assets/icons-png/waterfalls.png");
+export const fishpondsMap = require("../assets/icons-png/fishponds.png");
+
 export const colors = {
   misc: "#DC175F",
   springs: "#5982A2",

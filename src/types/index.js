@@ -7,6 +7,11 @@ export type NewsData = {
   imageUrl: string
 };
 
+export type Location = {
+  lat: number,
+  lng: number
+};
+
 // type of locations filter
 export type LocationFilter = "type" | "place";
 
@@ -27,3 +32,5 @@ export type LocationFullData = {
   data: LocationData,
   options: {}
 };
+
+export type LocationsList = Array<LocationFullData>;

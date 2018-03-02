@@ -7,7 +7,6 @@ import { getLocationsFiltered } from "../../selectors/locations";
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("ownProps", ownProps);
   return {
     items: getLocationsFiltered(state, ownProps)
   };

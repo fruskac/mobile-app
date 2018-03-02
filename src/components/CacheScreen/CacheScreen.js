@@ -7,6 +7,7 @@ import { Animated, Easing, View, Text, Image } from "react-native";
 import Styles from "./Styles";
 import { width as ScreenWidth } from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
+import { SCREEN_CACHING_ERROR } from "../../actions/actionTypes";
 
 type Props = {
   progress: number,
@@ -58,7 +59,7 @@ class CacheScreen extends PureComponent<Props, State> {
   }
 
   render() {
-    const { progress } = this.props;
+    const { progress, screen } = this.props;
     const { hidden } = this.state;
 
     if (hidden) return null;
@@ -71,9 +72,22 @@ class CacheScreen extends PureComponent<Props, State> {
             width={ScreenWidth * 0.32}
             source={require("../../assets/volem-logo.png")}
           />
-          <Text style={[CommonStyles.text, Styles.progressText]}>
-            {progress}%
-          </Text>
+
+          {screen == SCREEN_CACHING_ERROR ? (
+            <Text
+              style={[
+                CommonStyles.text,
+                Styles.progressText,
+                CommonStyles.errorText
+              ]}
+            >
+              ERROR CACHING MAP AND DATA
+            </Text>
+          ) : (
+            <Text style={[CommonStyles.text, Styles.progressText]}>
+              {progress}%
+            </Text>
+          )}
         </View>
         <Text style={[CommonStyles.text, Styles.bottomText]}>Sponsor Logo</Text>
       </Animated.View>

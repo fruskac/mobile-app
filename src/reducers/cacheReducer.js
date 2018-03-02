@@ -2,8 +2,10 @@ import {
   CACHING_UPDATE,
   CACHING_DONE,
   CACHING_START,
+  CACHING_ERROR,
   INTERNET_STATUS,
-  SCREEN_INIT
+  SCREEN_INIT,
+  SCREEN_CACHING_ERROR
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -17,12 +19,6 @@ const initialState = {
   loading: false,
   // progress of loading cache
   progress: 0,
-  // is map offline cached
-  mapCached: false,
-  // is news JSON cached
-  newsCached: false,
-  // is locations JSON cached
-  locationsCached: false,
   // is trails data cached
   trailsCached: false,
   // is info data cached
@@ -39,6 +35,8 @@ const cacheReducer = (state = initialState, action) => {
       return { ...state, done: true, loading: false, progress: 100 };
     case CACHING_UPDATE:
       return { ...state, ...action.payload };
+    case CACHING_ERROR:
+      return { ...state, screen: SCREEN_CACHING_ERROR };
   }
   return state;
 };

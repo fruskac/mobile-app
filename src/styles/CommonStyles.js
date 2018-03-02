@@ -28,5 +28,11 @@ export default StyleSheet.create({
   text: {
     color: textColor,
     fontFamily: "Merriweather-Light"
+  },
+  errorText: {
+    backgroundColor: "red",
+    color: "white",
+    padding: 4,
+    fontSize: 16
   }
 });
