@@ -85,7 +85,7 @@ class CacheScreen extends PureComponent<Props, State> {
             </Text>
           ) : (
             <Text style={[CommonStyles.text, Styles.progressText]}>
-              {progress}%
+              {progress.toFixed(0)}%
             </Text>
           )}
         </View>

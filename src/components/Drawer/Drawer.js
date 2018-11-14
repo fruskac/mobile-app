@@ -30,7 +30,6 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   componentWillReceiveProps(nextProps: Object) {
-    console.log("drawer ", nextProps);
     if (this.props.drawerOpen != nextProps.drawerOpen) {
       if (nextProps.drawerOpen) {
         this.openDrawer();
@@ -41,7 +40,6 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   openDrawer() {
-    console.log("Open drwaer");
     Animated.timing(
       this.state.panelTranslateX, // The animated value to drive
       {
@@ -54,7 +52,6 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   closeDrawer() {
-    console.log("Close drwaer");
     Animated.timing(
       this.state.panelTranslateX, // The animated value to drive
       {

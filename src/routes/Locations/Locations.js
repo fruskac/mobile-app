@@ -6,6 +6,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import I18n from "react-native-i18n";
 import SvgUri from "react-native-svg-uri";
 
+import { LocationFilter } from "../../types";
 import HeaderAd from "../../components/HeaderAd/";
 
 import CommonStyles, {
@@ -20,13 +21,14 @@ import { height as screenHeight } from "../../utils/Screen";
 type Props = {
   tags: Array<string>,
   filter: string,
-  onNavigate: (route: string) => void
+  onNavigate: (route: string) => void,
+  onLocationTypeChange: (filter: LocationFilter) => void,
 };
 type State = {};
 
 class Locations extends PureComponent<Props, State> {
   render() {
-    const { tags, filter, onNavigate } = this.props;
+    const { tags, filter, onNavigate, onLocationTypeChange } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -55,15 +57,20 @@ class Locations extends PureComponent<Props, State> {
       <View style={CommonStyles.container}>
         <HeaderAd />
         <View style={Styles.topMenu}>
-          <View
+          <TouchableOpacity
             key="type"
             style={[Styles.topMenuItem, Styles.withRightBorder, typeStyle]}
+            onPress={() => onLocationTypeChange("type")}
           >
             <Text style={CommonStyles.text}>{I18n.t("type")}</Text>
-          </View>
-          <View key="place" style={[Styles.topMenuItem, placeStyle]}>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            key="place"
+            style={[Styles.topMenuItem, placeStyle]}
+            onPress={() => onLocationTypeChange("place")}
+          >
             <Text style={CommonStyles.text}>{I18n.t("place")}</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <View style={Styles.menu}>

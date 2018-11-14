@@ -9,12 +9,14 @@ import AutoHeightImage from "react-native-auto-height-image";
 import * as Screen from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
+import { askPermissions } from "../../actions/locations";
 
 const menuItems = ["news", "map", "locations", "trails", "info", "donate"];
 
 type Props = {
   onNavigate: (route: string, reset: boolean) => void,
   onChangeLanguage: (language: string) => void,
+  askPermissions: () => void,
   language: string,
   inDrawer: boolean
 };
@@ -39,8 +41,15 @@ class Menu extends PureComponent<Props, State> {
             {menuItems.map((item, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => {
-                  onNavigate("/" + item.toLowerCase(), inDrawer);
+                onPress={async () => {
+                  if(item.toLowerCase() === 'map') {
+                    const resp = await askPermissions();
+                    if (resp) {
+                      onNavigate("/" + item.toLowerCase(), inDrawer);
+                    }
+                  } else {
+                    onNavigate("/" + item.toLowerCase(), inDrawer);
+                  }
                 }}
               >
                 <Text style={Styles.menuItem}>{I18n.t(item)}</Text>
