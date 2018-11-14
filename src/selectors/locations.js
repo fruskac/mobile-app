@@ -21,7 +21,7 @@ export const getLocationSingle = createSelector(
     locations
       .slice(0)
       .filter(item => item.data.id === locationId)
-      .map(i => i.data)
+      .map(i => i.data)[0]
 );
 
 export const getLocationsFiltered = createSelector(
