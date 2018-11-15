@@ -40,6 +40,14 @@ export default StyleSheet.create({
     padding: 21,
     paddingTop: 0
   },
+  textTabs: {
+    color: textColor,
+    fontFamily: "Merriweather-Light",
+    fontSize: 15,
+    lineHeight: 21,
+    padding: 9,
+    paddingTop: 0
+  },
   onMapBtn: {
     position: 'absolute',
     backgroundColor: '#DDDDDD',

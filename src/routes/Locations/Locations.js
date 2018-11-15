@@ -62,14 +62,14 @@ class Locations extends PureComponent<Props, State> {
             style={[Styles.topMenuItem, Styles.withRightBorder, typeStyle]}
             onPress={() => onLocationTypeChange("type")}
           >
-            <Text style={CommonStyles.text}>{I18n.t("type")}</Text>
+            <Text style={CommonStyles.textTabs}>{I18n.t("type")}</Text>
           </TouchableOpacity>
           <TouchableOpacity 
             key="place"
             style={[Styles.topMenuItem, placeStyle]}
             onPress={() => onLocationTypeChange("place")}
           >
-            <Text style={CommonStyles.text}>{I18n.t("place")}</Text>
+            <Text style={CommonStyles.textTabs}>{I18n.t("place")}</Text>
           </TouchableOpacity>
         </View>
 
