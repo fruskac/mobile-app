@@ -35,5 +35,13 @@ export default StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     flexWrap: "wrap"
+  },
+  textPlacesList: {
+    color: textColor,
+    fontFamily: "Merriweather-Light",
+    fontSize: 12,
+    lineHeight: 21,
+    padding: 9,
+    paddingTop: 0
   }
 });

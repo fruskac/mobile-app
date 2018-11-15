@@ -53,6 +53,47 @@ class Locations extends PureComponent<Props, State> {
       ? (typeStyle = underlineStyle)
       : (placeStyle = underlineStyle);
 
+    if (filter == "type") {
+      listView = 
+      <View style={Styles.menu}>
+        {tags.map((t, index) => (
+          <TouchableOpacity
+            onPress={() => {
+              onNavigate("/location/" + t);
+            }}
+            key={index}
+            style={[
+              Styles.topMenuItem,
+              { height: buttonHeight },
+              index % 2 === 0 ? Styles.withRightBorder : {}
+            ]}
+          >
+            <SvgUri
+              width={50}
+              height={45}
+              source={Icons[t.replace("-", "")]}
+              fill={Icons.colors[t.replace("-", "")]}
+            />
+            <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    } else {
+      listView = //<Text>Places</Text>
+      <View style={[Styles.menu,{flex: 1, flexDirection: 'column'}]}>
+        {tags.map((t, index) => (
+          <TouchableOpacity
+            onPress={() => {
+              onNavigate("/location/" + t);
+            }}
+            key={index}
+          >
+            <Text style={Styles.textPlacesList}>{I18n.t(t)} ({t.length})</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    }
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
@@ -73,29 +114,7 @@ class Locations extends PureComponent<Props, State> {
           </TouchableOpacity>
         </View>
 
-        <View style={Styles.menu}>
-          {tags.map((t, index) => (
-            <TouchableOpacity
-              onPress={() => {
-                onNavigate("/location/" + t);
-              }}
-              key={index}
-              style={[
-                Styles.topMenuItem,
-                { height: buttonHeight },
-                index % 2 === 0 ? Styles.withRightBorder : {}
-              ]}
-            >
-              <SvgUri
-                width={50}
-                height={45}
-                source={Icons[t.replace("-", "")]}
-                fill={Icons.colors[t.replace("-", "")]}
-              />
-              <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
-            </TouchableOpacity>
-          ))}
-        </View>
+        {listView}
       </View>
     );
   }
