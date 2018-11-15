@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View, TouchableOpacity, Text, Image } from "react-native";
 import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
@@ -31,7 +31,7 @@ class LocationSingle extends PureComponent<Props, State> {
           key={id}
           style={CommonStyles.onMapBtn}
         >
-          <Text style={[CommonStyles.text,{padding: 0, paddingHorizontal: 15}]}>{I18n.t("on map").toUpperCase()}</Text>
+          <Image source={require('../../assets/menu-icons-png/icons8-map-marker-24.png')} />
         </TouchableOpacity>
         <ItemSingle
           image={data.image}

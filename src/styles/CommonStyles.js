@@ -6,7 +6,7 @@ import { StyleSheet, Platform } from "react-native";
 export const fontSizeHeader = Platform.OS === "ios" ? 18 : 16;
 export const backgroundColor = "#F6F7F1";
 export const defaultMargin = 20;
-export const navHeaderHeight = 45;
+export const navHeaderHeight = 54;
 export const headerAdHeight = 40;
 export const textColor = "#454546";
 export const tintColor = "#0066ff";

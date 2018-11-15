@@ -73,7 +73,7 @@ class Drawer extends PureComponent<Props, State> {
             position: "absolute",
             left: 0,
             zIndex: 30,
-            top: 80,
+            top: 54,
             bottom: 0,
             height: Screen.height - 40,
             transform: [{ translateX: this.state.panelTranslateX }]

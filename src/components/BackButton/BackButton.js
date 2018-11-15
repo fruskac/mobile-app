@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity, Text, Image } from "react-native";
 import I18n from "react-native-i18n";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -17,8 +17,7 @@ class BackButton extends PureComponent<Props, State> {
     const { onNavigateBack } = this.props;
     return (
       <TouchableOpacity style={Styles.buttonHolder} onPress={onNavigateBack}>
-        <Icon name="ios-arrow-back" style={Styles.icon} size={30} />
-        <Text style={Styles.text}>{I18n.t("back")}</Text>
+        <Image source={require('../../assets/menu-icons-png/icons8-back-to-32.png')} />
       </TouchableOpacity>
     );
   }

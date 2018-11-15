@@ -19,7 +19,7 @@ class ItemSingle extends PureComponent<Props, State> {
     const { title, image, text } = this.props;
     return (
       <ScrollView>
-        <Image source={{uri: image}} style={{width: Screen.width, height: Screen.height / 3}} />
+        <Image source={{uri: image}} style={{width: Screen.width, height: Screen.height / 3 - 27}} />
         <Text style={CommonStyles.textTitle}>{title}</Text>
         <Text style={CommonStyles.text}>{text}</Text>
       </ScrollView>
