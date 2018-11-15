@@ -1,0 +1,422 @@
+[
+    {
+      "id": "52",
+      "name_rs": "Bano\u0161tor",
+      "name_en": "Bano\u0161tor",
+      "desctiption_rs": "Bano\u0161tor is a village in the west part of Beo\u010din county with about 780 residents. The name comes from the Hungarian word B\u00e1nmonostor meaning ban monastery, which refers to the monastery of the Serbian prince and Hungarian palatine Belu\u0161.",
+      "desctiption_en": "Bano\u0161tor je selo koje se nalazi u zapadnom delu op\u0161tine Beo\u010din i broji oko 780 stanovnika. Naziv sela je izveden iz ma\u0111arske re\u010di B\u00e1nmonostor, \u0161to zna\u010di ban manastira, a odnosi se na manastir ugarskog bana Belu\u0161a."
+    },
+    {
+      "id": "124",
+      "name_rs": "Berkasovo",
+      "name_en": "Berkasovo",
+      "desctiption_rs": "Berkasovo is a village found in the \u0160id county, at the south-west slopes of Fru\u0161ka Gora. It counts about 1200 residents and has a rich historical background that stretches even to the neolithic period. \r\n",
+      "desctiption_en": "Berkasovo je selo koje se nalazi u \u0161idskoj op\u0161tini na jugozapadnim obroncima Fru\u0161ke gore. Broji oko 1200 stanovnika i ima bogatu istorijsku pro\u0161lost koja se\u017ee \u010dak u neolitsko doba."
+    },
+    {
+      "id": "72",
+      "name_rs": "Be\u0161enovo",
+      "name_en": "Be\u0161enovo",
+      "desctiption_rs": "Be\u0161enovo is a village in the northern part of Sremska Mitrovica county with about 970 residents. The name of the village comes from the Hungarian name for Pe\u010denege: Biseni, the barbarian tribe that played a key role in the relations between the Byzantine and Austro-Hungarian states in the 11th century. The Be\u0161enova\u010dki Prnjavor is a monastery village with the same name as the monastery, with about 150 residents. ",
+      "desctiption_en": "Be\u0161enovo je selo u severnom delu op\u0161tine Sremska Mitrovica i broji oko 970 stanovnika. Ime sela poti\u010de od ma\u0111arskog naziva za Pe\u010denege \u2013 Biseni, varvarsko pleme koje je imalo zna\u010dajnu ulogu u odnosima izme\u0111u vizantijske i ugarske dr\u017eave u XI veku. Be\u0161enova\u010dki Prnjavor je manastirsko naselje istoimenog manastira i broji oko 150 stanovnika."
+    },
+    {
+      "id": "125",
+      "name_rs": "Be\u0161ka",
+      "name_en": "Be\u0161ka",
+      "desctiption_rs": "Be\u0161ka is a village that rests on the Fru\u0161ka Gora, i.e. Srem, loess plateau. It is close to the Belagre - Novi Sad highway, and has about 6000 residents. The origin of the word Be\u0161ka most probably comes from the turkish word be\u015fik (cradle) or the combination of words be\u015f (five) and kaya (stone) which would mean the fifth stone, a meeting point in military or some similar terminology. ",
+      "desctiption_en": "Be\u0161ka je naselje koje le\u017ei fru\u0161kogorskoj odnosno sremskoj lesnoj zaravni, nalazi se bliz autoputa Beograd - Novi Sad. Ima oko 6000 stanovnika a poreklo re\u010di Be\u0161ka poti\u010de najverovatnije od turske re\u010di be\u015fik (kolevka) ili kovanice be\u015f (pet) i kaya (kamen), \u0161to bi zna\u010dilo peti kamen, oredi\u0161te u vojnoj ili drugoj terminologiji. "
+    },
+    {
+      "id": "208",
+      "name_rs": "Brankovac",
+      "name_en": "Brankovac",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "93",
+      "name_rs": "Bukovac",
+      "name_en": "Bukovac",
+      "desctiption_rs": "Bukovac is a village at the northern slopes of Fru\u0161ka Gora, on the right banks of the Danube river. It belongs to the south Ba\u010dka county, and has about 3500 residents. The first settlers came during the Ottoman empire in the 16th century. ",
+      "desctiption_en": "Bukovac je selo koje nalazi na severnim obroncima Fru\u0161ke gore odnosno sa desne obale Dunava. Administrativno pripada Ju\u017enoba\u010dkom okrugu i ima oko 3500 stanovnika. Mesto je naseljeno za vreme Osmanskog carstva XVI veku."
+    },
+    {
+      "id": "57",
+      "name_rs": "Dobrodol",
+      "name_en": "Dobrodol",
+      "desctiption_rs": " Dobrodol is a village with a population of around 130, located in the southeastern part of Irig County. The village majority is Hungarian.",
+      "desctiption_en": "Dobrodol je selo koje se nalazi u jugoisto\u010dnom delu op\u0161tine Irig i broji oko 130 stanovnika. Ve\u0107ina stanovnika je ma\u0111arske nacionalnosti."
+    },
+    {
+      "id": "205",
+      "name_rs": "Fru\u0161ka gora",
+      "name_en": "Fru\u0161ka gora",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "206",
+      "name_rs": "Kr\u010dedin",
+      "name_en": "Kr\u010dedin",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "70",
+      "name_rs": "Ne\u0161tin",
+      "name_en": "Ne\u0161tin",
+      "desctiption_rs": " Ne\u0161tin is a village with a population of around 900, located in the Southeastern part of Ba\u010dka Palanka County. The first time it is mentioned is in Hungarian documents from 1332, as Nyest.",
+      "desctiption_en": "Ne\u0161tin je selo koje se nalazi u jugoisto\u010dnom delu op\u0161tine Ba\u010dka Palanka i broji oko 900 stanovnika. Ime sela se prvi put javlja u ma\u0111arskim dokumentima 1332. godine u obliku Nyest."
+    },
+    {
+      "id": "204",
+      "name_rs": "Novi Sad",
+      "name_en": "Novi Sad",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "46",
+      "name_rs": "Pavlovci",
+      "name_en": "Pavlovci",
+      "desctiption_rs": " Pavlovci is a village with a population of around 450, located in Ruma County.",
+      "desctiption_en": "Pavlovci je malo selo koje se nalazi u rumskoj op\u0161tini i broji oko 450 stanovnika."
+    },
+    {
+      "id": "203",
+      "name_rs": "Popovica",
+      "name_en": "Popovica",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "211",
+      "name_rs": "Sremska Karlovci",
+      "name_en": "Sremska Karlovci",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "209",
+      "name_rs": "Stra\u017eilovo",
+      "name_en": "Stra\u017eilovo",
+      "desctiption_rs": null,
+      "desctiption_en": null
+    },
+    {
+      "id": "123",
+      "name_rs": "Biki\u0107 Do",
+      "name_en": "Biki\u0107 Do",
+      "desctiption_rs": "Biki\u0107 Do is the smallest and youngest village located in the \u0160id county with about 300 residents. The locals are made up of mostly Rusyns, then Serbs and Croats. ",
+      "desctiption_en": "Biki\u0107 Do je najmanje i najmla\u0111e selo koje se nalazi u \u0161idskoj op\u0161tini i broji oko 300 stanovnika. Stanovnici ovog sela su prete\u017eno Rusini zatim Srbi i Hrvati."
+    },
+    {
+      "id": "90",
+      "name_rs": "\u010cortanovci",
+      "name_en": "\u010cortanovci",
+      "desctiption_rs": "\u010cortanovci is a village in the In\u0111ija county, located between the slopes of Fru\u0161ka Gora and the Danube river, and counts about 2300 residents. This picture-esque settlement not only has beautiful nature but a rich cultural-historic heritage. ",
+      "desctiption_en": "\u010cortanovci je selo u op\u0161tini In\u0111ija sme\u0161teno izme\u0111u padina Fru\u0161ke gore i Dunava i broji oko 2300 stanovnika. Ovo slikovito naselje pored prirodnih lepota ima bogato kulturno-istorijsko nasle\u0111e."
+    },
+    {
+      "id": "33",
+      "name_rs": "Divo\u0161",
+      "name_en": "Divo\u0161",
+      "desctiption_rs": "Divo\u0161 is a village in the north-west part of Sremska Mitrovica county, right at the foothill of Fru\u0161ka Gora, with about 1500 residents. The name Divo\u0161 probably stems from the Hungarian last name Div\u00f3s. Some say it even comes from the word di\u00f3, meaning walnut. ",
+      "desctiption_en": "Divo\u0161 je selo koje se nalazi na severozapadnom delu op\u0161tine Sremska Mitrovica u podno\u017eju Fru\u0161ke gore i broji oko 1500 stanovnika. Naziv Divo\u0161 poti\u010de najverovatnije od ma\u0111arskog prezimena Div\u00f3s. Neki ka\u017eu i od re\u010di di\u00f3, \u0161to zna\u010di orah."
+    },
+    {
+      "id": "63",
+      "name_rs": "Grgeteg",
+      "name_en": "Grgeteg",
+      "desctiption_rs": " Grgeteg is a village with a population of around 90, located in the northeastern part of Irig County. It was established south of Grgeteg Monastery, which was built in 1471.",
+      "desctiption_en": "Grgeteg je selo koje se nalazi u severoisto\u010dnom delu op\u0161tine Irig i broji oko 90 stanovnika. Sagra\u0111eno je ju\u017eno od istoimenog manastira osnovanog 1471. godine."
+    },
+    {
+      "id": "79",
+      "name_rs": "Ledinci",
+      "name_en": "Ledinci",
+      "desctiption_rs": " Ledinci is a suburb of Novi Sad, located in the western part of the Petrovaradin municipality. There are two settlements bearing the name: Stari Ledinci and Novi Ledinci. The name Ledinci is used for the settlement of Novi Ledinci, with a population of around 1670. Stari Ledinci has a population of around 830. The settlement was established in the 13th century.",
+      "desctiption_en": "Ledinci su prigradsko naselje Novog Sada i nalaze se u zapadnom delu op\u0161tine Petrovaradin. Postoje dva naselja sa imenom Ledinci: Stari Ledinci i Novi Ledinci. Ime Ledinci se zvani\u010dno koristi za naselje Novi Ledinci. U Starim Ledincima \u017eivi oko 830, a u Ledincima oko 1670 stanovnika. Naselje je nastalo u XIII veku."
+    },
+    {
+      "id": "73",
+      "name_rs": "Vizi\u0107",
+      "name_en": "Vizi\u0107",
+      "desctiption_rs": " Vizi\u0107 is a village of 350, in the southern part of Ba\u010dka Palanka County. The name of the village was originally Hungarian - F\u00fczegy.",
+      "desctiption_en": "Vizi\u0107 je selo koje se nalazi u ju\u017enom delu op\u0161tine Ba\u010dka Palanka i broji oko 350 stanovnika. Ime sela Vizi\u0107 \u2013 F\u00fczegy \u2013 ma\u0111arskog je porekla."
+    },
+    {
+      "id": "36",
+      "name_rs": "Bingula",
+      "name_en": "Bingula",
+      "desctiption_rs": " Bingula is a village on the eastern part of \u0160id county, with about 900 residents. The name of the village comes from the turkish words bin and g\u00fcl, meaning a thousand roses. \r\n",
+      "desctiption_en": "Bingula je selo koje se nalazi na isto\u010dnom delu op\u0161tine \u0160id i broji oko 900 stanovnika. Naziv sela poti\u010de od turskih re\u010di bin i g\u00fcl, \u0161to zna\u010di hiljadu ru\u017ea."
+    },
+    {
+      "id": "69",
+      "name_rs": "\u010cerevi\u0107",
+      "name_en": "\u010cerevi\u0107",
+      "desctiption_rs": "\u010cerevi\u0107 is a village located in the western part of Beo\u010din county with about 2830 residents. Today's name is first mentioned in Hungarian scrolls from 1339 as a fortified settlement, and in 1372 as a small town. ",
+      "desctiption_en": "\u010cerevi\u0107 je selo koje se nalazi u zapadnom delu op\u0161tine Beo\u010din i broji oko 2830 stanovnika. Dana\u0161nji naziv se prvi put pominje u ma\u0111arskim spisima 1339. godine kao utvr\u0111eno naselje, a 1372. godine kao varo\u0161."
+    },
+    {
+      "id": "39",
+      "name_rs": "Grgurevci",
+      "name_en": "Grgurevci",
+      "desctiption_rs": " Grgurevci is a village with a population of around 1310, located in the northern part of Sremska Mitrovica County. It is named after the Hungarian Monastery of St. Grgur, from the 13th century.",
+      "desctiption_en": "Grgurevci su selo u severnom delu op\u0161tine Sremska Mitrovica i broji oko 1310 stanovnika. Selo nosi naziv po ma\u0111arskom manastiru Svetog Grgura iz XIII veka."
+    },
+    {
+      "id": "51",
+      "name_rs": "Jarkovci",
+      "name_en": "Jarkovci",
+      "desctiption_rs": " Jarkovci is a village with a population of around 600, located on a plateau of Fru\u0161ka Gora, not far from In\u0111ija. It is first mentioned in the 16th century, but located south, and not northwest of In\u0111ija.",
+      "desctiption_en": "Malo naselje Jarkovci se nalazi na fru\u0161kogorskoj lesnoj zaravni nedaleko od In\u0111ije. Broji oko 600 stanovnika. Jarkovci se pominju u XVI veku, pretpostavlja se da su bili ju\u017eno a ne severozapadno od In\u0111ije."
+    },
+    {
+      "id": "61",
+      "name_rs": "Jazak",
+      "name_en": "Jazak",
+      "desctiption_rs": " Jazak is a village with a population of around 1100, located in the easetern part of Irig County. It was first documented as a settlement in 1702.",
+      "desctiption_en": "Jazak je selo koje se nalazi u isto\u010dnom delu op\u0161tine Irig i broji oko 1100 stanovnika. Selo je zabele\u017eeno kao naseljeno 1702. godine."
+    },
+    {
+      "id": "92",
+      "name_rs": "Sremska Kamenica",
+      "name_en": "Sremska Kamenica",
+      "desctiption_rs": " Sremska Kamenica is a town near Novi Sad, between the Danube and the northern slopes of Fru\u0161ka Gora. This place has a very rich history, and the first time it is mentioned is in the 13th century. Sremska Kamenica has a population of around 11000.",
+      "desctiption_en": "Sremska Kamenica je gradsko naselje koje se nalazi u blizini Novog Sada odnosono izme\u0111u obale Dunava i severnih padina Fru\u0161ke gore. Ovo mesto ima veoma bogatu pro\u0161lost a prvi siguran podatak o Sremskoj Kamenici se javlja u XIII veku. Kamenica ima oko 11 hiljada stanovnika. "
+    },
+    {
+      "id": "37",
+      "name_rs": "\u010calma",
+      "name_en": "\u010calma",
+      "desctiption_rs": "\u010calma is a village located at the northwest part of Sremska Mitrovica county, with about 1700 residents. The name of the village comes from the \u010cala settlement, which was located nearby during the Roman period. However, other people say it was created durint the Ottoman period, based on the slang name they used for \"hat\": \u010dalma. \r\n",
+      "desctiption_en": "\u010calma je selo koje se nalazi na severozapadnom delu op\u0161tine Sremska Mitrovica i broji oko 1700 stanovnika. Ime sela poti\u010de od naselja \u010cala, koje se nalazilo u blizini za vreme Rimljana. Drugi pak ka\u017eu da je nastalo za vreme Turaka po nazivu za kapu \u2013 \u010dalma."
+    },
+    {
+      "id": "85",
+      "name_rs": "Erdevik",
+      "name_en": "Erdevik",
+      "desctiption_rs": " Erdevik is a village with a population of around 3300, located in the eastern part of \u0160id County. The name originates from the Hungarian word Erd\u0151v\u00e9g, meaning \"a place by the forest\". Later it was renamed Erdevik, and it remains one of the most beautiful villages of Srem, well known for its natural surroundings, and its wine.",
+      "desctiption_en": "Erdevik je selo koje se nalazi na isto\u010dnom delu op\u0161tine \u0160id i broji oko 3300 stanovnika. Ime sela poti\u010de od ma\u0111arske re\u010di Erd\u0151v\u00e9g, \u0161to zna\u010di mesto pored \u0161ume. Kasnije je preina\u010deno u Erdevik. Jedno je od najlep\u0161ih sela u Sremu poznato po prirodi i vinu."
+    },
+    {
+      "id": "89",
+      "name_rs": "Grabovo",
+      "name_en": "Grabovo",
+      "desctiption_rs": " Grabovo is a village with a population of around 140, located in the southwestern part of Beo\u010din County. It is first mentioned in the 18th century, and the name is probably Slavic in origin, and refers to a type of tree.",
+      "desctiption_en": "Grabovo je selo koje se nalazi u jugozapadnom delu op\u0161tine Beo\u010din i broji oko 140 stanovnika. Prvi put se pominje u XVIII veku, a naziv je verovatno slovenskog porekla i odnosi se na vrstu drveta."
+    },
+    {
+      "id": "68",
+      "name_rs": "Kru\u0161edol",
+      "name_en": "Kru\u0161edol",
+      "desctiption_rs": " Kru\u0161edol is a settlement consisting of the civil part Kru\u0161edol Selo, and monastery part Kru\u0161edol Prnjavor. It is located in the eastern part of Irig County, with Kru\u0161edol Selo counting a population of around 390, and Kru\u0161edol Prnjavor of around 280. The settling of Kru\u0161edol Prnjavor is linked to the building of Kru\u0161edol Monastery in the 16th century.",
+      "desctiption_en": "Kru\u0161edol je naselje koje se sastoji od Kru\u0161edol Sela i Kru\u0161edol Prnjavora. Nalazi se u isto\u010dnom delu op\u0161tine Irig. Kru\u0161edol selo ima oko 390 stanovnika, a Kru\u0161edol Prnjavor oko 280. Naseljavanje Kru\u0161edol Prnjavora se vezuje za izgradnju istoimenog manastira po\u010detkom XVI veka."
+    },
+    {
+      "id": "55",
+      "name_rs": "Maradik",
+      "name_en": "Maradik",
+      "desctiption_rs": " Maradik is a village with a population of around 2300, located in the Northwestern part of In\u0111ija County. The name is of Hungarian origin, dating back to 1498.",
+      "desctiption_en": "Maradik je selo koje se nalazi u severozapadnom delu op\u0161tine In\u0111ija i broji oko 2300 stanovnika. Ime sela je ma\u0111arskog porekla i prvi put se pominje 1498. godine."
+    },
+    {
+      "id": "54",
+      "name_rs": "Stari Ledinci",
+      "name_en": "Stari Ledinci",
+      "desctiption_rs": "Ledinci is a suburb of Novi Sad, located in the western part of the Petrovaradin municipality. There are two settlements bearing the name: Stari Ledinci and Novi Ledinci. The name Ledinci is used for the settlement of Novi Ledinci, with a population of around 1670. Stari Ledinci has a population of around 830. The settlement was established in the 13th century.",
+      "desctiption_en": "Ledinci su prigradsko naselje Novog Sada i nalaze se u zapadnom delu op\u0161tine Petrovaradin. Postoje dva naselja sa imenom Ledinci: Stari Ledinci i Novi Ledinci. Ime Ledinci se zvani\u010dno koristi za naselje Novi Ledinci. U Starim Ledincima \u017eivi oko 830, a u Ledincima oko 1670 stanovnika. Naselje je nastalo u XIII veku."
+    },
+    {
+      "id": "71",
+      "name_rs": "Le\u017eimir",
+      "name_en": "Le\u017eimir",
+      "desctiption_rs": " Le\u017eimir is a village in the northern part of Sremska Mitrovica County, with a population of around 950. The name of the village, Lecemer - Lecimer is of Slavic descent, and it is first mentioned in Papal documents from 1389.",
+      "desctiption_en": "Le\u017eimir je selo koje se nalazi u severnom delu op\u0161tine Sremska Mitrovica i broji oko 950 stanovnika. Ime sela Lecemer \u2013 Lecimer je slovenskog porekla i prvi put se pominje u papskim zapisima 1389. godine."
+    },
+    {
+      "id": "65",
+      "name_rs": "Ljuba",
+      "name_en": "Ljuba",
+      "desctiption_rs": " Ljuba is a village in the Northeastern part of \u0160id County, on the very edge of the Croatian border. It has a population of around 550.",
+      "desctiption_en": "Ljuba je selo koje se nalazi na severoisto\u010dnom delu op\u0161tine \u0160id, u njemu \u017eivi oko 550 stanovnika. Nalazi se uz samu granicu sa Hrvatskom. "
+    },
+    {
+      "id": "87",
+      "name_rs": "Lug",
+      "name_en": "Lug",
+      "desctiption_rs": " Lug is a village with a population of 800, located in the southwestern part of Beo\u010din County. The village was established by Slovak workers from Ba\u010dka, in 1902. The name is defined as a part of forest with low-growing trees and shrubs, a grove.",
+      "desctiption_en": "Lug je selo koje se nalazi u jugozapadnom delu op\u0161tine Beo\u010din i broji oko 800 stanovnika. Selo su osnovali radnici Slovaci iz Ba\u010dke 1902. godine, a ime sela ozna\u010dava \u0161umu sa niskim drve\u0107em i \u017ebunjem, gaj, \u0161umarak ili dubravu."
+    },
+    {
+      "id": "64",
+      "name_rs": "Mala Remeta",
+      "name_en": "Mala Remeta",
+      "desctiption_rs": " Mala Remeta is a village with a population of around 150, located in the Western part of Irig County. The name Remeta comes from the greek word for \"hermit\" - eremit, and it was first used during the Austro-Hungarian rule in the 15th centry.",
+      "desctiption_en": "Mala Remeta je selo koje se nalazi u zapadnom delu op\u0161tine Irig i broji oko 150 stanovnika. Ime sela poti\u010de od gr\u010dke re\u010di eremit \u2013 pustinjak, a nastalo je za vreme Ma\u0111ara u XV veku."
+    },
+    {
+      "id": "75",
+      "name_rs": "Man\u0111elos",
+      "name_en": "Man\u0111elos",
+      "desctiption_rs": " Man\u0111elos is a village with a population of around 1530, located in the Northern part of Sremska Mitrovica County. The name is derived from the Hungarian word Nagyolaszi, meaning \"Vlach village\".",
+      "desctiption_en": "Man\u0111elos je selo koje se nalazi u severnom delu op\u0161tine Sremska Mitrovica i broji oko 1530 stanovnika. Naziv sela poti\u010de od ma\u0111arske re\u010di Nagyolaszi, \u0161to zna\u010di veliko vla\u0161ko selo."
+    },
+    {
+      "id": "41",
+      "name_rs": "Neradin",
+      "name_en": "Neradin",
+      "desctiption_rs": " Neradin is a village in the Northern part of Irig County. It is believed that the name is of Celtic origin, and the first time it is mentioned as a settlement is in Hungarian documents, in 1247.",
+      "desctiption_en": "Neradin je selo koje se nalazi u severnom delu op\u0161tine Irig. Pretpostavlja se da je ime sela keltskog porekla, a kao naselje se pominje u ma\u0111arskim dokumentima 1247. godine."
+    },
+    {
+      "id": "58",
+      "name_rs": "Privina Glava",
+      "name_en": "Privina Glava",
+      "desctiption_rs": " Privina glava is a village with a population of around 220, located in the Eastern part of \u0160id County. It is linked to Privina Glava Monastery, which is believed to have been built by Priva, a nobleman of the 12. century.",
+      "desctiption_en": "Privina glava je selo koje se nalazi u isto\u010dnom delu op\u0161tine \u0160id i u njemu \u017eivi oko 220 stanovnika. Selo je vezano za istoimeni manastir koji je po predanju dobio ime po vlastelinu Privi koji ga je podigao u XII veku."
+    },
+    {
+      "id": "56",
+      "name_rs": "Rakovac",
+      "name_en": "Rakovac",
+      "desctiption_rs": " Rakovac is a village with a population of around 1990, located in the Eastern part of Beo\u010din County. The village was first established as a \"prnjavor\", a settlement for serfs from Rakovac Monastery, which was built in the 16th century.",
+      "desctiption_en": "Rakovac je selo koje se nalazi u isto\u010dnom delu op\u0161tine Beo\u010din i broji oko 1990 stanovnika. Selo je nastalo kao prnjavor, naselje manastirskih kmetova pored istoimenog manastira sagra\u0111enog u XVI veku."
+    },
+    {
+      "id": "48",
+      "name_rs": "Sot",
+      "name_en": "Sot",
+      "desctiption_rs": " Sot is a village with a population of around 790, located in the Northeastern part of \u0160id County. It was first mentioned in Hungarian documents, in 1297.",
+      "desctiption_en": "Sot je selo koje se nalazi u severoisto\u010dnom delu op\u0161tine \u0160id i u njemu \u017eivi oko 790 stanovnika. Naziv sela se prvi put pominje u ma\u0111arskim dokumentima 1297. godine."
+    },
+    {
+      "id": "53",
+      "name_rs": "Stara Bingula",
+      "name_en": "Stara Bingula",
+      "desctiption_rs": " Stara Bingula is a village with a population of around 190, located in the Northwestern part of Sremska Mitrovica County. It is first mentioned in 15th century Hungarian documents under several similar toponyms: Bingula, Tingula, Biglas. Stara Bingula was named after the location of the village, in a forest, on a hill.",
+      "desctiption_en": "Stara Bingula je selo koje se nalazi u severozapadnom delu op\u0161tine Sremska Mitrovica i broji oko 190 stanovnika. Ime sela se pojavljuje u ma\u0111arskim dokumentima iz XV veka pod vi\u0161e sli\u010dnih imena: Bingula, Tingula, Biglas. Naziv je nastao po polo\u017eaju sela u \u0161umi ili po nekom uzvi\u0161enju."
+    },
+    {
+      "id": "86",
+      "name_rs": "Susek",
+      "name_en": "Susek",
+      "desctiption_rs": " Susek is a village with a population of around 1130, located in the Western part of Beo\u010din County. It is one of the oldest settlements on Fru\u0161ka Gora, mentioned as early as in the 1st century, under the name Cornacum.",
+      "desctiption_en": "Susek je selo koje se nalazi u zapadnom delu op\u0161tine Beo\u010din i broji oko 1130 stanovnika. Spada u najstarija sela Fru\u0161ke gore i pominje se jo\u0161 u I veku pod imenom Cornacum."
+    },
+    {
+      "id": "62",
+      "name_rs": "Velika Remeta",
+      "name_en": "Velika Remeta",
+      "desctiption_rs": " Velika Remeta has a population of around 40, and it is located in the Southeastern part of Irig County. The Velika Remeta Monastery was built in the beginning of the 16th century.",
+      "desctiption_en": "Velika Remeta je selo koje se nalazi u severoisto\u010dnom delu op\u0161tine Irig i broji oko 40 stanovnika. Tu se nalazi istoimeni manastir izgra\u0111en po\u010detkom XVI veka."
+    },
+    {
+      "id": "43",
+      "name_rs": "\u0160i\u0161atovac",
+      "name_en": "\u0160i\u0161atovac",
+      "desctiption_rs": " The village of \u0160i\u0161atovac has a population of around 220, and it is located in the North of Sremska Mitrovica County. The village is noted for \u0160i\u0161atovac Monastery, where Abbot Teofilo built a church dedicated to the Virgin Mary, later renamed \u0160i\u0161atovac, in 1520.",
+      "desctiption_en": "Selo \u0160i\u0161atovac se nalazi u severnom delu o\u0161tine Sremska Mitrovica i broji oko 220 stanovnika. Selo je vezano za istoimeni manastir. Iguman Teofilo je 1520. godine sagradio crkvu posve\u0107enu Bogorodici koja je kasnije nazvana \u0160i\u0161atovac."
+    },
+    {
+      "id": "88",
+      "name_rs": "Svilo\u0161",
+      "name_en": "Svilo\u0161",
+      "desctiption_rs": " Svilo\u0161 is a village with a population of around 360, located in the Southwestern part of Beo\u010din County. The settlements of Svilo\u0161u date back to the Roman conquest, and the first time they appear under their modern name is during the Ottoman rule, in 1687.",
+      "desctiption_en": "Svilo\u0161 je selo koje se nalazi u jugozapadnom delu op\u0161tine Beo\u010din i broji oko 360 stanovnika. Naselja u Svilo\u0161u datiraju jo\u0161 iz rimskog perioda, a pod dana\u0161njim imenom se spominje 1687. godine za vreme turske vladavine."
+    },
+    {
+      "id": "59",
+      "name_rs": "Vrdnik",
+      "name_en": "Vrdnik",
+      "desctiption_rs": " Vrdnik is a village with a population of around 3700, located in the Northeastern part of Irig County. The name first appears in Hungarian and Papal documents in the form of Rednik and Rednek, meaning \"mine\" back in the 13th century. Vrdnik is well known for its thermal spas and the historical monument Vrdni\u010dka Tower.",
+      "desctiption_en": "Vrdnik je selo koje se nalazi u severoisto\u010dnom delu op\u0161tine Irig i broji oko 3700 stanovnika. Ime sela se pojavljuje u XIII veku u ma\u0111arskim i papskim dokumentima kao Rednik ili Rednek, a verovatno ozna\u010dava rudnik. Vrdnik je poznat po termalnoj banji i kulturno-istorijskom spomeniku Vrdni\u010dka kula."
+    },
+    {
+      "id": "49",
+      "name_rs": "\u0160atrinci",
+      "name_en": "\u0160atrinci",
+      "desctiption_rs": " \u0160atrinci is a village with a population of around 400, located in the Southeastern part of Irig County. There are two versions to the story of how \u0160atrinci came to be and got its name. According to one story, merchants and priests would put up camps in this area (\"satori\"), on their way to Kru\u0161edol Monastery. According to the other story, the name comes from the Hungarian word for a bag typically carried by merchants whose trade would lead them through the area - satrinca.",
+      "desctiption_en": "\u0160atrinci su selo koje se nalazi u jugoisto\u010dnom delu op\u0161tine Irig i broji oko 400 stanovnika. O postanku sela i njegovom nazivu postoje dva tuma\u010denja. Po jednom su trgovci i sve\u0161tenici na putu za Kru\u0161edol ovde zastajali i razapinjali \u0161atore. Drugo tuma\u010denje je u vezi sa ma\u0111arskom re\u010dju torba ili kotarica \u2013 satrinca, tipi\u010dne za trgovce koji su se ovde u prolazu zaustavljali."
+    },
+    {
+      "id": "38",
+      "name_rs": "\u0160uljam",
+      "name_en": "\u0160uljam",
+      "desctiption_rs": " \u0160uljam is a village in the North of Sremska Mitrovica County, and it has a population of around 750. It was first cited as a settlement in 1579.",
+      "desctiption_en": "\u0160uljam je selo u severnom delu op\u0161tine Sremska Mitrovica i broji oko 750 stanovnika. Zabele\u017een je kao naselje 1579. godine."
+    },
+    {
+      "id": "126",
+      "name_rs": "Veliki Radinci",
+      "name_en": "Veliki Radinci",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    },
+    {
+      "id": "83",
+      "name_rs": "Ba\u010dka Palanka",
+      "name_en": "Ba\u010dka Palanka",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    },
+    {
+      "id": "67",
+      "name_rs": "Beo\u010din",
+      "name_en": "Beo\u010din",
+      "desctiption_rs": "Beo\u010din is an urban settlement and administrative center of Beo\u010din county. It is located in the northern part of Srem and has about 8060 residents. The orthodox monastery Beo\u010din, from which the settlement got it's name, is first mentioned in 1622, during the Ottoman-Hungarian wars. The settlement is known for the Lafarge BFC cement factory. ",
+      "desctiption_en": "Beo\u010din je gradsko naselje i administrativno sedi\u0161te op\u0161tine Beo\u010din. Nalazi se u severnom delu Srema i broji oko 8060 stanovnika. Pravoslavni manastir Beo\u010din, po kome je grad dobio ime, prvi put se pominje 1622. godine za vreme velikih austro-turskih ratova. Grad je poznat po fabrici cementa Lafarge BFC."
+    },
+    {
+      "id": "84",
+      "name_rs": "In\u0111ija",
+      "name_en": "In\u0111ija",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    },
+    {
+      "id": "44",
+      "name_rs": "Irig",
+      "name_en": "Irig",
+      "desctiption_rs": " Irig is a municipality of the city of Irig, and it has a population of around 4850. The first written record of Irig is in Hungarian documents from 1225, when constructions of a Catholic monastery were begun.",
+      "desctiption_en": "Irig je gradsko naselje i sedi\u0161te istoimene op\u0161tine i broji oko 4850 stanovnika. U ma\u0111arskim dokumentima Irig se pominje 1225. godine kada je u njemu osnovan katoli\u010dki manastir."
+    },
+    {
+      "id": "91",
+      "name_rs": "Petrovaradin",
+      "name_en": "Petrovaradin",
+      "desctiption_rs": " Petrovaradin is a town and municipality, seperated from Novi Sad by the Danube, with a population of around 13000. Due to its geographical position, its history goes back many centuries. Many cultures met and clashed in Petrovaradin, providing a foundation for the fortress-town.",
+      "desctiption_en": "Petrovaradin je gradsko naselje i op\u0161tina koje od Novog Sada deli reka Dunav i broji oko 13000 stanovnika. Istorija ovog naselja se\u017ee duboko u pro\u0161lost za \u0161ta je zaslu\u017ean i geografski polo\u017eaj. Ovde su se susretale mnoge kulture i vodile velike bitke. Na temeljima tih bitaka izgra\u0111eni su temelji grada \u2015 utvr\u0111enja."
+    },
+    {
+      "id": "47",
+      "name_rs": "Ruma",
+      "name_en": "Ruma",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    },
+    {
+      "id": "82",
+      "name_rs": "Sremska Mitrovica",
+      "name_en": "Sremska Mitrovica",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    },
+    {
+      "id": "94",
+      "name_rs": "Sremski Karlovci",
+      "name_en": "Sremski Karlovci",
+      "desctiption_rs": " Sremski Karlovci is a town with a population of around 8840 stanovnika, in Sremski Karlovci County. The oldest known instance of its name is Karom, probably of Hungarian descent. The Slavic version of the name, Karlovci, dates back to documents from 1553. Sremski Karlovci is a well known wine capital of Fru\u0161ka Gora.",
+      "desctiption_en": "Sremski Karlovci su gradsko naselje u istoimenoj op\u0161tini i broji oko 8840 stanovnika. Najstarije ime pod kojim se pominje ovo naselje je Karom, re\u010d verovatno ma\u0111arskog porekla koja ozna\u010dava mu\u0161ko ime. Naziv Karlovci se prvi put pojavljuje u pisanim dokumentima 1553. godine i predstavlja slovenski oblik imena Karom. Sremski Karlovci su poznati kao fru\u0161kogorska prestonica vina. "
+    },
+    {
+      "id": "81",
+      "name_rs": "\u0160id",
+      "name_en": "\u0160id",
+      "desctiption_rs": "",
+      "desctiption_en": ""
+    }
+]
