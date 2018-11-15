@@ -2,12 +2,10 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, Text, ScrollView } from "react-native";
-import AutoHeightImage from "react-native-auto-height-image";
+import { Text, ScrollView, Image } from "react-native";
 import * as Screen from "../../utils/Screen";
 
 import CommonStyles from "../../styles/CommonStyles";
-import Styles from "./Styles";
 
 type Props = {
   title: string,
@@ -21,9 +19,9 @@ class ItemSingle extends PureComponent<Props, State> {
     const { title, image, text } = this.props;
     return (
       <ScrollView>
-        <AutoHeightImage width={Screen.width} source={{ uri: image }} />
-        <Text style={Styles.textTitle}>{title}</Text>
-        <Text style={Styles.text}>{text}</Text>
+        <Image source={{uri: image}} style={{width: Screen.width, height: Screen.height / 3}} />
+        <Text style={CommonStyles.textTitle}>{title}</Text>
+        <Text style={CommonStyles.text}>{text}</Text>
       </ScrollView>
     );
   }

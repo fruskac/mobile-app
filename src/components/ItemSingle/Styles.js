@@ -10,16 +10,16 @@ export default StyleSheet.create({
   textTitle: {
     color: textColor,
     fontFamily: "Merriweather-Light",
-    fontSize: 19,
-    padding: 20,
-    paddingBottom: 16
+    fontSize: 21,
+    padding: 21,
+    paddingBottom: 18
   },
   text: {
     color: textColor,
     fontFamily: "Merriweather-Light",
     fontSize: 12,
-    lineHeight: 22,
-    padding: 20,
+    lineHeight: 21,
+    padding: 21,
     paddingTop: 0
   }
 });

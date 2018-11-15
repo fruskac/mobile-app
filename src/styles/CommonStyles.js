@@ -25,9 +25,31 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: backgroundColor
   },
+  textTitle: {
+    color: textColor,
+    fontFamily: "Merriweather-Light",
+    fontSize: 21,
+    padding: 21,
+    paddingBottom: 18
+  },
   text: {
     color: textColor,
-    fontFamily: "Merriweather-Light"
+    fontFamily: "Merriweather-Light",
+    fontSize: 12,
+    lineHeight: 21,
+    padding: 21,
+    paddingTop: 0
+  },
+  onMapBtn: {
+    position: 'absolute',
+    backgroundColor: '#DDDDDD',
+    padding: 9,
+    top: 54,
+    right: 12,
+    zIndex: 12,
+    borderRadius: 21,
+    borderWidth: 1.2,
+    borderColor: textColor
   },
   errorText: {
     backgroundColor: "red",

@@ -26,9 +26,7 @@ class NewsItem extends PureComponent<Props, State> {
       <View style={CommonStyles.container}>
         <HeaderAd />
         <ItemSingle
-          image={
-            "https://fruskac.net/sites/default/files/styles/thumbnail/public/thumb/locations/fruskac-lubenice-9.jpg?itok=VmGpdDjb"
-          }
+          image={data.imageUrl}
           title={data[`title_${language}`]}
           text={data[`content_${language}`]}
         />
