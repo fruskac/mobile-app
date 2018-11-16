@@ -8,6 +8,7 @@ import { StackNavigator } from "react-navigation";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import MapBox from "@mapbox/react-native-mapbox-gl";
+import SideMenu from "./components/Drawer";
 
 import "./I18n/I18n"; // keep before RootContainer
 
@@ -23,7 +24,7 @@ class App extends Component<{}> {
     return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppWithActions />
+          <SideMenu />
         </PersistGate>
       </Provider>
     );

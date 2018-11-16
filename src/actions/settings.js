@@ -3,7 +3,8 @@
 import {
   TOGGLE_DRAWER,
   CHANGE_LANGUAGE,
-  LOCATION_FILTER_CHANGE
+  LOCATION_FILTER_CHANGE,
+  CLOSE_DRAWER
 } from "./actionTypes";
 
 import type LocationType from "../reducers/settingsReducer";
@@ -14,4 +15,8 @@ export function onChangeLanguage(language: string) {
 
 export function onToggleDrawer() {
   return { type: TOGGLE_DRAWER };
+}
+
+export function onCloseDrawer() {
+  return { type: CLOSE_DRAWER }
 }

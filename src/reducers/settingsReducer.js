@@ -3,6 +3,7 @@
 import I18n from "react-native-i18n";
 import {
   CHANGE_LANGUAGE,
+  CLOSE_DRAWER,
   TOGGLE_DRAWER,
   NAVIGATE,
   NAVIGATE_BACK
@@ -20,6 +21,12 @@ const initialState: Settings = {
 
 const settingsReducer = (state: Settings = initialState, action: Object) => {
   switch (action.type) {
+    case CLOSE_DRAWER: {
+      return {
+        ...state,
+        drawerOpen: false,
+      };
+    }
     case CHANGE_LANGUAGE:
       return {
         ...state,

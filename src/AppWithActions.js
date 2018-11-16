@@ -1,11 +1,9 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { View, NetInfo } from "react-native";
 import { connect } from "react-redux";
 
 import { onInternetStatus } from "./actions/cache";
 import Navigation from "./navigators/Navigation";
-import Drawer from "./components/Drawer/";
 import CacheScreen from "./components/CacheScreen/";
 
 class AppWithActions extends PureComponent {
@@ -64,7 +62,6 @@ class AppWithActions extends PureComponent {
         }}
       >
         <Navigation />
-        <Drawer />
         <CacheScreen />
       </View>
     );

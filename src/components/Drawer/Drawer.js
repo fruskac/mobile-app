@@ -1,90 +1,34 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { Animated, Easing, View, Text } from "react-native";
+import Drawer from "react-native-drawer";
 
-import * as Screen from "../../utils/Screen";
+import AppWithActions from "../../AppWithActions";
 import Menu from "../Menu";
+import Styles from "./Styles";
 
 type Props = {
-  onToggleDrawer: () => void,
+  onCloseDrawer: () => void,
   drawerOpen: boolean
 };
-type State = {
-  panelTranslateX: Animated.Value
-};
 
-class Drawer extends PureComponent<Props, State> {
-  closeDrawer: Function;
-  openDrawer: Function;
-
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      panelTranslateX: new Animated.Value(-Screen.widthDrawer)
-    };
-
-    this.openDrawer = this.openDrawer.bind(this);
-    this.closeDrawer = this.closeDrawer.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps: Object) {
-    if (this.props.drawerOpen != nextProps.drawerOpen) {
-      if (nextProps.drawerOpen) {
-        this.openDrawer();
-      } else {
-        this.closeDrawer();
-      }
-    }
-  }
-
-  openDrawer() {
-    Animated.timing(
-      this.state.panelTranslateX, // The animated value to drive
-      {
-        toValue: 0,
-        easing: Easing.out(Easing.ease),
-        useNativeDriver: true,
-        duration: 150
-      }
-    ).start();
-  }
-
-  closeDrawer() {
-    Animated.timing(
-      this.state.panelTranslateX, // The animated value to drive
-      {
-        toValue: -Screen.widthDrawer,
-        easing: Easing.out(Easing.ease),
-        useNativeDriver: true,
-        duration: 150
-      }
-    ).start();
-  }
-
+class SideMenu extends PureComponent<Props, State> {
   render() {
-    const { onToggleDrawer } = this.props;
-
+    const { onCloseDrawer, drawerOpen } = this.props;
     return (
-      <Animated.View
-        style={[
-          {
-            position: "absolute",
-            left: 0,
-            zIndex: 30,
-            top: 54,
-            bottom: 0,
-            height: Screen.height - 40,
-            transform: [{ translateX: this.state.panelTranslateX }]
-          }
-        ]}
+      <Drawer
+        content={<Menu inDrawer />}
+        type="overlay"
+        acceptPan={false}
+        open={drawerOpen}
+        onClose={onCloseDrawer}
+        openDrawerOffset={0.3}
+        acceptTap={true}
+        styles={Styles}
       >
-        <Menu inDrawer />
-        <Text>asdaD</Text>
-      </Animated.View>
+        <AppWithActions />        
+      </Drawer>
     );
   }
 }
 
-export default Drawer;
+export default SideMenu;

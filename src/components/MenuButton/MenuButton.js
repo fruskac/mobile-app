@@ -1,24 +1,20 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { TouchableOpacity, Text, Image } from "react-native";
-import I18n from "react-native-i18n";
+import Hamburger from "./Hamburger";
 
 import Styles from "./Styles";
 
 type Props = {
-  onToggleDrawer: () => void
+  onToggleDrawer: () => void,
+  drawerOpen: boolean,
 };
 type State = {};
 
 class MenuButton extends PureComponent<Props, State> {
   render() {
-    const { onToggleDrawer } = this.props;
-
+    const { onToggleDrawer, drawerOpen } = this.props;
     return (
-      <TouchableOpacity style={Styles.buttonHolder} onPress={onToggleDrawer}>
-        <Image source={require('../../assets/menu-icons-png/icons8-menu-vertical-32.png')} />
-      </TouchableOpacity>
+      <Hamburger active={drawerOpen} onPress={onToggleDrawer}/>
     );
   }
 }

@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import I18n from "react-native-i18n";
 import { Text, View, TouchableOpacity } from "react-native";
 import AutoHeightImage from "react-native-auto-height-image";
@@ -29,7 +28,7 @@ class Menu extends PureComponent<Props, State> {
 
   render() {
     const { inDrawer, language, onChangeLanguage, onNavigate } = this.props;
-    const width = inDrawer ? Screen.widthDrawer : Screen.width;
+    const width = inDrawer ? Screen.width * 0.7 : Screen.width;
     return (
       <View style={CommonStyles.container}>
         <AutoHeightImage
