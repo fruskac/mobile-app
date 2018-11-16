@@ -3,8 +3,9 @@
 import { connect } from "react-redux";
 import LocationSingle from "./LocationSingle";
 import { getLocationSingle } from "../../selectors/locations";
+import { onNavigate } from "../../actions/navigation";
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { onNavigate };
 const mapStateToProps = (state, ownProps) => {
   return {
     language: state.settings.language,
