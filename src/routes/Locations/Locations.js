@@ -2,12 +2,13 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import I18n from "react-native-i18n";
 import SvgUri from "react-native-svg-uri";
 
 import { LocationFilter } from "../../types";
 import HeaderAd from "../../components/HeaderAd/";
+import ItemList from "../../components/ItemList/";
 
 import CommonStyles, {
   navHeaderHeight,
@@ -19,6 +20,7 @@ import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
+  language: string,
   tags: Array<string>,
   filter: string,
   onNavigate: (route: string) => void,
@@ -28,7 +30,7 @@ type State = {};
 
 class Locations extends PureComponent<Props, State> {
   render() {
-    const { tags, filter, onNavigate, onLocationTypeChange } = this.props;
+    const { tags, filter, language, onNavigate, onLocationTypeChange } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -46,6 +48,8 @@ class Locations extends PureComponent<Props, State> {
       borderBottomColor: accentColor,
       borderBottomWidth: 2
     };
+
+    let places = require('../../assets/Demo/places.json');
 
     // console.log("location", filter, filter == "type");
 
@@ -80,18 +84,18 @@ class Locations extends PureComponent<Props, State> {
       </View>
     } else {
       listView = //<Text>Places</Text>
-      <View style={[Styles.menu,{flex: 1, flexDirection: 'column'}]}>
-        {tags.map((t, index) => (
+      <ScrollView style={[Styles.menu,{flex: 1, flexDirection: 'column'}]}>
+        {places.map((t, index) => (
           <TouchableOpacity
             onPress={() => {
               onNavigate("/location/" + t);
             }}
             key={index}
           >
-            <Text style={Styles.textPlacesList}>{I18n.t(t)} ({t.length})</Text>
+            <Text style={Styles.textPlacesList}>{t[`name_${language}`]} ({t[`name_${language}`].length})</Text>
           </TouchableOpacity>
         ))}
-      </View>
+      </ScrollView>
     }
 
     return (

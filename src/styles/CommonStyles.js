@@ -55,8 +55,8 @@ export default StyleSheet.create({
     top: 54,
     right: 12,
     zIndex: 12,
-    borderRadius: 21,
-    borderWidth: 1.2,
+    borderRadius: 30,
+    borderWidth: 2.1,
     borderColor: textColor
   },
   errorText: {

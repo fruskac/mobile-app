@@ -27,7 +27,9 @@ class LocationSingle extends PureComponent<Props, State> {
       <View style={CommonStyles.container}>
         <HeaderAd />
         <TouchableOpacity
-          onPress={() => console.log('open on maps')}
+          onPress={() => {
+            onNavigate("/map");
+          }}
           key={id}
           style={CommonStyles.onMapBtn}
         >
