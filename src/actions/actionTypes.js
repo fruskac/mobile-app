@@ -25,3 +25,12 @@ export const LOCATIONS_UPDATE_EN = "LOCATIONS_UPDATE_EN";
 export const LOCATIONS_UPDATE_SR = "LOCATIONS_UPDATE_SR";
 export const OPEN_LOCATION_TYPE = "OPEN_LOCATION_TYPE";
 export const OPEN_LOCATION_PLACE = "OPEN_LOCATION_PLACE";
+
+// fething good to know data
+export const FETCH_GOOD_TO_KNOW_SUCCESS = "FETCH_GOOD_TO_KNOW_SUCCESS";
+
+// fething categories data
+export const FETCH_CATEGORIES_SUCCESS = "FETCH_CATEGORIES_SUCCESS";
+
+// fething map data
+export const FETCH_MAP_SUCCESS = "FETCH_MAP_SUCCESS";

@@ -17,8 +17,14 @@ type Props = {
   onChangeLanguage: (language: string) => void,
   askPermissions: () => void,
   language: string,
-  inDrawer: boolean
+  inDrawer: boolean,
+  locations: Array,
+  maps: Array,
+  places: Array,
+  onFetchLocations: (language: string) => void,
+  onFetchMap: (language: string) => void,
 };
+
 type State = {};
 
 class Menu extends PureComponent<Props, State> {
