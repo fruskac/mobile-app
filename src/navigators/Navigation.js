@@ -106,6 +106,39 @@ export const AppNavigator = StackNavigator({
         headerTitleStyle: Styles.headerTitle
       };
     }
+  },
+  Trails: {
+    path: "/trails",
+    screen: TrailsScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("trails"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  Info: {
+    path: "/info",
+    screen: InfoScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("info"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  Donate: {
+    path: "/donate",
+    screen: DonateScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("donate"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
   }
 });
 
