@@ -3,9 +3,11 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { Text } from "react-native";
+import { Image, Text, StyleSheet, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { LocationsList, Location } from "../../types";
+import SvgUri from "react-native-svg-uri";
+import * as Icons from "../../styles/Icons";
 const timer = require("react-native-timer");
 
 import exampleIcon from "../../assets/volem-logo.png";
@@ -68,7 +70,8 @@ class Map extends PureComponent<Props, State> {
     super(props);
     this.state = {
       showMap: false,
-      userLocation: { lat: 0, lng: 0 }
+      userLocation: { lat: 0, lng: 0 },
+      mapLocations: require('../../assets/Demo/app-map.json')
     };
   }
 
@@ -119,37 +122,41 @@ class Map extends PureComponent<Props, State> {
         centerCoordinate={[19.7093, 45.1571]}
         style={CommonStyles.container}
       >
-        <MapBox.ShapeSource
-          id="exampleShapeSource"
-          shape={locations}
-          images={{
-            example: exampleIcon,
-            miscMap,
-            springsMap,
-            picnicareasMap,
-            monumentsMap,
-            lakesMap,
-            monasteriesMap,
-            lookoutsMap,
-            meadowsMap,
-            waterfallsMap,
-            fishpondsMap
-          }}
-          onPress={el => {
-            console.log(el);
-          }}
-        >
-          {tags.map((tag, index) => (
-            <MapBox.SymbolLayer
-              key={index}
-              id={tag + "Map"}
-              style={{ iconImage: tag + "Map", iconSize: 0.33 }}
-            />
-          ))}
-        </MapBox.ShapeSource>
+        {this.state.mapLocations.appMap.map((location, index) => (
+          <MapBox.PointAnnotation
+            key={index}
+            id={"Map"+index}
+            coordinate={[Number(location.lng), Number(location.lat)]}
+            onSelected={()=>console.log('Click on'+location.title_en)}>
+    
+            <View style={styles.annotationContainer}>
+              <SvgUri
+                width={30}
+                height={25}
+                source={Icons[location.category]}
+                fill={Icons.colors[location.category]}
+              />
+            </View>
+            <MapBox.Callout title={location.title_en+', '+location.place} />
+          </MapBox.PointAnnotation>
+        ))}
       </MapBox.MapView>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  annotationContainer: {
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 15,
+  }
+});
 
 export default Map;
