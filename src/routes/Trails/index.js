@@ -1,16 +1,15 @@
 // @flow
 
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { Text } from "react-native";
+import { connect } from "react-redux";
+import Trails from "./Trails";
+// import { getLocationsFiltered } from "../../selectors/locations";
 
-type Props = {};
-type State = {};
+const mapDispatchToProps = {};
 
-class Locations extends PureComponent<Props, State> {
-  render() {
-    return <Text>Locations</Text>;
-  }
-}
+const mapStateToProps = (state, ownProps) => {
+  return {
+    items: [] // getLocationsFiltered(state, ownProps)
+  };
+};
 
-export default Locations;
+export default connect(mapStateToProps, mapDispatchToProps)(Trails);
