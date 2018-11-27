@@ -21,5 +21,10 @@
   "springs": "Izvori",
   "trails": "Staze",
   "type": "Tip",
-  "waterfalls": "Vodopadi"
+  "waterfalls": "Vodopadi",
+  "easy": "Lake",
+  "medium": "Srednje",
+  "hard": "Teške",
+  "marathon": "Maraton",
+  "walks": "Šetnje"
 }

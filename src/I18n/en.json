@@ -21,5 +21,10 @@
   "springs": "Springs",
   "trails": "Trails",
   "type": "Type",
-  "waterfalls": "Waterfalls"
+  "waterfalls": "Waterfalls",
+  "easy": "Easy",
+  "medium": "Medium",
+  "hard": "Hard",
+  "marathon": "Marathon",
+  "walks": "Walks"
 }
