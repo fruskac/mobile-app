@@ -24,10 +24,6 @@ export default StyleSheet.create({
     borderBottomColor: borderBottomColor,
     borderBottomWidth: 2
   },
-  withRightBorder: {
-    borderRightColor: borderColor,
-    borderRightWidth: 1
-  },
   menu: {
     width: "100%",
     flexDirection: "column",

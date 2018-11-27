@@ -44,7 +44,7 @@ class Trails extends PureComponent<Props, State> {
             <View style={Styles.topMenu}>
                 <TouchableOpacity
                     key="walks"
-                    style={[Styles.topMenuItem, Styles.withRightBorder, walkStyle]}
+                    style={[Styles.topMenuItem, walkStyle]}
                     onPress={() => this.setState({filter: "walks"})}
                 >
                     <Text style={CommonStyles.textTabs}> {I18n.t("walks")} </Text>
