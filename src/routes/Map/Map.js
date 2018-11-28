@@ -27,7 +27,8 @@ import {
 
 type Props = {
   locations: LocationsList,
-  tags: Array<string>
+  tags: Array<string>,
+  onNavigate: (route: string) => void
 };
 type State = {
   showMap: boolean,
@@ -106,8 +107,8 @@ class Map extends PureComponent<Props, State> {
   }
 
   render() {
-    const { locations, tags } = this.props;
-    console.log("locations", locations);
+    const { locations, tags, onNavigate } = this.props;
+    
     if (!this.state.showMap) return null;
     return (
       <MapBox.MapView
@@ -127,8 +128,9 @@ class Map extends PureComponent<Props, State> {
             key={index}
             id={"Map"+index}
             coordinate={[Number(location.lng), Number(location.lat)]}
-            onSelected={()=>console.log('Click on'+location.title_en)}>
-    
+            onSelected={()=>{
+              onNavigate("/trails") //("/location-single/"+location.id)
+            }}>
             <View style={styles.annotationContainer}>
               <SvgUri
                 width={30}

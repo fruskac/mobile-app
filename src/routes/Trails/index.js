@@ -2,9 +2,10 @@
 
 import { connect } from "react-redux";
 import Trails from "./Trails";
+import { onNavigate } from "../../actions/navigation";
 // import { getLocationsFiltered } from "../../selectors/locations";
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {onNavigate};
 
 const mapStateToProps = (state, ownProps) => {
   return {

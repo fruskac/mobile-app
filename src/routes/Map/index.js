@@ -2,9 +2,10 @@
 
 import { connect } from "react-redux";
 import Map from "./Map";
+import { onNavigate } from "../../actions/navigation";
 import { getLocationsForMap } from "../../selectors/locations";
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {onNavigate};
 const mapStateToProps = (state, ownProps) => {
   return {
     locations: getLocationsForMap(state),

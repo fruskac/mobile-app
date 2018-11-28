@@ -14,8 +14,11 @@ import CommonStyles, {
   import Styles, { menuHeight } from "./Styles";
   import * as Icons from "../../styles/Icons";
   import { height as screenHeight } from "../../utils/Screen";
+import { onNavigate } from "../../actions/navigation";
 
-type Props = {};
+type Props = {
+    onNavigate: (route: string) => void
+};
 type State = {};
 
 class Trails extends PureComponent<Props, State> {
@@ -26,6 +29,7 @@ class Trails extends PureComponent<Props, State> {
     };
   }
   render() {
+    const { onNavigate } = this.props;
     let walkStyle = {},
     mtbStyle = {};
 
@@ -58,7 +62,7 @@ class Trails extends PureComponent<Props, State> {
                 </TouchableOpacity>
             </View>
             <View style={Styles.menu}>
-                <TouchableOpacity style={Styles.menuItem}>
+                <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/locations')} }>
                     <View style={Styles.circlesBox}>
                         <View style={[Styles.circle, Styles.colorEasy]} />
                     </View>
