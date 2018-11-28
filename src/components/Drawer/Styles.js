@@ -2,7 +2,14 @@ import { accentColor } from "../../styles/CommonStyles";
 
 export default drawerStyles = {
     drawer: {
-        borderRightWidth: 1,
-        borderColor: accentColor,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 5.46,
+
+        elevation: 9,
     }
 }
