@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import {
   addNavigationHelpers,
   StackNavigator,
-  DrawerNavigator
 } from "react-navigation";
 import I18n from "react-native-i18n";
 

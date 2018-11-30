@@ -22,13 +22,14 @@ type State = {};
 class NewsItem extends PureComponent<Props, State> {
   render() {
     const { data, language, navigation } = this.props;
+    alert(data);
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
         <ItemSingle
-          image={data.imageUrl}
-          title={data[`title_${language}`]}
-          text={data[`content_${language}`]}
+          image={data.image}
+          title={data.title}
+          text={data.desciption}
         />
       </View>
     );

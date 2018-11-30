@@ -11,13 +11,19 @@ import CommonStyles from "../../styles/CommonStyles";
 import type NewsData from "../../types";
 
 type Props = {
-  items: Array<NewsData>
+  items: Array<NewsData>,
+  onFetchGoodToKnow: (language: string) => void,
 };
 type State = {};
 
 class News extends PureComponent<Props, State> {
+  componentDidMount = () => {
+    this.props.onFetchGoodToKnow('rs');
+  }
+
   render() {
     const { items } = this.props;
+    console.log(items);
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />

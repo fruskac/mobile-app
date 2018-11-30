@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-const _getNews = state => state.news.data;
+const _getNews = state => state.goodToKnow.articles;
 const _getNewsId = (state, props) => props.navigation.state.params.id;
 
 export const getNews = createSelector([_getNews], news => news);

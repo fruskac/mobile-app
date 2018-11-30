@@ -1,10 +1,12 @@
 // news data type
 export type NewsData = {
-  title_en: string,
-  title_sr: string,
+  title: string,
+  description: string,
   id: string,
-  content: string,
-  imageUrl: string
+  description_long: string,
+  published: string,
+  image: string,
+  link: string,
 };
 
 export type Location = {
