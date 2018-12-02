@@ -4,13 +4,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import News from "./News";
 import { getLanguage } from "../../selectors/settings";
-import { getNews } from "../../selectors/news";
-import { onFetchGoodToKnow } from "../../actions/goodToKnow";
+import { onFetchGoodToKnow, setPageNumber, setRefreshing } from "../../actions/goodToKnow";
 
-const mapDispatchToProps = dispatch => bindActionCreators({ onFetchGoodToKnow }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ onFetchGoodToKnow, setPageNumber, setRefreshing }, dispatch);
 const mapStateToProps = state => ({
   items: state.goodToKnow.articles,
-  language: getLanguage(state)
+  language: getLanguage(state),
+  refreshing: state.goodToKnow.refreshing,
+  pageNumber: state.goodToKnow.pageNumber,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

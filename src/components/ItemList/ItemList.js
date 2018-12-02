@@ -54,10 +54,11 @@ class ItemList extends PureComponent<Props> {
   };
 
   render() {
-    const { items, language, header, footer } = this.props;
+    const { items, language, header, footer, ...rest } = this.props;
 
     return (
       <FlatList
+        {...rest}
         style={{ flex: 1 }}
         data={[header].concat(items).concat(footer)}
         extraData={{ language }}

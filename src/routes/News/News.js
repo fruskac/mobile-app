@@ -13,21 +13,35 @@ import type NewsData from "../../types";
 type Props = {
   items: Array<NewsData>,
   onFetchGoodToKnow: (language: string) => void,
+  pageNumber: number,
+  refreshing: boolean,
+  setPageNumber: (pageNumber: number) => void,
+  setRefreshing: (refreshing: boolean) => void,
+  language: string,
 };
 type State = {};
 
 class News extends PureComponent<Props, State> {
   componentDidMount = () => {
-    this.props.onFetchGoodToKnow('rs');
+    this.props.onFetchGoodToKnow(this.props.language === 'en' ? 'en' : 'rs', 0);
+    this.props.setPageNumber(0);
   }
 
   render() {
-    const { items } = this.props;
-    console.log(items);
+    const { items, pageNumber, refreshing } = this.props;
+    const language = this.props.language === 'en' ? 'en' : 'rs';
+    
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemList items={items} slug="/news/" />
+        <ItemList 
+          items={items}
+          slug="/news/"
+          onRefresh={() => { this.props.setRefreshing(true); this.props.onFetchGoodToKnow(language, 0); this.props.setPageNumber(0); }}
+          onEndReached={() => { this.props.onFetchGoodToKnow(language, pageNumber + 1); this.props.setPageNumber(pageNumber + 1); }}
+          onEndReachedThreshold={0.3}
+          refreshing={refreshing}
+        />
       </View>
     );
   }

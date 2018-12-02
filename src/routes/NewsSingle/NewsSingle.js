@@ -22,7 +22,7 @@ type State = {};
 class NewsItem extends PureComponent<Props, State> {
   render() {
     const { data, language, navigation } = this.props;
-    alert(data);
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
