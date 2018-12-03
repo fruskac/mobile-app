@@ -23,7 +23,13 @@ export type LocationData = {
   id: string,
   link: string,
   description: string,
-  image: string
+  description_long: string,
+  place: string,
+  lat: string,
+  lng: string,
+  category: string,
+  image: string,
+  type: string
 };
 
 // holding location full data info
@@ -35,4 +41,4 @@ export type LocationFullData = {
   options: {}
 };
 
-export type LocationsList = Array<LocationFullData>;
+export type LocationsList = Array<LocationData>;

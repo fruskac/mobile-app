@@ -18,16 +18,16 @@ export const getLocations = createSelector(
 export const getLocationSingle = createSelector(
   [_getLocations, _getLocationId],
   (locations, locationId) =>
-    locations
+    require('../assets/Demo/app-map.json').appMap
       .slice(0)
-      .filter(item => item.data.id === locationId)
-      .map(i => i.data)[0]
+      .filter(item => item.id === locationId)[0]
 );
 
 export const getLocationsFiltered = createSelector(
   [_getLocations, _getLocationTypePlaceId],
   (locations, locationTypePlaceId) =>
-    locations.filter(item => item.tag == locationTypePlaceId).map(i => i.data)
+    require('../assets/Demo/app-map.json').appMap
+      .filter(item => item.tag == locationTypePlaceId || item.category == locationTypePlaceId || item.place == locationTypePlaceId)
 );
 
 export const getLocationsForMap = createSelector(

@@ -26,7 +26,7 @@ import {
 } from "../../styles/Icons";
 
 type Props = {
-  locations: LocationsList,
+  // locationsForMap: LocationsList,
   tags: Array<string>,
   onNavigate: (route: string) => void
 };
@@ -107,7 +107,7 @@ class Map extends PureComponent<Props, State> {
   }
 
   render() {
-    const { locations, tags, onNavigate } = this.props;
+    const { locationsForMap, tags, onNavigate } = this.props;
     
     if (!this.state.showMap) return null;
     return (
@@ -129,7 +129,7 @@ class Map extends PureComponent<Props, State> {
             id={"Map"+index}
             coordinate={[Number(location.lng), Number(location.lat)]}
             onSelected={()=>{
-              onNavigate("/trails") //("/location-single/"+location.id)
+              onNavigate("/location-single/"+Number(location.id)) // ("/trails")
             }}>
             <View style={styles.annotationContainer}>
               <SvgUri

@@ -8,7 +8,7 @@ import { getLocationsForMap } from "../../selectors/locations";
 const mapDispatchToProps = {onNavigate};
 const mapStateToProps = (state, ownProps) => {
   return {
-    locations: getLocationsForMap(state),
+    // locationsForMap: getLocationsForMap(state),
     tags:
       state.settings.language == "sr"
         ? state.locations.tagsSr

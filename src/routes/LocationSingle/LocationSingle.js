@@ -37,8 +37,8 @@ class LocationSingle extends PureComponent<Props, State> {
         </TouchableOpacity>
         <ItemSingle
           image={data.image}
-          title={data.title}
-          text={data.description}
+          title={data.title_rs}
+          text={data.description_rs}
         />
       </View>
     );
