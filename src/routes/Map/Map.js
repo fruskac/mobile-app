@@ -27,8 +27,11 @@ import {
 
 type Props = {
   // locationsForMap: LocationsList,
+  language: string,
   tags: Array<string>,
-  onNavigate: (route: string) => void
+  onNavigate: (route: string) => void,
+  onFetchMap: (language: string) => void,
+  locationsForMap: Array<any>,
 };
 type State = {
   showMap: boolean,
@@ -77,6 +80,7 @@ class Map extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         // console.log("position", position);
@@ -107,9 +111,10 @@ class Map extends PureComponent<Props, State> {
   }
 
   render() {
-    const { locationsForMap, tags, onNavigate } = this.props;
+    const { locationsForMap, tags, onNavigate, language } = this.props;
     
     if (!this.state.showMap) return null;
+    // return (<Text>{JSON.stringify(locationsForMap)}</Text>);
     return (
       <MapBox.MapView
         zoomLevel={10}
@@ -123,7 +128,7 @@ class Map extends PureComponent<Props, State> {
         centerCoordinate={[19.7093, 45.1571]}
         style={CommonStyles.container}
       >
-        {this.state.mapLocations.appMap.map((location, index) => (
+        {locationsForMap.map((location, index) => (
           <MapBox.PointAnnotation
             key={index}
             id={"Map"+index}
@@ -139,7 +144,7 @@ class Map extends PureComponent<Props, State> {
                 fill={Icons.colors[location.category]}
               />
             </View>
-            <MapBox.Callout title={location.title_en+', '+location.place} />
+            <MapBox.Callout title={location.title+', '+location.place} />
           </MapBox.PointAnnotation>
         ))}
       </MapBox.MapView>
