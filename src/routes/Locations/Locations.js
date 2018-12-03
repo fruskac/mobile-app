@@ -18,6 +18,7 @@ import CommonStyles, {
 import Styles, { menuHeight } from "./Styles";
 import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
+import { onFetchLocations } from "../../actions/locations";
 
 type Props = {
   language: string,
@@ -25,12 +26,18 @@ type Props = {
   filter: string,
   onNavigate: (route: string) => void,
   onLocationTypeChange: (filter: LocationFilter) => void,
+  onFetchLocations: (language: string) => void,
+  places: Array<any>,
 };
 type State = {};
 
 class Locations extends PureComponent<Props, State> {
+  componentDidMount = () => {
+    this.props.onFetchLocations(this.props.language === 'en' ? 'en' : 'rs', 0);
+  }
+
   render() {
-    const { tags, filter, language, onNavigate, onLocationTypeChange } = this.props;
+    const { tags, filter, language, onNavigate, onLocationTypeChange, places } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -48,10 +55,6 @@ class Locations extends PureComponent<Props, State> {
       borderBottomColor: accentColor,
       borderBottomWidth: 2
     };
-
-    let places = require('../../assets/Demo/places.json');
-
-    // console.log("location", filter, filter == "type");
 
     filter == "type"
       ? (typeStyle = underlineStyle)
@@ -83,7 +86,7 @@ class Locations extends PureComponent<Props, State> {
         ))}
       </View>
     } else {
-      listView = //<Text>Places</Text>
+      listView = 
       <ScrollView style={[Styles.menu,{flex: 1, flexDirection: 'column'}]}>
         {places.map((t, index) => (
           <TouchableOpacity
@@ -92,7 +95,7 @@ class Locations extends PureComponent<Props, State> {
             }}
             key={index}
           >
-            <Text style={Styles.textPlacesList}>{t[`name_${language}`]} ({t[`name_${language}`].length})</Text>
+            <Text style={Styles.textPlacesList}> {t[`name`]} </Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
