@@ -16,13 +16,14 @@ type Props = {
   id: string,
   data: LocationData,
   onNavigate: (route: string) => void,
-  navigation: any
+  navigation: any,
+  language: string
 };
 type State = {};
 
 class LocationSingle extends PureComponent<Props, State> {
   render() {
-    const { id, data, onNavigate } = this.props;
+    const { id, data, onNavigate, language } = this.props;
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
@@ -37,8 +38,8 @@ class LocationSingle extends PureComponent<Props, State> {
         </TouchableOpacity>
         <ItemSingle
           image={data.image}
-          title={data.title_rs}
-          text={data.description_rs}
+          title={data['title_'+language]}
+          text={data['description_'+language]}
         />
       </View>
     );

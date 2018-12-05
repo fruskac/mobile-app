@@ -12,19 +12,6 @@ const timer = require("react-native-timer");
 
 import exampleIcon from "../../assets/volem-logo.png";
 
-import {
-  miscMap,
-  springsMap,
-  picnicareasMap,
-  monumentsMap,
-  lakesMap,
-  monasteriesMap,
-  lookoutsMap,
-  meadowsMap,
-  waterfallsMap,
-  fishpondsMap
-} from "../../styles/Icons";
-
 type Props = {
   // locationsForMap: LocationsList,
   language: string,
@@ -138,10 +125,10 @@ class Map extends PureComponent<Props, State> {
             }}>
             <View style={styles.annotationContainer}>
               <SvgUri
-                width={30}
-                height={25}
-                source={Icons[location.category]}
-                fill={Icons.colors[location.category]}
+                width={21}
+                height={21}
+                source={Icons[location['category'].replace("-", "")]}
+                fill={Icons.colors[location['category'].replace("-", "")]}
               />
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />
