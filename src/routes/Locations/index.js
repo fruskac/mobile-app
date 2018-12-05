@@ -11,11 +11,11 @@ const mapDispatchToProps = { onNavigate, onLocationTypeChange, onFetchLocations 
 const mapStateToProps = state => ({
   filter: state.locations.filter,
   language: getLanguage(state),
-  places: state.locations["places_"+state.settings.language],
+  places: state.locations["places_rs"],
   tags:
-    state.settings.language == "sr"
-      ? state.locations.tagsSr
-      : state.locations.tagsEn
+    state.settings.language == "en"
+      ? state.locations.tagsEn
+      : state.locations.tagsSr
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Locations);

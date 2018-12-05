@@ -163,6 +163,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
     borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
   }
 });
 

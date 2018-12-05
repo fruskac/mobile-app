@@ -91,7 +91,7 @@ class Locations extends PureComponent<Props, State> {
         {places.map((t, index) => (
           <TouchableOpacity
             onPress={() => {
-              onNavigate("/location/" + t);
+              onNavigate("/location/" + t['name']);
             }}
             key={index}
           >

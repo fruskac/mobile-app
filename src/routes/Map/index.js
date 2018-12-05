@@ -12,11 +12,11 @@ const mapDispatchToProps = {onNavigate, getLocationsForMap, onFetchMap};
 const mapStateToProps = (state, ownProps) => {
   return {
     language: getLanguage(state),
-    locationsForMap: state.locations['map_' + state.settings.language],
+    locationsForMap: state.locations['map_'+getLanguage(state)],
     tags:
-      state.settings.language == "sr"
-        ? state.locations.tagsSr
-        : state.locations.tagsEn
+      state.settings.language == "en"
+        ? state.locations.tagsEn
+        : state.locations.tagsSr
   };
 };
 

@@ -15,7 +15,7 @@ type Settings = {
 };
 
 const initialState: Settings = {
-  language: I18n.locale.substr(0, 2) === "en" ? "en" : "sr",
+  language: I18n.locale.substr(0, 2) === "en" ? "en" : "rs",
   drawerOpen: false
 };
 
