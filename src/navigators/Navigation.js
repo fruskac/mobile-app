@@ -24,6 +24,7 @@ import Styles from "./Styles";
 import BackButton from "../components/BackButton";
 import MenuButton from "../components/MenuButton";
 
+
 export const AppNavigator = StackNavigator({
   Home: {
     path: "/",
@@ -83,8 +84,14 @@ export const AppNavigator = StackNavigator({
     screen: LocationTypePlaceScreen,
     navigationOptions: navigation => {
       console.log("NAVIGATION", navigation);
+      const en = require('../I18n/en.json');
+      const sr = require('../I18n/sr.json');
+      let key = navigation.navigation.state.params.id;
+      if (key in en || key in sr) {
+        key = I18n.t(navigation.navigation.state.params.id);
+      }
       return {
-        title: I18n.t(navigation.navigation.state.params.id),
+        title: key,
         headerLeft: <BackButton />,
         headerRight: <MenuButton />,
         headerStyle: Styles.header,

@@ -20,8 +20,6 @@ class LocationTypePlace extends PureComponent<Props, State> {
   render() {
     const { items } = this.props;
 
-    // console.log("ITEMS LOCATION", items);
-
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
