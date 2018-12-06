@@ -61,8 +61,7 @@ class Map extends PureComponent<Props, State> {
     super(props);
     this.state = {
       showMap: false,
-      userLocation: { lat: 0, lng: 0 },
-      mapLocations: require('../../assets/Demo/app-map.json')
+      userLocation: { lat: 0, lng: 0 }
     };
   }
 

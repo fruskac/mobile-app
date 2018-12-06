@@ -1,10 +1,9 @@
 //@flow
 
-import newsDemoData from "../assets/Demo/news";
 import { NEWS_LOADING, NEWS_LOADING_COMPLETE } from "../actions/actionTypes";
 
 const initialState = {
-  data: newsDemoData
+  data: []
 };
 
 const newsReducer = (state: Object = initialState, action: Object) => {
