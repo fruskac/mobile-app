@@ -40,6 +40,7 @@ class LocationSingle extends PureComponent<Props, State> {
           image={data.image}
           title={data['title_'+language]}
           text={data['description_'+language]}
+          longText={data['description_long_'+language]}
         />
       </View>
     );
