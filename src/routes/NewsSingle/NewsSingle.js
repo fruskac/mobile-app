@@ -30,6 +30,7 @@ class NewsItem extends PureComponent<Props, State> {
           image={data.image}
           title={data.title}
           text={data.desciption}
+          longText={"<hr>"}
         />
       </View>
     );

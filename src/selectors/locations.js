@@ -5,9 +5,12 @@ const _getLocations = state =>
 
 const _getLocationsAll = state =>
   state.locations["locations_" + state.settings.language]
-    .concat(state.locations["places_" + state.settings.language])
-    .concat(state.locations["tourism_" + state.settings.language]);
+    .concat(state.locations["places_" + (state.settings.language == 'en' ? 'en' : 'rs')])
+    .concat(state.locations["tourism_" + (state.settings.language == 'en' ? 'en' : 'rs')]);
 
+const _getMapLocationsAll = state =>
+  state.locations["map_" + (state.settings.language == 'en' ? 'en' : 'rs')];
+  
 const _getLocationId = (state, props) => props.navigation.state.params.id;
 
 const _getLocationFilter = state => state.locations.filter;
@@ -21,17 +24,17 @@ export const getLocations = createSelector(
 );
 
 export const getLocationSingle = createSelector(
-  [_getLocations, _getLocationId],
+  [_getMapLocationsAll, _getLocationId],
   (locations, locationId) =>
-    require('../assets/Demo/app-map.json').appMap
+    locations
       .slice(0)
       .filter(item => item.id === locationId)[0]
 );
 
 export const getLocationsFiltered = createSelector(
-  [_getLocations, _getLocationTypePlaceId],
+  [_getMapLocationsAll, _getLocationTypePlaceId],
   (locations, locationTypePlaceId) =>
-    require('../assets/Demo/app-map.json').appMap
+    locations
       .filter(item => item.tag == locationTypePlaceId || item.category == locationTypePlaceId || item.place == locationTypePlaceId)
 );
 
@@ -59,30 +62,3 @@ export const getLocationsForMap = createSelector(
     }))
   })
 );
-
-// const featureCollection = {
-//   type: "FeatureCollection",
-//   features: [
-//     {
-//       type: "Feature",
-//       id: "volem1",
-//       properties: {
-//         icon: "example"
-//       },
-//       geometry: {
-//         type: "Point",
-//         coordinates: [19.8093, 45.1571]
-//       }
-//     },
-//     {
-//       type: "Feature",
-//       id: "volem2",
-//       properties: {
-//         icon: "example"
-//       },
-//       geometry: {
-//         type: "Point",
-//         coordinates: [19.7093, 45.1571]
-//       }
-//     }
-//   ]
