@@ -12,13 +12,14 @@ import Styles from "./Styles";
 import type LocationData from "../../types";
 
 type Props = {
-  items: Array<LocationData>
+  items: Array<LocationData>,
+  data: any
 };
 type State = {};
 
 class LocationTypePlace extends PureComponent<Props, State> {
   render() {
-    const { items } = this.props;
+    const { items, data } = this.props;
 
     return (
       <View style={CommonStyles.container}>
@@ -27,8 +28,7 @@ class LocationTypePlace extends PureComponent<Props, State> {
         <ItemList
           header={
             <Text style={Styles.text}>
-              To be added later... diaspora per lorem ad astera astra borum
-              dorum tulipsen
+              {data.description}
             </Text>
           }
           items={items}

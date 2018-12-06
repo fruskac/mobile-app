@@ -3,6 +3,11 @@ import { createSelector } from "reselect";
 const _getLocations = state =>
   state.locations["locations_" + state.settings.language];
 
+const _getLocationsAll = state =>
+  state.locations["locations_" + state.settings.language]
+    .concat(state.locations["places_" + state.settings.language])
+    .concat(state.locations["tourism_" + state.settings.language]);
+
 const _getLocationId = (state, props) => props.navigation.state.params.id;
 
 const _getLocationFilter = state => state.locations.filter;
@@ -28,6 +33,13 @@ export const getLocationsFiltered = createSelector(
   (locations, locationTypePlaceId) =>
     require('../assets/Demo/app-map.json').appMap
       .filter(item => item.tag == locationTypePlaceId || item.category == locationTypePlaceId || item.place == locationTypePlaceId)
+);
+
+export const getPlaceOrCategory = createSelector(
+  [_getLocationsAll, _getLocationTypePlaceId],
+  (locations, locationTypePlaceId) =>
+    locations
+      .filter(item => item.key == locationTypePlaceId || item.name == locationTypePlaceId)[0]
 );
 
 export const getLocationsForMap = createSelector(

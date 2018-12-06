@@ -2,13 +2,14 @@
 
 import { connect } from "react-redux";
 import LocationTypePlace from "./LocationTypePlace";
-import { getLocationsFiltered } from "../../selectors/locations";
+import { getLocationsFiltered, getPlaceOrCategory } from "../../selectors/locations";
 
 const mapDispatchToProps = {};
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: getLocationsFiltered(state, ownProps)
+    items: getLocationsFiltered(state, ownProps),
+    data: getPlaceOrCategory(state, ownProps)
   };
 };
 
