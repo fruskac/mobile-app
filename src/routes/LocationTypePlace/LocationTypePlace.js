@@ -12,12 +12,17 @@ import Styles from "./Styles";
 import type LocationData from "../../types";
 
 type Props = {
+  language: string,
   items: Array<LocationData>,
   data: any
 };
 type State = {};
 
 class LocationTypePlace extends PureComponent<Props, State> {
+  componentDidMount() {
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
+  }
+
   render() {
     const { items, data } = this.props;
 
