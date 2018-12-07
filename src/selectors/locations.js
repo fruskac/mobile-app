@@ -4,9 +4,10 @@ const _getLocations = state =>
   state.locations["locations_" + state.settings.language];
 
 const _getLocationsAll = state =>
-  state.locations["locations_en"]
+  state.locations[`locations_${state.settings.language}`]
     .concat(state.locations["places_" + (state.settings.language == 'en' ? 'en' : 'rs')])
     .concat(state.locations["tourism_" + (state.settings.language == 'en' ? 'en' : 'rs')]);
+  
 
 const _getMapLocationsAll = state =>
   state.locations["map_" + (state.settings.language == 'en' ? 'en' : 'rs')];
