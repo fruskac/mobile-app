@@ -30,7 +30,7 @@ class NewsItem extends PureComponent<Props, State> {
           image={data.image}
           title={data.title}
           text={data.desciption}
-          longText={"<hr>"}
+          longText={data.desciption_long}
         />
       </View>
     );
@@ -38,3 +38,4 @@ class NewsItem extends PureComponent<Props, State> {
 }
 
 export default NewsItem;
+// {data.desciption_long.replace(new RegExp('src="/sites/', 'g'), 'src="https://fruskac.net/sites/')}
