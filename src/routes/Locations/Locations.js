@@ -28,16 +28,19 @@ type Props = {
   onLocationTypeChange: (filter: LocationFilter) => void,
   onFetchLocations: (language: string) => void,
   places: Array<any>,
+  onFetchMap: (language: string) => void,
+  map: Array<any>,
 };
 type State = {};
 
 class Locations extends PureComponent<Props, State> {
   componentDidMount = () => {
     this.props.onFetchLocations(this.props.language === 'en' ? 'en' : 'rs', 0);
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
   }
 
   render() {
-    const { tags, filter, language, onNavigate, onLocationTypeChange, places } = this.props;
+    const { tags, filter, language, onNavigate, onLocationTypeChange, places, map } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -95,7 +98,7 @@ class Locations extends PureComponent<Props, State> {
             }}
             key={index}
           >
-            <Text style={Styles.textPlacesList}> {t[`name`]} </Text>
+            <Text style={Styles.textPlacesList}> {t[`name`]} ({map.filter(location => location.place == t.name).length }) </Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
