@@ -17,6 +17,7 @@ import LocationsScreen from "../routes/Locations";
 import LocationTypePlaceScreen from "../routes/LocationTypePlace";
 import LocationSingleScreen from "../routes/LocationSingle";
 import TrailsScreen from "../routes/Trails";
+import TracksScreen from "../routes/Tracks";
 import InfoScreen from "../routes/Info";
 import DonateScreen from "../routes/Donate";
 import Styles from "./Styles";
@@ -118,6 +119,17 @@ export const AppNavigator = StackNavigator({
     screen: TrailsScreen,
     navigationOptions: navigation => ({
       title: I18n.t("trails"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  Tracks: {
+    path: "/tracks/:category",
+    screen: TracksScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t(navigation.navigation.state.params.category) + " " + I18n.t("tracks").toLowerCase(),
       headerLeft: <BackButton />,
       headerRight: <MenuButton />,
       headerStyle: Styles.header,

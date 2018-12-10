@@ -62,20 +62,20 @@ class Trails extends PureComponent<Props, State> {
                 </TouchableOpacity>
             </View>
             <View style={Styles.menu}>
-                <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/locations')} }>
+                <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/easy')} }>
                     <View style={Styles.circlesBox}>
                         <View style={[Styles.circle, Styles.colorEasy]} />
                     </View>
                     <Text style={Styles.menuItemText}> {I18n.t("easy")} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={Styles.menuItem}>
+                <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/medium')} }>
                     <View style={Styles.circlesBox}>
                         <View style={[Styles.circle, Styles.colorMedium]} />
                         <View style={[Styles.circle, Styles.colorMedium]} />
                     </View>
                     <Text style={Styles.menuItemText}> {I18n.t("medium")} </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={Styles.menuItem}>
+                <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/hard')} }>
                     <View style={Styles.circlesBox}>
                         <View style={[Styles.circle, Styles.colorHard]} />
                         <View style={[Styles.circle, Styles.colorHard]} />
