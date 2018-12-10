@@ -27,7 +27,7 @@ class Tracks extends PureComponent<Props, State> {
         <HeaderAd />
         <ItemList 
           items={tracks}
-          slug="/tracks-single/"
+          slug="/track-single/"
         />
       </View>
     );

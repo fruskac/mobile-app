@@ -39,6 +39,9 @@ class ItemSingle extends PureComponent<Props, State> {
             h3: {
               margin: 12
             },
+            h4: {
+              margin: 15
+            },
             p: {
               fontFamily: "Merriweather-Light",
               lineHeight: 21,
