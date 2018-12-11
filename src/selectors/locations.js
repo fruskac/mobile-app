@@ -12,7 +12,7 @@ const _getLocationsAll = state =>
 const _getMapLocationsAll = state =>
   state.locations["map_" + (state.settings.language == 'en' ? 'en' : 'rs')];
   
-const _getLocationId = (state, props) => props.navigation.state.params.id;
+const _getId = (state, props) => props.navigation.state.params.id;
 
 const _getLocationFilter = state => state.locations.filter;
 
@@ -28,7 +28,7 @@ export const getLocations = createSelector(
 );
 
 export const getLocationSingle = createSelector(
-  [_getMapLocationsAll, _getLocationId],
+  [_getMapLocationsAll, _getId],
   (locations, locationId) =>
     locations
       .slice(0)
@@ -52,6 +52,14 @@ export const getTracksByCategoryName = createSelector(
     return tracks.filter(track => track.track_category.toLowerCase() === categoryName.toLowerCase())
   }
     
+);
+
+export const getTrackSingle = createSelector(
+  [_getTracks, _getId],
+  (tracks, trackId) =>
+    tracks
+      .slice(0)
+      .filter(item => item.id === trackId)[0]
 );
 
 export const getPlaceOrCategory = createSelector(
