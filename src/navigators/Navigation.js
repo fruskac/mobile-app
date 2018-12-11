@@ -20,6 +20,7 @@ import TrailsScreen from "../routes/Trails";
 import TracksScreen from "../routes/Tracks";
 import TrackSingleScreen from "../routes/TrackSingle";
 import InfoScreen from "../routes/Info";
+import InfoSingleScreen from "../routes/InfoSingle";
 import DonateScreen from "../routes/Donate";
 import Styles from "./Styles";
 
@@ -160,6 +161,19 @@ export const AppNavigator = StackNavigator({
       headerStyle: Styles.header,
       headerTitleStyle: Styles.headerTitle
     })
+  },
+  InfoSingle: {
+    path: "/info-single/:id",
+    screen: InfoSingleScreen,
+    navigationOptions: navigation => {
+      return {
+        title: I18n.t("info"),
+        headerLeft: <BackButton />,
+        headerRight: <MenuButton />,
+        headerStyle: Styles.header,
+        headerTitleStyle: Styles.headerTitle
+      };
+    }
   },
   Donate: {
     path: "/donate",

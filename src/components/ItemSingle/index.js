@@ -36,6 +36,12 @@ class ItemSingle extends PureComponent<Props, State> {
             }
           imagesMaxWidth={Dimensions.get('window').width}
           tagsStyles={{
+            h1: {
+              margin: 6
+            },
+            h2: {
+              margin: 9
+            },
             h3: {
               margin: 12
             },
