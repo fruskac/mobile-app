@@ -1,14 +1,12 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import I18n from "react-native-i18n";
 import SvgUri from "react-native-svg-uri";
 
 import { LocationFilter } from "../../types";
 import HeaderAd from "../../components/HeaderAd/";
-import ItemList from "../../components/ItemList/";
 
 import CommonStyles, {
   navHeaderHeight,
@@ -18,7 +16,6 @@ import CommonStyles, {
 import Styles, { menuHeight } from "./Styles";
 import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
-import { onFetchLocations } from "../../actions/locations";
 
 type Props = {
   language: string,
@@ -35,8 +32,8 @@ type State = {};
 
 class Locations extends PureComponent<Props, State> {
   componentDidMount = () => {
-    this.props.onFetchLocations(this.props.language === 'en' ? 'en' : 'rs', 0);
-    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
+    this.props.onFetchLocations(this.props.language === 'en' ? 'en' : 'rs');
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
   }
 
   render() {

@@ -9,9 +9,6 @@ import {
   FETCH_MAP_SUCCESS,
 } from "./actionTypes";
 import { fetchCategories, fetchMap } from "../Api";
-import { put, all, call, select } from "redux-saga/effects";
-
-const BASE = "https://fruskac.net";
 
 import { LocationFilter } from "../types/";
 

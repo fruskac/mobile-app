@@ -11,3 +11,5 @@ export const fetchGoodToKnow = (language, page) =>
 export const fetchMap = (language) =>
     fetchUrl(`${BASE}/${language}/json/app-map`);
     
+export const fetchTracks = (language) =>
+    fetchUrl(`${BASE}/${language}/json/app-tracks`);
