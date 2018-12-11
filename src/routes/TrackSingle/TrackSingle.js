@@ -4,6 +4,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { View, TouchableOpacity, Text, Image } from "react-native";
 import I18n from "react-native-i18n";
+import { askPermissions } from "../../actions/locations";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemSingle from "../../components/ItemSingle/";
@@ -16,7 +17,8 @@ type Props = {
   id: string,
   data: LocationData,
   onNavigate: (route: string) => void,
-  language: string
+  language: string,
+  askPermissions: () => void,
 };
 type State = {};
 
@@ -27,8 +29,11 @@ class TrackSingle extends PureComponent<Props, State> {
       <View style={CommonStyles.container}>
         <HeaderAd />
         <TouchableOpacity
-          onPress={() => {
-            onNavigate("/map");
+          onPress={async () => {
+            const resp = await askPermissions();
+            if (resp) {
+              onNavigate("/track-map/"+data.id);
+            }
           }}
           key={id}
           style={CommonStyles.onMapBtn}

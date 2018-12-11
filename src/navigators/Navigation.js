@@ -19,6 +19,7 @@ import LocationSingleScreen from "../routes/LocationSingle";
 import TrailsScreen from "../routes/Trails";
 import TracksScreen from "../routes/Tracks";
 import TrackSingleScreen from "../routes/TrackSingle";
+import TrackMapScreen from "../routes/TrackMap"; 
 import InfoScreen from "../routes/Info";
 import InfoSingleScreen from "../routes/InfoSingle";
 import DonateScreen from "../routes/Donate";
@@ -141,6 +142,19 @@ export const AppNavigator = StackNavigator({
   TrackSingle: {
     path: "/track-single/:id",
     screen: TrackSingleScreen,
+    navigationOptions: navigation => {
+      return {
+        title: I18n.t("tracks"),
+        headerLeft: <BackButton />,
+        headerRight: <MenuButton />,
+        headerStyle: Styles.header,
+        headerTitleStyle: Styles.headerTitle
+      };
+    }
+  },
+  TrackMap: {
+    path: "/track-map/:id",
+    screen: TrackMapScreen,
     navigationOptions: navigation => {
       return {
         title: I18n.t("tracks"),
