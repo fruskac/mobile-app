@@ -16,7 +16,6 @@ type Props = {
   id: string,
   data: LocationData,
   onNavigate: (route: string) => void,
-  navigation: any,
   language: string
 };
 type State = {};
@@ -38,9 +37,9 @@ class TrackSingle extends PureComponent<Props, State> {
         </TouchableOpacity>
         <ItemSingle
           image={data.image}
-          title={data.title_rs}
-          text={data.description_rs}
-          longText={data.description_long_rs}
+          title={data.title}
+          text={data.description}
+          longText={data.description_long}
         />
       </View>
     );

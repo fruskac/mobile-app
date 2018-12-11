@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { View } from "react-native";
 
 import HeaderAd from "../../components/HeaderAd/";
@@ -13,14 +12,17 @@ import CommonStyles from "../../styles/CommonStyles";
 type Props = {
   infos: Array<any>,
   language: string,
+  onFetchInfos: (language: string) => void,
 };
 type State = {};
 
 class Info extends PureComponent<Props, State> {
+  componentDidMount() {
+    this.props.onFetchInfos(this.props.language === 'en' ? 'en' : 'rs');
+  }
+
   render() {
     const { infos } = this.props;
-
-    const language = this.props.language === 'en' ? 'en' : 'rs';
 
     return (
         <View style={CommonStyles.container}>

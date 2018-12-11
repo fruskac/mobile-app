@@ -42,3 +42,6 @@ export const FETCH_MAP_SUCCESS = "FETCH_MAP_SUCCESS";
 
 // fetching tracks data
 export const FETCH_TRACKS_SUCCESS = "FETCH_TRACKS_SUCCESS";
+
+// fetching info data
+export const FETCH_INFO_SUCCESS = "FETCH_INFO_SUCCESS";

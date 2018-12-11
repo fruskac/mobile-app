@@ -6,6 +6,7 @@ import settingsReducer from "./settingsReducer";
 import locationsReducer from "./locationsReducer";
 import cacheReducer from "./cacheReducer";
 import tracksReducer from "./tracksReducer";
+import infoReducer from "./infoReducer";
 // Root Reducer
 const rootReducer = combineReducers({
   goodToKnow: goodToKnowReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   news: newsReducer,
   cache: cacheReducer,
   settings: settingsReducer,
-  tracks: tracksReducer
+  tracks: tracksReducer,
+  infos: infoReducer,
 });
 
 export default rootReducer;

@@ -13,3 +13,6 @@ export const fetchMap = (language) =>
     
 export const fetchTracks = (language) =>
     fetchUrl(`${BASE}/${language}/json/app-tracks`);
+
+export const fetchInfo = (language) =>
+    fetchUrl(`${BASE}/${language}/json/app-info`);
