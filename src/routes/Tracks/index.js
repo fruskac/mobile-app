@@ -10,7 +10,7 @@ import { onNavigate } from "../../actions/navigation";
 const mapDispatchToProps = { onNavigate };
 const mapStateToProps = (state, ownProps) => ({
   language: getLanguage(state),
-  tracks: getTracksByCategoryName(state, ownProps)
+  tracks: getTracksByCategoryName(state, ownProps),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracks);

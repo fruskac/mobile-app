@@ -1,23 +1,20 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import I18n from "react-native-i18n";
 import HeaderAd from "../../components/HeaderAd/";
 
 import CommonStyles, {
-    navHeaderHeight,
-    headerAdHeight,
     accentColor
   } from "../../styles/CommonStyles";
-  import Styles, { menuHeight } from "./Styles";
-  import * as Icons from "../../styles/Icons";
-  import { height as screenHeight } from "../../utils/Screen";
-import { onNavigate } from "../../actions/navigation";
+  import Styles from "./Styles";
+
 
 type Props = {
-    onNavigate: (route: string) => void
+    onNavigate: (route: string) => void,
+    onFetchTracks: (language: string) => void,
+    language: string,
 };
 type State = {};
 
@@ -27,12 +24,16 @@ class Trails extends PureComponent<Props, State> {
     this.state = {
         filter: "walks"
     };
+  };
+  
+  componentDidMount() {
+    this.props.onFetchTracks(this.props.language === 'en' ? 'en' : 'rs');
   }
+
   render() {
     const { onNavigate } = this.props;
     let walkStyle = {},
     mtbStyle = {};
-
     const underlineStyle = {
       borderBottomColor: accentColor,
       borderBottomWidth: 2

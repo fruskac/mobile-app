@@ -4,12 +4,13 @@ import { connect } from "react-redux";
 import Trails from "./Trails";
 import { onNavigate } from "../../actions/navigation";
 // import { getLocationsFiltered } from "../../selectors/locations";
+import { onFetchTracks } from "../../actions/tracks";
 
-const mapDispatchToProps = {onNavigate};
+const mapDispatchToProps = {onNavigate, onFetchTracks};
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    items: [] // getLocationsFiltered(state, ownProps)
+    language: ownProps.screenProps.language,
   };
 };
 
