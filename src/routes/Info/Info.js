@@ -1,7 +1,8 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemList from "../../components/ItemList/";
@@ -27,10 +28,14 @@ class Info extends PureComponent<Props, State> {
     return (
         <View style={CommonStyles.container}>
             <HeaderAd />
-            <ItemList 
-            items={infos}
-            slug="/info-single/"
-            />
+            { infos ?
+              <ItemList 
+                  items={infos}
+                  slug="/info-single/"
+              />
+            : <Text>{I18n.t("loading")}</Text>
+            }
+            
       </View>
     );
   }

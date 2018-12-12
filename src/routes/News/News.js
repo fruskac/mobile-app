@@ -1,8 +1,8 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemList from "../../components/ItemList/";
@@ -12,7 +12,7 @@ import type NewsData from "../../types";
 
 type Props = {
   items: Array<NewsData>,
-  onFetchGoodToKnow: (language: string) => void,
+  onFetchGoodToKnow: (language: string, pageNumber: number) => void,
   pageNumber: number,
   refreshing: boolean,
   setPageNumber: (pageNumber: number) => void,
@@ -34,7 +34,8 @@ class News extends PureComponent<Props, State> {
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemList 
+        { items ?
+          <ItemList 
           items={items}
           slug="/news/"
           onRefresh={() => { this.props.setRefreshing(true); this.props.onFetchGoodToKnow(language, 0); this.props.setPageNumber(0); }}
@@ -42,6 +43,8 @@ class News extends PureComponent<Props, State> {
           onEndReachedThreshold={0.3}
           refreshing={refreshing}
         />
+        : <Text>{I18n.t("loading")}</Text>
+        }
       </View>
     );
   }

@@ -5,6 +5,7 @@
   "home": "Home",
   "info": "Info",
   "lakes": "Lakes",
+  "loading": "Loading...",
   "location": "Location",
   "locations": "Locations",
   "lookouts": "Lookouts",
@@ -19,6 +20,7 @@
   "picnic-areas": "Picnic-areas",
   "place": "Place",
   "springs": "Springs",
+  "tracks": "Tracks",
   "trails": "Trails",
   "type": "Type",
   "waterfalls": "Waterfalls",
@@ -26,6 +28,5 @@
   "medium": "Medium",
   "hard": "Hard",
   "marathon": "Marathon",
-  "walks": "Walks",
-  "tracks": "Tracks"
+  "walks": "Walks"
 }

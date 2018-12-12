@@ -1,8 +1,8 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { View, Text } from "react-native";
+import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemList from "../../components/ItemList/";
@@ -14,13 +14,14 @@ import type LocationData from "../../types";
 type Props = {
   language: string,
   items: Array<LocationData>,
-  data: any
+  data: any,
+  onFetchMap: (language: string) => void,
 };
 type State = {};
 
 class LocationTypePlace extends PureComponent<Props, State> {
   componentDidMount() {
-    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
   }
 
   render() {
@@ -29,16 +30,19 @@ class LocationTypePlace extends PureComponent<Props, State> {
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-
-        <ItemList
-          header={
-            <Text style={Styles.text}>
-              {data.description}
-            </Text>
-          }
-          items={items}
-          slug="/location-single/"
+        {
+          items ? 
+          <ItemList
+            header={
+              <Text style={Styles.text}>
+                {data ? data.description : I18n.t("loading")}
+              </Text>
+            }
+            items={items}
+            slug="/location-single/"
         />
+        : <Text>{I18n.t("loading")}</Text>
+        }
       </View>
     );
   }

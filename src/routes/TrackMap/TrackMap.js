@@ -78,8 +78,7 @@ class TrackMap extends PureComponent<Props, State> {
         });
 
         this.setState({data: JSON.stringify(coordinatesList)});
-        this.setState({
-          route:
+        this.setState({route:
         {
           "type": "FeatureCollection",
           "features": [

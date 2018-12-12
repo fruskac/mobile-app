@@ -52,7 +52,10 @@ class Menu extends PureComponent<Props, State> {
                     if (resp) {
                       onNavigate("/" + item.toLowerCase(), inDrawer);
                     }
-                  } else {
+                  } else if(item.toLowerCase() === 'donate') { 
+                    onNavigate("/info-single/623", inDrawer);
+                  }
+                  else {
                     onNavigate("/" + item.toLowerCase(), inDrawer);
                   }
                 }}

@@ -8,7 +8,7 @@ import { onFetchGoodToKnow, setPageNumber, setRefreshing } from "../../actions/g
 
 const mapDispatchToProps = dispatch => bindActionCreators({ onFetchGoodToKnow, setPageNumber, setRefreshing }, dispatch);
 const mapStateToProps = state => ({
-  items: state.goodToKnow.articles,
+  items: state.goodToKnow ? state.goodToKnow.articles : null,
   language: getLanguage(state),
   refreshing: state.goodToKnow.refreshing,
   pageNumber: state.goodToKnow.pageNumber,

@@ -5,6 +5,7 @@
   "home": "Početna",
   "info": "Info",
   "lakes": "Jezera",
+  "loading": "Učitavanje...",
   "location": "Lokacija",
   "locations": "Lokacije",
   "lookouts": "Osmatračnice",
@@ -19,6 +20,7 @@
   "picnic-areas": "Piknik mesta",
   "place": "Mesto",
   "springs": "Izvori",
+  "tracks": "Staze",
   "trails": "Staze",
   "type": "Tip",
   "waterfalls": "Vodopadi",
@@ -26,6 +28,5 @@
   "medium": "Srednje",
   "hard": "Teške",
   "marathon": "Maraton",
-  "walks": "Šetnje",
-  "tracks": "Staze"
+  "walks": "Šetnje"
 }

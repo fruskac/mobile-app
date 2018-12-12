@@ -3,11 +3,14 @@ import { createSelector } from "reselect";
 const _getLocations = state =>
   state.locations["locations_" + state.settings.language];
 
-const _getLocationsAll = state =>
-  state.locations[`locations_${state.settings.language}`]
+const _getLocationsAll = state => {
+  debugger 
+  return state.locations && state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`] ? 
+  state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`]
     .concat(state.locations["places_" + (state.settings.language == 'en' ? 'en' : 'rs')])
-    .concat(state.locations["tourism_" + (state.settings.language == 'en' ? 'en' : 'rs')]);
-  
+    .concat(state.locations["tourism_" + (state.settings.language == 'en' ? 'en' : 'rs')])
+    : [];
+}
 
 const _getMapLocationsAll = state =>
   state.locations["map_" + (state.settings.language == 'en' ? 'en' : 'rs')];
@@ -73,9 +76,10 @@ export const getInfoSingle = createSelector(
 
 export const getPlaceOrCategory = createSelector(
   [_getLocationsAll, _getLocationTypePlaceId],
-  (locations, locationTypePlaceId) =>
-    locations
-      .filter(item => item.key == locationTypePlaceId || item.name == locationTypePlaceId)[0]
+  (locations, locationTypePlaceId) => {
+    debugger
+    return locations.filter(item => item.key == locationTypePlaceId || item.name == locationTypePlaceId)[0]
+  }
 );
 
 export const getLocationsForMap = createSelector(

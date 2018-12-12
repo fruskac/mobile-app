@@ -2,8 +2,9 @@
 
 import { connect } from "react-redux";
 import CacheScreen from "./CacheScreen";
+import { onFetchInfos } from "../../actions/info";
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { onFetchInfos };
 const mapStateToProps = state => ({
   progress: state.cache.progress,
   done: state.cache.done,

@@ -20,6 +20,7 @@ type State = {};
 class ItemSingle extends PureComponent<Props, State> {
   render() {
     let { title, image, text, longText } = this.props;
+    console.disableYellowBox = true;
     return (
       <ScrollView>
         <Image source={{uri: image}} style={{width: Screen.width, height: Screen.height / 3 - 27}} />

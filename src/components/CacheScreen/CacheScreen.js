@@ -12,7 +12,8 @@ import { SCREEN_CACHING_ERROR } from "../../actions/actionTypes";
 type Props = {
   progress: number,
   done: boolean,
-  screen: string
+  screen: string,
+  onFetchInfos: (language: string) => void,
 };
 type State = {
   opacity: Animated.Value,
@@ -30,7 +31,7 @@ class CacheScreen extends PureComponent<Props, State> {
       opacity: new Animated.Value(1),
       hidden: false
     };
-
+    props.onFetchInfos('rs');
     this.onFadeOutStart = this.onFadeOutStart.bind(this);
     this.onFadeOutFinish = this.onFadeOutFinish.bind(this);
   }

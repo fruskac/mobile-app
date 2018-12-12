@@ -51,7 +51,7 @@ export const onFetchLocations = (language: string) => (dispatch: func) => {
     const locations = parseLocationJson(result.locations);
     const places = parseLocationJson(result.places);
     const tourism = parseLocationJson(result.tourism);
-
+    debugger
     dispatch(onFetchLocationsSuccess({
       locations_sr: locations.entities_rs,
       locations_en: locations.entities_en,
