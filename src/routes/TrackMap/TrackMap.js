@@ -8,7 +8,6 @@ import CommonStyles from "../../styles/CommonStyles";
 import { LocationsList, Location } from "../../types";
 import SvgUri from "react-native-svg-uri";
 import * as Icons from "../../styles/Icons";
-import HTML from 'react-native-render-html';
 const timer = require("react-native-timer");
 
 import exampleIcon from "../../assets/volem-logo.png";
@@ -22,18 +21,31 @@ class TrackMap extends PureComponent<Props, State> {
   _map: MapBox;
   _watchPositionId: number;
 
-  constructor(props: Props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       showMap: false,
-      userLocation: { lat: 0, lng: 0 }
-    };
+      userLocation: { lat: 0, lng: 0 },
+      route:
+        {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": []
+              }
+            }
+          ]
+        },   
+    }
   }
 
   componentDidMount() {
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
-        // console.log("position", position);
         this.setState({
           userLocation: {
             lat: position.coords.latitude,
@@ -52,6 +64,37 @@ class TrackMap extends PureComponent<Props, State> {
       },
       300
     );
+
+    fetch('https://fruskac.net/sites/default/files/tracks/mtb-hard-popovica-1.gpx')
+      .then(response => response.text())
+      .then(data => {
+        const XMLParser = require('react-xml-parser');
+        let xml = new XMLParser().parseFromString(data);
+        const trkptList = xml.getElementsByTagName('trkseg')[0].children;
+        let coordinatesList = [];
+        trkptList.forEach(element => {
+          let latLngPair = [Number(element.attributes.lon), Number(element.attributes.lat)];
+          coordinatesList.push(latLngPair);
+        });
+
+        this.setState({data: JSON.stringify(coordinatesList)});
+        this.setState({
+          route:
+        {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": coordinatesList
+              }
+            }
+          ]
+        }
+        });
+      });
   }
 
   componentWillUnmount() {
@@ -60,48 +103,20 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   render() {
-    const coordinates = [
-      {lat: 45.1848, lng: 19.82259 },
-      {lat: 45.18468, lng: 19.82257 },
-      {lat: 45.18468, lng: 19.82257 },
-      {lat: 45.18426, lng: 19.82256 },
-      {lat: 45.18412, lng: 19.82261 },
-      {lat: 45.18412, lng: 19.82261 },
-      {lat: 45.18402, lng: 19.82252 },
-      {lat: 45.18385, lng: 19.82248 },
-      {lat: 45.18372, lng: 19.82235 },
-      {lat: 45.18365, lng: 19.82215 }
-    ]
+    // return (<Text>{this.state.data}</Text>);
     return (
-      <MapBox.MapView
-        zoomLevel={10}
-        ref={c => (this._map = c)}
-        minZoom={10}
-        maxZoom={13}
-        compassEnabled={true}
-        zoomEnabled={true}
-        showUserLocation={true}
-        // styleURL={"mapbox://styles/alexgvozden/cjc7l0w1y3jcr2snwkmzb8vm2"}
-        centerCoordinate={[19.7093, 45.1571]}
-        style={CommonStyles.container}
-      >
-        {coordinates.map((location, index) => (
-          <MapBox.PointAnnotation
-            key={index}
-            id={"Map"+index}
-            coordinate={[Number(location.lng), Number(location.lat)]}>
-            <View style={styles.annotationContainer}>
-              <SvgUri
-                width={21}
-                height={21}
-                source={Icons["bike"]}
-                fill={Icons.colors["bike"]}
-              />
-            </View>
-            <MapBox.Callout title={location.title+', '+location.place} />
-          </MapBox.PointAnnotation>
-        ))}
-      </MapBox.MapView>
+      <View style={styles.container}>
+        <MapBox.MapView
+          styleURL={MapBox.StyleURL.Light}
+          zoomLevel={18}
+          centerCoordinate={[19.82013, 45.1839]}
+          style={styles.container}> 
+          <MapBox.ShapeSource id='line1' shape={this.state.route}>
+            <MapBox.LineLayer id='linelayer1' style={{lineColor:'red', lineWidth: 3}} />
+          </MapBox.ShapeSource>
+
+        </MapBox.MapView>
+      </View>
     );
   }
 }
@@ -110,16 +125,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  annotationContainer: {
-    width: 30,
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'red',
-    borderRadius: 15,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-  }
 });
 
 export default TrackMap;
