@@ -15,7 +15,7 @@ import type LocationData from "../../types";
 
 type Props = {
   id: string,
-  data: LocationData,
+  data: any,
   onNavigate: (route: string) => void,
   language: string,
   askPermissions: () => void,

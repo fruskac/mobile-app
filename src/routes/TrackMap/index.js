@@ -4,19 +4,14 @@ import { connect } from "react-redux";
 import TrackMap from "./TrackMap";
 import { getLanguage } from "../../selectors/settings";
 import { onNavigate } from "../../actions/navigation";
-import { getLocationsForMap } from "../../selectors/locations";
-import { onFetchMap } from "../../actions/locations";
+import { getTrackSingle } from "../../selectors/locations";
 
-
-const mapDispatchToProps = {onNavigate, getLocationsForMap, onFetchMap};
+const mapDispatchToProps = { onNavigate };
 const mapStateToProps = (state, ownProps) => {
   return {
     language: getLanguage(state),
-    locationsForMap: state.locations['map_'+getLanguage(state)],
-    tags:
-      state.settings.language == "en"
-        ? state.locations.tagsEn
-        : state.locations.tagsSr
+    data: getTrackSingle(state, ownProps),
+    id: ownProps.navigation.state.params.id,
   };
 };
 

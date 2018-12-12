@@ -13,6 +13,10 @@ const timer = require("react-native-timer");
 import exampleIcon from "../../assets/volem-logo.png";
 
 type Props = {
+  id: string,
+  data: any,
+  onNavigate: (route: string) => void,
+  language: string,
 };
 type State = {
 };
@@ -44,6 +48,7 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
+    const { data } = this.props;
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         this.setState({
@@ -65,7 +70,7 @@ class TrackMap extends PureComponent<Props, State> {
       300
     );
 
-    fetch('https://fruskac.net/sites/default/files/tracks/mtb-hard-popovica-1.gpx')
+    fetch(data.track_url)
       .then(response => response.text())
       .then(data => {
         const XMLParser = require('react-xml-parser');
@@ -102,14 +107,16 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   render() {
-    // return (<Text>{this.state.data}</Text>);
     return (
       <View style={styles.container}>
         <MapBox.MapView
           styleURL={MapBox.StyleURL.Light}
-          zoomLevel={18}
+          zoomLevel={15}
           centerCoordinate={[19.82013, 45.1839]}
-          style={styles.container}> 
+          style={styles.container}
+          showUserLocation={true}
+          surfaceView={true}
+        > 
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor:'red', lineWidth: 3}} />
           </MapBox.ShapeSource>

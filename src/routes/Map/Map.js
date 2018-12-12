@@ -9,8 +9,6 @@ import SvgUri from "react-native-svg-uri";
 import * as Icons from "../../styles/Icons";
 const timer = require("react-native-timer");
 
-import exampleIcon from "../../assets/volem-logo.png";
-
 type Props = {
   language: string,
   tags: Array<string>,
@@ -36,10 +34,9 @@ class Map extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs', 0);
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
-        // console.log("position", position);
         this.setState({
           userLocation: {
             lat: position.coords.latitude,
