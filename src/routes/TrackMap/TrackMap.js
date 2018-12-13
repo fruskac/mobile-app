@@ -11,10 +11,11 @@ import * as Icons from "../../styles/Icons";
 const timer = require("react-native-timer");
 
 import exampleIcon from "../../assets/volem-logo.png";
+import { easyColor, mediumColor, hardColor } from "../Trails/Styles";
 
 type Props = {
   id: string,
-  data: any,
+  trackData: any,
   onNavigate: (route: string) => void,
   language: string,
 };
@@ -48,7 +49,7 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { data } = this.props;
+    const { trackData } = this.props;
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         this.setState({
@@ -70,7 +71,7 @@ class TrackMap extends PureComponent<Props, State> {
       300
     );
 
-    fetch(data.track_url)
+    fetch(trackData.track_url)
       .then(response => response.text())
       .then(data => {
         const XMLParser = require('react-xml-parser');
@@ -107,6 +108,16 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   render() {
+    const { trackData } = this.props;
+    let trackColor = '#fff';
+    if (trackData['track_category'].toLowerCase() === 'easy') {
+      trackColor = easyColor;
+    } else if(trackData['track_category'].toLowerCase() === 'medium') {
+      trackColor = mediumColor;
+    } else if(trackData['track_category'].toLowerCase() === 'hard') {
+      trackColor = hardColor;
+    }
+
     return (
       <View style={styles.container}>
         <MapBox.MapView
@@ -115,10 +126,10 @@ class TrackMap extends PureComponent<Props, State> {
           style={styles.container}
           showUserLocation={true}
           surfaceView={true}
-          userTrackingMode={MapBox.UserTrackingModes.FollowWithCourse}
+          userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
         > 
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
-            <MapBox.LineLayer id='linelayer1' style={{lineColor:'red', lineWidth: 3}} />
+            <MapBox.LineLayer id='linelayer1' style={{lineColor: trackColor, lineWidth: 3}} />
           </MapBox.ShapeSource>
 
         </MapBox.MapView>

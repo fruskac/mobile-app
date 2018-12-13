@@ -38,7 +38,7 @@ class TrackSingle extends PureComponent<Props, State> {
           key={id}
           style={CommonStyles.onMapBtn}
         >
-          <Image source={require('../../assets/menu-icons-png/icons8-waypoint-map-24.png')} />
+          <Image source={require('../../assets/menu-icons-png/icons8-baby-feet-30.png')} />
         </TouchableOpacity>
         <ItemSingle
           image={data.image}

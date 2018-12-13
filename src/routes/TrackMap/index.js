@@ -10,7 +10,7 @@ const mapDispatchToProps = { onNavigate };
 const mapStateToProps = (state, ownProps) => {
   return {
     language: getLanguage(state),
-    data: getTrackSingle(state, ownProps),
+    trackData: getTrackSingle(state, ownProps),
     id: ownProps.navigation.state.params.id,
   };
 };

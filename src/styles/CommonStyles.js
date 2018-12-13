@@ -50,7 +50,7 @@ export default StyleSheet.create({
   },
   onMapBtn: {
     position: 'absolute',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#79b700',
     padding: 9,
     top: 54,
     // right: 12,
@@ -61,7 +61,8 @@ export default StyleSheet.create({
     borderTopLeftRadius: 30,
     borderBottomLeftRadius: 30,
     borderWidth: 2.1,
-    borderColor: textColor
+    borderColor: textColor,
+    borderRightWidth: 0
   },
   errorText: {
     backgroundColor: "red",
