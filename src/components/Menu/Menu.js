@@ -37,10 +37,12 @@ class Menu extends PureComponent<Props, State> {
     const width = inDrawer ? Screen.width * 0.7 : Screen.width;
     return (
       <View style={CommonStyles.container}>
-        <AutoHeightImage
-          width={width}
-          source={require("../../assets/ad-img.png")}
-        />
+        <TouchableOpacity onPress={ () => onNavigate("/info-single/623", inDrawer) } >
+          <AutoHeightImage
+            width={width}
+            source={require("../../assets/ad-img.png")}
+          />
+        </TouchableOpacity>
         <View style={[CommonStyles.viewMargin, Styles.menuHolder]}>
           <View>
             {menuItems.map((item, index) => (
