@@ -78,6 +78,7 @@ class Map extends PureComponent<Props, State> {
         showUserLocation={true}
         centerCoordinate={[19.7093, 45.1571]}
         style={CommonStyles.container}
+        userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
       >
         {locationsForMap.map((location, index) => (
           <MapBox.PointAnnotation

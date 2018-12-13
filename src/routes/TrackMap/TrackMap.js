@@ -110,13 +110,12 @@ class TrackMap extends PureComponent<Props, State> {
     return (
       <View style={styles.container}>
         <MapBox.MapView
-          styleURL={MapBox.StyleURL.Light}
           zoomLevel={15}
-          centerCoordinate={[19.82013, 45.1839]}
+          centerCoordinate={[this.state.userLocation.lat, this.state.userLocation.lng]}
           style={styles.container}
           showUserLocation={true}
           surfaceView={true}
-          userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
+          userTrackingMode={MapBox.UserTrackingModes.FollowWithCourse}
         > 
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor:'red', lineWidth: 3}} />
