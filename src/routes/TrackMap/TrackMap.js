@@ -116,6 +116,7 @@ class TrackMap extends PureComponent<Props, State> {
           style={styles.container}
           showUserLocation={true}
           surfaceView={true}
+          userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
         > 
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor:'red', lineWidth: 3}} />
