@@ -7,7 +7,7 @@ import type LocationData from "../../types";
 import Styles from "./Styles";
 
 type Props = {
-  items: NewsData | LocationData,
+  items: Array<any>,
   slug: string,
   language: string,
   header: Node,

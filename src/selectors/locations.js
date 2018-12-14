@@ -48,6 +48,11 @@ export const getLocationsFiltered = createSelector(
 const _getTracks = (state, props) => props.screenProps.language === 'en' ? 
   state.tracks['tracks_en'] : state.tracks['tracks_rs'];
 
+export const getTracks = createSelector(
+  [_getTracks],
+  tracks => tracks
+);
+
 export const getTracksByCategoryName = createSelector(
   [_getTracks, _getCategoryName],
   (tracks, categoryName) => 

@@ -15,6 +15,7 @@ type Props = {
   onNavigate: (route: string) => void,
   onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,
+  // napraviti selectedLocation - ukoliko je prosledjen ovaj parametar, mapa se centrira na tu lokaciju i njoj se menja stil, u suprotnom se centrira userLocation.
 };
 type State = {
   showMap: boolean,
@@ -117,6 +118,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+  },
+  selectedMarker: {
+    width: 33,
+    height: 33,
+    borderWidth: 1.5,
+    borderColor: '#B80000',
   }
 });
 
