@@ -13,6 +13,7 @@ import HomeScreen from "../routes/Home";
 import NewsScreen from "../routes/News";
 import SingleNewsScreen from "../routes/NewsSingle";
 import MapScreen from "../routes/Map";
+import MapSelectedLocationScreen from "../routes/MapSelectedLocation";
 import LocationsScreen from "../routes/Locations";
 import LocationTypePlaceScreen from "../routes/LocationTypePlace";
 import LocationSingleScreen from "../routes/LocationSingle";
@@ -53,6 +54,17 @@ export const AppNavigator = StackNavigator({
   Map: {
     path: "/map",
     screen: MapScreen,
+    navigationOptions: navigation => ({
+      title: I18n.t("map"),
+      headerLeft: <BackButton />,
+      headerRight: <MenuButton />,
+      headerStyle: Styles.header,
+      headerTitleStyle: Styles.headerTitle
+    })
+  },
+  MapSelectedLocation: {
+    path: "/map/:id",
+    screen: MapSelectedLocationScreen,
     navigationOptions: navigation => ({
       title: I18n.t("map"),
       headerLeft: <BackButton />,

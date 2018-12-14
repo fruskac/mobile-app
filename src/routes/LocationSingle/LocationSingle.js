@@ -29,7 +29,7 @@ class LocationSingle extends PureComponent<Props, State> {
           onPress={async () => {
             const resp = await askPermissions();
             if (resp) {
-              onNavigate("/map");
+              onNavigate("/map/"+data.id);
             }
           }}
           key={id}
