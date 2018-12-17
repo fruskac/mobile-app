@@ -4,7 +4,6 @@ const _getLocations = state =>
   state.locations["locations_" + state.settings.language];
 
 const _getLocationsAll = state => {
-  debugger 
   return state.locations && state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`] ? 
   state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`]
     .concat(state.locations["places_" + (state.settings.language == 'en' ? 'en' : 'rs')])
@@ -82,7 +81,6 @@ export const getInfoSingle = createSelector(
 export const getPlaceOrCategory = createSelector(
   [_getLocationsAll, _getLocationTypePlaceId],
   (locations, locationTypePlaceId) => {
-    debugger
     return locations.filter(item => item.key == locationTypePlaceId || item.name == locationTypePlaceId)[0]
   }
 );
