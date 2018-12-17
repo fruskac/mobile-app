@@ -1,9 +1,6 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { TouchableOpacity, Text, Image } from "react-native";
-import I18n from "react-native-i18n";
-import Icon from "react-native-vector-icons/Ionicons";
+import { TouchableOpacity, Image } from "react-native";
 
 import Styles from "./Styles";
 

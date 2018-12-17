@@ -2,8 +2,6 @@
 import React, { PureComponent } from "react";
 import Hamburger from "./Hamburger";
 
-import Styles from "./Styles";
-
 type Props = {
   onToggleDrawer: () => void,
   drawerOpen: boolean,

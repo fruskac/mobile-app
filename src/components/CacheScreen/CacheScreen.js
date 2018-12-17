@@ -1,6 +1,5 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import AutoHeightImage from "react-native-auto-height-image";
 import { Animated, Easing, View, Text, Image } from "react-native";
 
@@ -14,6 +13,8 @@ type Props = {
   done: boolean,
   screen: string,
   onFetchInfos: (language: string) => void,
+  onFetchMap: (language: string) => void,
+  onFetchLocations: (language: string) => void,
 };
 type State = {
   opacity: Animated.Value,
@@ -32,6 +33,8 @@ class CacheScreen extends PureComponent<Props, State> {
       hidden: false
     };
     props.onFetchInfos('rs');
+    props.onFetchMap('rs');
+    props.onFetchLocations('rs');
     this.onFadeOutStart = this.onFadeOutStart.bind(this);
     this.onFadeOutFinish = this.onFadeOutFinish.bind(this);
   }

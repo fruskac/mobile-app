@@ -14,7 +14,7 @@ import CommonStyles, {
   accentColor
 } from "../../styles/CommonStyles";
 import Styles, { menuHeight } from "./Styles";
-import * as Icons from "../../styles/Icons";
+// import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
@@ -75,12 +75,6 @@ class Locations extends PureComponent<Props, State> {
               index % 2 === 0 ? Styles.withRightBorder : {}
             ]}
           >
-            <SvgUri
-              width={50}
-              height={45}
-              source={Icons[t.replace("-", "")]}
-              fill={Icons.colors[t.replace("-", "")]}
-            />
             <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
           </TouchableOpacity>
         ))}

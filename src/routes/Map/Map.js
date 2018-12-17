@@ -5,8 +5,11 @@ import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StyleSheet, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
-import SvgUri from "react-native-svg-uri";
+import Icon from '../../components/Icon/Icon';
+// import SVGImage from 'react-native-svg-image';
 import * as Icons from "../../styles/Icons";
+import SvgUri from "react-native-svg-uri";
+
 const timer = require("react-native-timer");
 
 type Props = {
@@ -96,6 +99,8 @@ class Map extends PureComponent<Props, State> {
                 source={Icons[location['category'].replace("-", "")]}
                 fill="#fff"
               />
+            {/* <View style={styles.annotationContainer}>
+              <Icon name="Pencil"/> */}
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />
           </MapBox.PointAnnotation>

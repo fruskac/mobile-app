@@ -5,8 +5,6 @@ import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StyleSheet, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
-import SvgUri from "react-native-svg-uri";
-import * as Icons from "../../styles/Icons";
 const timer = require("react-native-timer");
 
 type Props = {
@@ -66,7 +64,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
   }
 
   render() {
-    const { locationsForMap, tags, onNavigate, language, id } = this.props;
+    const { locationsForMap, id } = this.props;
     let selectedLocation = locationsForMap.filter(loc => loc.id === id)[0];
     if (!this.state.showMap) return null;
     return (
