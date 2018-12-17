@@ -109,7 +109,7 @@ class TrackMap extends PureComponent<Props, State> {
 
   render() {
     const { trackData } = this.props;
-    let trackColor = '#fff';
+    let trackColor = '#f00';
     if (trackData['track_category'].toLowerCase() === 'easy') {
       trackColor = easyColor;
     } else if(trackData['track_category'].toLowerCase() === 'medium') {

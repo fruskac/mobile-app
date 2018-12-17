@@ -8,6 +8,9 @@ export const lookouts = require("../assets/icons/lookouts.svg");
 export const meadows = require("../assets/icons/meadows.svg");
 export const waterfalls = require("../assets/icons/waterfalls.svg");
 export const fishponds = require("../assets/icons/fishponds.svg");
+export const restaurants = require("../assets/icons/restaurants.svg");
+export const wineries = require("../assets/icons/wineries.svg");
+export const households = require("../assets/icons/households.svg");
 
 export const miscMap = require("../assets/icons-png/misc.png");
 export const springsMap = require("../assets/icons-png/springs.png");
@@ -19,6 +22,9 @@ export const lookoutsMap = require("../assets/icons-png/lookouts.png");
 export const meadowsMap = require("../assets/icons-png/meadows.png");
 export const waterfallsMap = require("../assets/icons-png/waterfalls.png");
 export const fishpondsMap = require("../assets/icons-png/fishponds.png");
+export const restaurantsMap = require("../assets/icons-png/restaurants.png");
+export const wineriesMap = require("../assets/icons-png/cellars.png");
+export const householdsMap = require("../assets/icons-png/households.png");
 
 export const colors = {
   misc: "#DC175F",
@@ -30,5 +36,8 @@ export const colors = {
   lookouts: "#4219B2",
   meadows: "#9B9E46",
   waterfalls: "#54B0B4",
-  fishponds: "#529C75"
+  fishponds: "#529C75",
+  restaurants: "#D32F2F",
+  wineries: "#D32F2F",
+  households: "#D32F2F"
 };

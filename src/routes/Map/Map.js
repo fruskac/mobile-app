@@ -89,12 +89,12 @@ class Map extends PureComponent<Props, State> {
             onSelected={()=>{
               onNavigate("/location-single/"+Number(location.id))
             }}>
-            <View style={styles.annotationContainer}>
+            <View style={[styles.annotationContainer,{backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
               <SvgUri
-                width={21}
-                height={21}
+                width={18}
+                height={18}
                 source={Icons[location['category'].replace("-", "")]}
-                fill={Icons.colors[location['category'].replace("-", "")]}
+                fill="#fff"
               />
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />

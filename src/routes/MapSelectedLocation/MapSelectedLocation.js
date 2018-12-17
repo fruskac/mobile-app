@@ -88,12 +88,12 @@ class MapSelectedLocation extends PureComponent<Props, State> {
             id={"Map"+index}
             coordinate={[Number(location.lng), Number(location.lat)]}
             >
-            <View style={(location == selectedLocation) ? [styles.annotationContainer, styles.selectedMarker] : styles.annotationContainer}>
+            <View style={(location == selectedLocation) ? [styles.annotationContainer, styles.selectedMarker] : [styles.annotationContainer, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
               <SvgUri
-                width={21}
-                height={21}
+                width={(location == selectedLocation) ? 24 : 15}
+                height={(location == selectedLocation) ? 24 : 15}
                 source={Icons[location['category'].replace("-", "")]}
-                fill={Icons.colors[location['category'].replace("-", "")]}
+                fill={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"} 
               />
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />
@@ -109,21 +109,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   annotationContainer: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
-    borderRadius: 15,
+    borderRadius: 12,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
   },
   selectedMarker: {
-    width: 36,
-    height: 36,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
     borderWidth: 3,
-    borderColor: '#B80000',
-    zIndex: 100
+    borderColor: '#FF6659',
+    zIndex: 1000
   }
 });
 
