@@ -9,9 +9,9 @@ import {
 } from "../../styles/CommonStyles";
 
 export const menuHeight: number = 40;
-export const easyColor: string = "#808900"
-export const mediumColor: string = "#FCB900"
-export const hardColor: string = "#B80000"
+export const easyColor: string = "#808900";
+export const mediumColor: string = "#FCB900";
+export const hardColor: string = "#B80000";
 
 export default StyleSheet.create({
   topMenu: {

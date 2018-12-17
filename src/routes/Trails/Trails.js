@@ -1,16 +1,12 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { Image, View, Text, TouchableOpacity } from "react-native";
+import { Image, View, Text, TouchableOpacity, ScrollView } from "react-native";
 import I18n from "react-native-i18n";
 import HeaderAd from "../../components/HeaderAd/";
-import ItemList from "../../components/ItemList/";
 
-import CommonStyles, {
-    accentColor
-  } from "../../styles/CommonStyles";
-  import Styles from "./Styles";
-
+import CommonStyles, { accentColor } from "../../styles/CommonStyles";
+import Styles from "./Styles";
 
 type Props = {
     onNavigate: (route: string) => void,
@@ -81,13 +77,17 @@ class Trails extends PureComponent<Props, State> {
         </View>
     } else {
       listView = 
-        <View>
-            <Text>Mountain Bike</Text>
-            <ItemList 
-                items={tracks}
-                slug="/track-single/"
-            />
-        </View>
+        <ScrollView>
+            {tracks.map((track) => 
+                <TouchableOpacity key={track.id} style={Styles.menuItem} onPress={() => {onNavigate('/track-single/'+track.id)}} >
+                    <Image 
+                        style={{width: "100%", height: 90, borderRadius: 30}}
+                        source={{ uri: track.image }}
+                        resizeMode="cover" />
+                    <Text style={Styles.menuItemText}>{track.title}</Text>
+                </TouchableOpacity>    
+            )}
+        </ScrollView>
     }
 
     return (
