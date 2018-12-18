@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import I18n from "react-native-i18n";
-import SvgUri from "react-native-svg-uri";
+import * as Icons from "../../styles/Icons";
 
 import { LocationFilter } from "../../types";
 import HeaderAd from "../../components/HeaderAd/";
@@ -70,10 +70,15 @@ class Locations extends PureComponent<Props, State> {
             key={index}
             style={[
               Styles.topMenuItem,
-              { height: buttonHeight },
+              { height: buttonHeight, padding: 3 },
               index % 2 === 0 ? Styles.withRightBorder : {}
             ]}
           >
+            <Icon style={{top: 6}}
+              name={t.replace("-", "")}
+              size={45}
+              color={Icons.colors[t.replace("-", "")]}
+            />
             <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
           </TouchableOpacity>
         ))}

@@ -11,6 +11,7 @@ export const fishponds = require("../assets/icons/fishponds.svg");
 export const restaurants = require("../assets/icons/restaurants.svg");
 export const wineries = require("../assets/icons/wineries.svg");
 export const households = require("../assets/icons/households.svg");
+export const mountainhuts = require("../assets/icons/mountainhuts.svg");
 
 export const miscMap = require("../assets/icons-png/misc.png");
 export const springsMap = require("../assets/icons-png/springs.png");
@@ -25,6 +26,7 @@ export const fishpondsMap = require("../assets/icons-png/fishponds.png");
 export const restaurantsMap = require("../assets/icons-png/restaurants.png");
 export const wineriesMap = require("../assets/icons-png/cellars.png");
 export const householdsMap = require("../assets/icons-png/households.png");
+export const mountainhutsMap = require("../assets/icons-png/households.png");
 
 export const colors = {
   misc: "#DC175F",
@@ -39,5 +41,6 @@ export const colors = {
   fishponds: "#529C75",
   restaurants: "#D32F2F",
   wineries: "#D32F2F",
-  households: "#D32F2F"
+  households: "#D32F2F",
+  mountainhuts: "#D32F2F",
 };

@@ -5,6 +5,8 @@ import MapBox from "@mapbox/react-native-mapbox-gl";
 import { StyleSheet, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
+import Icon from '../../components/Icon/Icon';
+import * as Icons from "../../styles/Icons";
 const timer = require("react-native-timer");
 
 type Props = {
@@ -64,6 +66,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
   }
 
   render() {
+    console.disableYellowBox = true;
     const { locationsForMap, id } = this.props;
     let selectedLocation = locationsForMap.filter(loc => loc.id === id)[0];
     if (!this.state.showMap) return null;
@@ -87,11 +90,10 @@ class MapSelectedLocation extends PureComponent<Props, State> {
             coordinate={[Number(location.lng), Number(location.lat)]}
             >
             <View style={(location == selectedLocation) ? [styles.annotationContainer, styles.selectedMarker] : [styles.annotationContainer, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
-              <SvgUri
-                width={(location == selectedLocation) ? 24 : 15}
-                height={(location == selectedLocation) ? 24 : 15}
-                source={Icons[location['category'].replace("-", "")]}
-                fill={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"} 
+              <Icon 
+                name={[location['category'].replace("-", "")]}
+                size={(location == selectedLocation) ? 24 : 15}
+                color={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"}
               />
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />

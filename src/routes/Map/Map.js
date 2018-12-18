@@ -6,9 +6,7 @@ import { StyleSheet, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
 import Icon from '../../components/Icon/Icon';
-// import SVGImage from 'react-native-svg-image';
-// import * as Icons from "../../styles/Icons";
-// import SvgUri from "react-native-svg-uri";
+import * as Icons from "../../styles/Icons";
 
 
 const timer = require("react-native-timer");
@@ -19,7 +17,6 @@ type Props = {
   onNavigate: (route: string) => void,
   onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,
-  // napraviti selectedLocation - ukoliko je prosledjen ovaj parametar, mapa se centrira na tu lokaciju i njoj se menja stil, u suprotnom se centrira userLocation.
 };
 type State = {
   showMap: boolean,
@@ -69,6 +66,7 @@ class Map extends PureComponent<Props, State> {
   }
 
   render() {
+    console.disableYellowBox = true;
     const { locationsForMap, tags, onNavigate, language } = this.props;
     
     if (!this.state.showMap) return null;
@@ -93,11 +91,11 @@ class Map extends PureComponent<Props, State> {
             onSelected={()=>{
               onNavigate("/location-single/" + Number(location.id))
             }}>
-            <View style={styles.annotationContainer}>
+            <View style={[styles.annotationContainer,{backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
               <Icon 
-                name="misc"
-                size={21}
-                color='red'
+                name={[location['category'].replace("-", "")]}
+                size={18}
+                color='#fff'
               />
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />

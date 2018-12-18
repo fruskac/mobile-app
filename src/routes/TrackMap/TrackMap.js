@@ -8,6 +8,7 @@ import CommonStyles from "../../styles/CommonStyles";
 import { LocationsList, Location } from "../../types";
 import SvgUri from "react-native-svg-uri";
 import * as Icons from "../../styles/Icons";
+import Icon from '../../components/Icon/Icon';
 const timer = require("react-native-timer");
 
 import exampleIcon from "../../assets/volem-logo.png";
@@ -18,6 +19,8 @@ type Props = {
   trackData: any,
   onNavigate: (route: string) => void,
   language: string,
+  onFetchMap: (language: string) => void,
+  locationsForMap: Array<any>,
 };
 type State = {
 };
@@ -50,6 +53,7 @@ class TrackMap extends PureComponent<Props, State> {
 
   componentDidMount() {
     const { trackData } = this.props;
+    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         this.setState({
@@ -108,7 +112,8 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   render() {
-    const { trackData } = this.props;
+    console.disableYellowBox = true;
+    const { trackData, locationsForMap } = this.props;
     let trackColor = '#f00';
     if (trackData['track_category'].toLowerCase() === 'easy') {
       trackColor = easyColor;
@@ -131,7 +136,22 @@ class TrackMap extends PureComponent<Props, State> {
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor: trackColor, lineWidth: 3}} />
           </MapBox.ShapeSource>
-
+          {locationsForMap.map((location, index) => (
+            <MapBox.PointAnnotation
+              key={index}
+              id={"Map"+index}
+              coordinate={[Number(location.lng), Number(location.lat)]}
+              >
+              <View style={[styles.annotationContainer, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
+                <Icon 
+                  name={[location['category'].replace("-", "")]}
+                  size={15}
+                  color={"#fff"}
+                />
+              </View>
+              <MapBox.Callout title={location.title+', '+location.place} />
+            </MapBox.PointAnnotation>
+          ))}
         </MapBox.MapView>
       </View>
     );
@@ -142,6 +162,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  annotationContainer: {
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+  }
 });
 
 export default TrackMap;
