@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
 import Icon from '../../components/Icon/Icon';
@@ -16,7 +16,6 @@ type Props = {
   onNavigate: (route: string) => void,
   onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,
-  // napraviti selectedLocation - ukoliko je prosledjen ovaj parametar, mapa se centrira na tu lokaciju i njoj se menja stil, u suprotnom se centrira userLocation.
 };
 type State = {
   showMap: boolean,
@@ -89,7 +88,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
             id={"Map"+index}
             coordinate={[Number(location.lng), Number(location.lat)]}
             >
-            <View style={(location == selectedLocation) ? [styles.annotationContainer, styles.selectedMarker] : [styles.annotationContainer, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
+            <View style={(location == selectedLocation) ? [CommonStyles.annotationContainerMini, CommonStyles.selectedMarker] : [CommonStyles.annotationContainerMini, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
               <Icon 
                 name={[location['category'].replace("-", "")]}
                 size={(location == selectedLocation) ? 24 : 15}
@@ -103,29 +102,5 @@ class MapSelectedLocation extends PureComponent<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  annotationContainer: {
-    width: 24,
-    height: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 12,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-  },
-  selectedMarker: {
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    borderWidth: 3,
-    borderColor: '#FF6659',
-    zIndex: 1000
-  }
-});
 
 export default MapSelectedLocation;

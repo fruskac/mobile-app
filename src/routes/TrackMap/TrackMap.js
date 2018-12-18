@@ -1,26 +1,22 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { Image, Text, StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View} from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
-import { LocationsList, Location } from "../../types";
-import SvgUri from "react-native-svg-uri";
 import * as Icons from "../../styles/Icons";
 import Icon from '../../components/Icon/Icon';
 const timer = require("react-native-timer");
 
-import exampleIcon from "../../assets/volem-logo.png";
 import { easyColor, mediumColor, hardColor } from "../Trails/Styles";
 
 type Props = {
   id: string,
   trackData: any,
-  onNavigate: (route: string) => void,
   language: string,
-  onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,
+  onNavigate: (route: string) => void,
+  onFetchMap: (language: string) => void,
 };
 type State = {
 };
@@ -142,7 +138,7 @@ class TrackMap extends PureComponent<Props, State> {
               id={"Map"+index}
               coordinate={[Number(location.lng), Number(location.lat)]}
               >
-              <View style={[styles.annotationContainer, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
+              <View style={[CommonStyles.annotationContainerMini, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
                 <Icon 
                   name={[location['category'].replace("-", "")]}
                   size={15}
@@ -161,16 +157,6 @@ class TrackMap extends PureComponent<Props, State> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  annotationContainer: {
-    width: 24,
-    height: 24,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 12,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
   }
 });
 

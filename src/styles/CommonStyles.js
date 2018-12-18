@@ -69,5 +69,34 @@ export default StyleSheet.create({
     color: "white",
     padding: 4,
     fontSize: 16
+  },
+  // Map
+  annotationContainer: {
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 15,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+  },
+  annotationContainerMini: {
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: 12,
+    borderWidth: 0.5,
+    borderColor: '#d6d7da',
+  },
+  selectedMarker: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    borderWidth: 3,
+    borderColor: '#FF6659',
+    zIndex: 1000
   }
 });

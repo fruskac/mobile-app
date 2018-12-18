@@ -2,12 +2,11 @@
 
 import React, { PureComponent } from "react";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
 import Icon from '../../components/Icon/Icon';
 import * as Icons from "../../styles/Icons";
-
 
 const timer = require("react-native-timer");
 
@@ -91,7 +90,7 @@ class Map extends PureComponent<Props, State> {
             onSelected={()=>{
               onNavigate("/location-single/" + Number(location.id))
             }}>
-            <View style={[styles.annotationContainer,{backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
+            <View style={[CommonStyles.annotationContainer,{backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
               <Icon 
                 name={[location['category'].replace("-", "")]}
                 size={18}
@@ -105,27 +104,5 @@ class Map extends PureComponent<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  annotationContainer: {
-    width: 30,
-    height: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
-    borderRadius: 15,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-  },
-  selectedMarker: {
-    width: 33,
-    height: 33,
-    borderWidth: 1.5,
-    borderColor: '#B80000',
-  }
-});
 
 export default Map;

@@ -58,7 +58,9 @@ class ItemSingle extends PureComponent<Props, State> {
               paddingBottom: 0,
               fontSize:12,
               margin: 6,
-              color: "#454546"
+              color: "#454546",
+              textAlign: "justify",
+              textJustify: "inter-word"
             },
             strong: {
               fontFamily: "Merriweather-LightItalic",
