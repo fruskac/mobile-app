@@ -22,6 +22,7 @@
     "react-native-render-html": "^3.10.0",
     "react-native-svg-icon": "^0.8.1",
     "react-native-svg-image": "^2.0.1",
+    "react-native-vector-icons": "^4.5.0",
     "react-native-xml2js": "^1.0.3",
     "react-navigation": "1.0.0-beta.27",
     "react-xml-parser": "^1.0.8",
@@ -67,6 +68,11 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ]
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
     ]
   }
 }

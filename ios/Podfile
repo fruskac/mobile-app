@@ -34,6 +34,8 @@ target 'Fruskac' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       if target.name == 'yoga'

@@ -160,6 +160,7 @@ dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
     compile project(':mapbox-react-native-mapbox-gl')
     compile project(':react-native-i18n')
+    compile project(':react-native-vector-icons')
 }
 
 // Run this once to be able to run the application with BUCK

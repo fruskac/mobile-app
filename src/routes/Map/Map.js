@@ -7,8 +7,9 @@ import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
 import Icon from '../../components/Icon/Icon';
 // import SVGImage from 'react-native-svg-image';
-import * as Icons from "../../styles/Icons";
-import SvgUri from "react-native-svg-uri";
+// import * as Icons from "../../styles/Icons";
+// import SvgUri from "react-native-svg-uri";
+
 
 const timer = require("react-native-timer");
 
@@ -90,17 +91,14 @@ class Map extends PureComponent<Props, State> {
             id={"Map"+index}
             coordinate={[Number(location.lng), Number(location.lat)]}
             onSelected={()=>{
-              onNavigate("/location-single/"+Number(location.id))
+              onNavigate("/location-single/" + Number(location.id))
             }}>
-            <View style={[styles.annotationContainer,{backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
-              <SvgUri
-                width={18}
-                height={18}
-                source={Icons[location['category'].replace("-", "")]}
-                fill="#fff"
+            <View style={styles.annotationContainer}>
+              <Icon 
+                name="misc"
+                size={21}
+                color='red'
               />
-            {/* <View style={styles.annotationContainer}>
-              <Icon name="Pencil"/> */}
             </View>
             <MapBox.Callout title={location.title+', '+location.place} />
           </MapBox.PointAnnotation>

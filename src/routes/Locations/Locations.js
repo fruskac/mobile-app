@@ -14,7 +14,6 @@ import CommonStyles, {
   accentColor
 } from "../../styles/CommonStyles";
 import Styles, { menuHeight } from "./Styles";
-// import * as Icons from "../../styles/Icons";
 import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
