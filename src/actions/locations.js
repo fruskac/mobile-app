@@ -1,5 +1,7 @@
 // @flow
 import Permissions from 'react-native-permissions';
+const { ImageCacheManager } = require('react-native-cached-image');
+const manager = ImageCacheManager({});
 
 import {
   LOCATION_FILTER_CHANGE,
@@ -9,7 +11,6 @@ import {
   FETCH_MAP_SUCCESS,
 } from "./actionTypes";
 import { fetchCategories, fetchMap } from "../Api";
-
 import { LocationFilter } from "../types/";
 
 export function onLocationTypeChange(filter: LocationFilter) {
@@ -119,7 +120,10 @@ export const parseMapJson = (mapData: object) => {
       image: map.image,
       description_long: map.description_long_en,
     });
+    if (map.image) {
+      manager.downloadAndCacheUrl(map.image);
+    }
   });
-
+  
   return { map_rs: map_rs, map_en: map_en };
 }

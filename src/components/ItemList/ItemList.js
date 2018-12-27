@@ -1,9 +1,8 @@
 import React, { PureComponent } from "react";
 import type { Node } from "react";
-import { FlatList, Image, View, Text, TouchableOpacity } from "react-native";
+import { FlatList, View, Image, Text, TouchableOpacity } from "react-native";
+import { CachedImage, ImageCacheProvider } from 'react-native-cached-image';
 
-import type NewsData from "../../routes/News/News";
-import type LocationData from "../../types";
 import Styles from "./Styles";
 
 type Props = {
@@ -12,7 +11,8 @@ type Props = {
   language: string,
   header: Node,
   footer: Node,
-  onNavigate: (route: string) => void
+  onNavigate: (route: string) => void,
+  hasInternet: boolean,
 };
 type State = {};
 
@@ -38,11 +38,24 @@ class ItemList extends PureComponent<Props> {
         }}
       >
         <View style={Styles.itemHolder}>
-          <Image
-            style={Styles.itemImg}
-            source={{ uri: item.image || item.imageUrl }}
-            resizeMode="cover"
-          />
+        
+          {this.props.hasInternet ? 
+            <Image
+              style={Styles.itemImg}
+              source={{ uri: item.image || item.imageUrl }}
+              resizeMode="cover"
+            />
+            : 
+            <ImageCacheProvider
+              urlsToPreload={[item.image]}
+            >
+              <CachedImage
+                style={Styles.itemImg}
+                source={{ uri: item.image || item.imageUrl }}
+                resizeMode="cover"
+              />
+            </ImageCacheProvider>
+          }
           <Text style={Styles.itemText}>
             {item.title || item["title_" + language]}
           </Text>

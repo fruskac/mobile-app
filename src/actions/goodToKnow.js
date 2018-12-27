@@ -7,6 +7,8 @@ import {
     ALLOW_FETCH,
 } from './actionTypes';
 import { fetchGoodToKnow } from '../Api';
+const { ImageCacheManager } = require('react-native-cached-image');
+const manager = ImageCacheManager({});
 
 export const onFetchGoodToKnowStart = () =>
     ({ type: FETCH_GOOD_TO_KNOW_START });
@@ -38,6 +40,9 @@ export const onFetchGoodToKnow = (language, page) => (dispatch, getState) => {
 const addId = (news) => {
     news.map((item, i) => {
         item.id = i;
+        if (item.image) {
+            manager.downloadAndCacheUrl(item.image);
+        }
     });
     return news;
 }

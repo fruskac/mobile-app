@@ -3,9 +3,9 @@ package com.fruskac;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import com.mapbox.rctmgl.RCTMGLPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.mapbox.rctmgl.RCTMGLPackage;
-import com.mapbox.rctmgl.RCTMGLPackage;
 import com.horcrux.svg.SvgPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -29,12 +29,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new VectorIconsPackage(),
-            new RCTMGLPackage(),
-            new RCTMGLPackage(),
-            new SvgPackage(),
-          new RNI18nPackage(),
-          new VectorIconsPackage()
+          new RNFetchBlobPackage(),
+          new RCTMGLPackage(),
+          new VectorIconsPackage(),
+          new SvgPackage(),
+          new RNI18nPackage()
       );
     }
 

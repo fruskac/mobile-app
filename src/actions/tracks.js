@@ -3,7 +3,8 @@ import {
 } from "./actionTypes";
 
 import { fetchTracks } from "../Api";
-
+const { ImageCacheManager } = require('react-native-cached-image');
+const manager = ImageCacheManager({});
 
 export const onFetchTracksSuccess = (payload) =>
     ({ type: FETCH_TRACKS_SUCCESS, payload: payload });
@@ -45,6 +46,9 @@ export const parseTracksJson = (tracks) => {
             image: track.image,
             description_long: track.description_long_en,
         });
+        if (track.image) {
+            manager.downloadAndCacheUrl(track.image);
+        }
     });
     return { tracks_rs, tracks_en };
 }
