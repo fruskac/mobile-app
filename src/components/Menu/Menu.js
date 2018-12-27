@@ -4,7 +4,6 @@ import React, { PureComponent } from "react";
 import I18n from "react-native-i18n";
 import { Text, View, TouchableOpacity } from "react-native";
 import AutoHeightImage from "react-native-auto-height-image";
-
 import * as Screen from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";

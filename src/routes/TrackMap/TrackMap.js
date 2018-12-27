@@ -52,10 +52,12 @@ class TrackMap extends PureComponent<Props, State> {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
+        const areValidValues = this.checkLatLong(position.coords.latitude, position.coords.longitude);
+        console.log("VALID OR NOT " + areValidValues);
         this.setState({
           userLocation: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
+            lat: areValidValues ? position.coords.latitude : 45.1571,
+            lng: areValidValues ? position.coords.longitude : 19.7093,
           }
         });
       },
@@ -107,6 +109,8 @@ class TrackMap extends PureComponent<Props, State> {
     timer.clearTimeout("show");
   }
 
+  checkLatLong = (lat, long) => lat && long && lat < 90 && lat > -90 && long < 90 && long > -90;
+
   render() {
     console.disableYellowBox = true;
     const { trackData, locationsForMap } = this.props;
@@ -122,8 +126,8 @@ class TrackMap extends PureComponent<Props, State> {
     return (
       <View style={styles.container}>
         <MapBox.MapView
-          zoomLevel={15}
-          centerCoordinate={[this.state.userLocation.lat, this.state.userLocation.lng]}
+          zoomLevel={13}
+          centerCoordinate={[this.state.userLocation.lng, this.state.userLocation.lat]}
           style={styles.container}
           showUserLocation={true}
           surfaceView={true}
