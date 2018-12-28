@@ -35,7 +35,7 @@ class LocationSingle extends PureComponent<Props, State> {
           key={id}
           style={CommonStyles.onMapBtn}
         >
-          <Image source={require('../../assets/menu-icons-png/icons8-map-marker-24.png')} />
+          <Image source={require('../../assets/menu-icons-png/icons8-map-marker2-24.png')} />
         </TouchableOpacity>
         <ItemSingle
           image={data.image}

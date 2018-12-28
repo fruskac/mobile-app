@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import { Location } from "../../types";
 import Icon from '../../components/Icon/Icon';
@@ -70,35 +70,53 @@ class MapSelectedLocation extends PureComponent<Props, State> {
     let selectedLocation = locationsForMap.filter(loc => loc.id === id)[0];
     if (!this.state.showMap) return null;
     return (
-      <MapBox.MapView
-        zoomLevel={10}
-        ref={c => (this._map = c)}
-        minZoom={10}
-        maxZoom={15}
-        compassEnabled={true}
-        zoomEnabled={true}
-        showUserLocation={true}
-        centerCoordinate={[Number(selectedLocation.lat), Number(selectedLocation.lng)]}
-        style={CommonStyles.container}
-        userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
-      >
-        {locationsForMap.map((location, index) => (
-          <MapBox.PointAnnotation
-            key={index}
-            id={"Map"+index}
-            coordinate={[Number(location.lng), Number(location.lat)]}
-            >
-            <View style={(location == selectedLocation) ? [CommonStyles.annotationContainerMini, CommonStyles.selectedMarker] : [CommonStyles.annotationContainerMini, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
-              <Icon 
-                name={[location['category'].replace("-", "")]}
-                size={(location == selectedLocation) ? 24 : 15}
-                color={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"}
-              />
-            </View>
-            <MapBox.Callout title={location.title+', '+location.place} />
-          </MapBox.PointAnnotation>
-        ))}
-      </MapBox.MapView>
+      <View style={{flex: 1}}>
+        <TouchableOpacity
+          style={CommonStyles.onMapBtn}
+          onPress={()=>{
+            this.map.flyTo([Number(selectedLocation.lng), Number(selectedLocation.lat)], 5500);
+          }}
+        >
+          <Image source={require('../../assets/menu-icons-png/icons8-marker-24.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[CommonStyles.onMapBtn,{top: 104}]}
+          onPress={()=>{
+            this.map.flyTo([Number(this.state.userLocation.lng), Number(this.state.userLocation.lat)], 5500)
+          }}
+        >
+          <Image source={require('../../assets/menu-icons-png/icons8-street-view-24.png')} />
+        </TouchableOpacity>
+        <MapBox.MapView
+          zoomLevel={15}
+          ref={(ref) => (this.map = ref)}
+          minZoomLevel={12}
+          maxZoomLevel={21}
+          compassEnabled={true}
+          zoomEnabled={true}
+          showUserLocation={true}
+          centerCoordinate={[Number(selectedLocation.lng), Number(selectedLocation.lat)]}
+          style={CommonStyles.container}
+          userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
+        >
+          {locationsForMap.map((location, index) => (
+            <MapBox.PointAnnotation
+              key={index}
+              id={"Map"+index}
+              coordinate={[Number(location.lng), Number(location.lat)]}
+              >
+              <View style={(location == selectedLocation) ? [CommonStyles.annotationContainerMini, CommonStyles.selectedMarker] : [CommonStyles.annotationContainerMini, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
+                <Icon 
+                  name={[location['category'].replace("-", "")]}
+                  size={(location == selectedLocation) ? 24 : 15}
+                  color={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"}
+                />
+              </View>
+              <MapBox.Callout title={location.title+', '+location.place} />
+            </MapBox.PointAnnotation>
+          ))}
+        </MapBox.MapView>
+      </View>
     );
   }
 }

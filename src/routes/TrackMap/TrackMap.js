@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import MapBox from "@mapbox/react-native-mapbox-gl";
-import { StyleSheet, View} from "react-native";
+import { Image, TouchableOpacity, StyleSheet, View} from "react-native";
 import CommonStyles from "../../styles/CommonStyles";
 import * as Icons from "../../styles/Icons";
 import Icon from '../../components/Icon/Icon';
@@ -48,12 +48,12 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
+    this.map.fitBounds([45.720759, 20.683749], [44.351817, 19.237376]);
     const { trackData } = this.props;
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         const areValidValues = this.checkLatLong(position.coords.latitude, position.coords.longitude);
-        console.log("VALID OR NOT " + areValidValues);
         this.setState({
           userLocation: {
             lat: areValidValues ? position.coords.latitude : 45.1571,
@@ -86,6 +86,7 @@ class TrackMap extends PureComponent<Props, State> {
         });
 
         this.setState({data: JSON.stringify(coordinatesList)});
+        this.setState({routeStartCoordinates: coordinatesList[0]});
         this.setState({route:
         {
           "type": "FeatureCollection",
@@ -112,6 +113,7 @@ class TrackMap extends PureComponent<Props, State> {
   checkLatLong = (lat, long) => lat && long && lat < 90 && lat > -90 && long < 90 && long > -90;
 
   render() {
+    let userLocation = [Number(this.state.userLocation.lng), Number(this.state.userLocation.lat)];
     console.disableYellowBox = true;
     const { trackData, locationsForMap } = this.props;
     let trackColor = '#f00';
@@ -125,14 +127,36 @@ class TrackMap extends PureComponent<Props, State> {
 
     return (
       <View style={styles.container}>
+        <TouchableOpacity
+          style={CommonStyles.onMapBtn}
+          onPress={()=>{
+            this.map.flyTo([this.state.userLocation.lng, this.state.userLocation.lat], 5500)
+          }}
+        >
+          <Image source={require('../../assets/menu-icons-png/icons8-street-view-24.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[CommonStyles.onMapBtn,{top: 104}]}
+          onPress={()=>{
+            this.map.flyTo(this.state.routeStartCoordinates, 5500);
+          }}
+        >
+          <Image source={require('../../assets/menu-icons-png/icons8-route-24.png')} />
+        </TouchableOpacity>
         <MapBox.MapView
-          zoomLevel={13}
-          centerCoordinate={[this.state.userLocation.lng, this.state.userLocation.lat]}
+          ref={(ref) => (this.map = ref)}
+          pitch={15}
+          zoomLevel={16}
+          minZoomLevel={12}
+          maxZoomLevel={21}
+          centerCoordinate={userLocation}
           style={styles.container}
           showUserLocation={true}
           surfaceView={true}
           userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
-        > 
+          compassEnabled={true}
+          logoEnabled={false}
+        >
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor: trackColor, lineWidth: 3}} />
           </MapBox.ShapeSource>

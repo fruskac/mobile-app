@@ -71,10 +71,11 @@ class Map extends PureComponent<Props, State> {
     if (!this.state.showMap) return null;
     return (
       <MapBox.MapView
-        zoomLevel={10}
+        pitch={15}
+        zoomLevel={18}
         ref={c => (this._map = c)}
-        minZoom={10}
-        maxZoom={13}
+        minZoomLevel={12}
+        maxZoomLevel={21}
         compassEnabled={true}
         zoomEnabled={true}
         showUserLocation={true}
