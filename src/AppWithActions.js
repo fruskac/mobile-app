@@ -44,13 +44,10 @@ class AppWithActions extends PureComponent {
     console.log("CONNECTION INFO", connectionInfo);
     // dispatch action only if connection is known
     if (connectionInfo.type != "unknown")
-      this.props.onInternetStatus(
-        connectionInfo.type == "wifi" || connectionInfo.type == "cellular"
-      );
+      this.props.onInternetStatus(connectionInfo.type == "wifi" || connectionInfo.type == "cellular");
   }
 
   render() {
-    const { cachingDone } = this.props;
     return (
       <View
         style={{

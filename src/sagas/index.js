@@ -3,5 +3,5 @@ import { updateLanguage } from "./settingsSaga";
 import { cache } from "./cacheSaga";
 
 export default function* root() {
-  yield all([call(cache), call(updateLanguage)]);
+  yield all([call(updateLanguage)]);
 }

@@ -10,11 +10,12 @@ import { SCREEN_CACHING_ERROR } from "../../actions/actionTypes";
 
 type Props = {
   progress: number,
-  done: boolean,
-  screen: string,
+  error: string,
   onFetchInfos: (language: string) => void,
   onFetchMap: (language: string) => void,
   onFetchLocations: (language: string) => void,
+  cacheMap: () => void,
+  wholeStore: object,
 };
 type State = {
   opacity: Animated.Value,
@@ -30,17 +31,21 @@ class CacheScreen extends PureComponent<Props, State> {
 
     this.state = {
       opacity: new Animated.Value(1),
-      hidden: false
+      hidden: props.progress == 100,
     };
-    props.onFetchInfos('rs');
-    props.onFetchMap('rs');
-    props.onFetchLocations('rs');
     this.onFadeOutStart = this.onFadeOutStart.bind(this);
     this.onFadeOutFinish = this.onFadeOutFinish.bind(this);
   }
 
+  componentDidMount() {
+    this.props.onFetchInfos('rs');
+    this.props.onFetchMap('rs');
+    this.props.onFetchLocations('rs');
+    this.props.cacheMap();
+  }
+
   componentWillReceiveProps(nextProps: Object) {
-    if (this.props.done != nextProps.done && nextProps.done) {
+    if (nextProps.progress == 100) {
       this.onFadeOutStart();
     }
   }
@@ -63,11 +68,9 @@ class CacheScreen extends PureComponent<Props, State> {
   }
 
   render() {
-    const { progress, screen } = this.props;
-    const { hidden } = this.state;
+    const { progress, error } = this.props;
 
-    if (hidden) return null;
-
+    if (this.state.hidden) return null;
     return (
       <Animated.View style={[Styles.holder, { opacity: this.state.opacity }]}>
         <Text style={[CommonStyles.text, Styles.topText]}>Map...a</Text>
@@ -76,8 +79,7 @@ class CacheScreen extends PureComponent<Props, State> {
             width={ScreenWidth * 0.32}
             source={require("../../assets/volem-logo.png")}
           />
-
-          {screen == SCREEN_CACHING_ERROR ? (
+          {error ? (
             <Text
               style={[
                 CommonStyles.text,
@@ -85,7 +87,7 @@ class CacheScreen extends PureComponent<Props, State> {
                 CommonStyles.errorText
               ]}
             >
-              ERROR CACHING MAP AND DATA
+              {error}
             </Text>
           ) : (
             <Text style={[CommonStyles.text, Styles.progressText]}>

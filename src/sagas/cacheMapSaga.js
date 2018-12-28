@@ -8,6 +8,8 @@ let neLat = 45.211,
   swLat = 45.112557,
   swLng = 19.32377;
 
+const getToken = (state) => state.token
+
 export function* isMapCached() {
   // get cached packs
 
@@ -61,7 +63,6 @@ function cacheMap() {
         minZoom: 12,
         maxZoom: 13,
         bounds: [[neLng, neLat], [swLng, swLat]],
-        // styleURL: "mapbox://styles/alexgvozden/cjc7l0w1y3jcr2snwkmzb8vm2"
         styleURL: "mapbox://styles/alexgvozden/cjcadlwfi0mez2so63ttb7hxo"
       },
       (offlineRegion, status) => {

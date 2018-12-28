@@ -1,7 +1,6 @@
 import "regenerator-runtime/runtime";
 // Redux Store Configuration
 import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from "remote-redux-devtools";
 
@@ -22,7 +21,6 @@ const middleware = applyMiddleware(...middlewares);
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["cache"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
