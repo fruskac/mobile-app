@@ -13,7 +13,6 @@ export default StyleSheet.create({
     height: headerAdHeight,
     width: "100%",
     backgroundColor: bgColorHeaderAd,
-    marginBottom: 1,
     justifyContent: "center",
     alignItems: "center"
   }

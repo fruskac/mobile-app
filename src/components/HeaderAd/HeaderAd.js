@@ -2,23 +2,34 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, Text } from "react-native";
+import { Linking, Image, TouchableOpacity, Text } from "react-native";
 
 import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
 
 type Props = {
-  onOpenAd: () => void
+  onOpenAd: () => void,
+  onNavigate: (route: string) => void,
+  small_add: any
 };
 type State = {};
 
 class HeaderAd extends PureComponent<Props, State> {
   render() {
-    const { onOpenAd } = this.props;
+    const { onOpenAd, onNavigate, small_add } = this.props;
     return (
-      <View style={Styles.adHolder} onPress={onOpenAd}>
-        <Text style={CommonStyles.text}>HeaderAd</Text>
-      </View>
+      <TouchableOpacity onPress={()=>{
+        if (small_add["internal"]) {
+          onNavigate(small_add["link_url"]);
+        } else {
+          Linking.openURL(small_add["link_url"]);
+        }
+        }}>
+        <Image
+          style={Styles.adHolder}
+          source={{uri: small_add["img_url"]}}
+        />
+      </TouchableOpacity>
     );
   }
 }
