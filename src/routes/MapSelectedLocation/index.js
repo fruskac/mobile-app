@@ -14,10 +14,7 @@ const mapStateToProps = (state, ownProps) => {
     id: ownProps.navigation.state.params.id,
     language: getLanguage(state),
     locationsForMap: state.locations['map_'+getLanguage(state)],
-    tags:
-      state.settings.language == "en"
-        ? state.locations.tagsEn
-        : state.locations.tagsSr
+    tags: state.locations['tags_'+getLanguage(state)],
   };
 };
 

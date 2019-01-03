@@ -69,7 +69,7 @@ class CacheScreen extends PureComponent<Props, State> {
 
   render() {
     const { progress, error } = this.props;
-
+    
     if (this.state.hidden) return null;
     return (
       <Animated.View style={[Styles.holder, { opacity: this.state.opacity }]}>

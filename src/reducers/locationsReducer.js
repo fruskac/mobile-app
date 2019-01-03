@@ -11,27 +11,17 @@ import type {
   LocationFilter
 } from "../types/";
 
-//@flow
-
-// load demo data
-// const locationDataSr: LocationsList = require("../assets//Demo/locations-rs.json");
-// const locationDataEn: LocationsList = require("../assets//Demo/locations-en.json");
-
-// find all tags for both languages
-let tagsSr: Array<string> = [];
-let tagsEn: Array<string> = [];
-
 type LocationState = {
-  tagsSr: Array<string>,
-  tagsEn: Array<string>,
+  tags_rs: Array<string>,
+  tags_en: Array<string>,
   filter: LocationFilter,
   locations_sr: LocationsList,
   locations_en: LocationsList
 };
 
 const initialState = {
-  tagsSr: tagsSr,
-  tagsEn: tagsEn,
+  tags_rs: [],
+  tags_en: [],
   filter: "type",
   locations_sr: [],
   locations_en: [],
@@ -48,24 +38,6 @@ const locationsReducer = (
   action: Object
 ) => {
   switch (action.type) {
-    case LOCATIONS_UPDATE_EN:
-      const locationsDataEn = action.locations;
-      // reset tags list
-      tagsEn = [];
-      locationsDataEn.forEach(el => {
-        if (tagsEn.indexOf(el.tag) === -1) tagsEn.push(el.tag);
-      });
-      return { ...state, locations_en: locationsDataEn, tagsEn: tagsEn };
-      break;
-    case LOCATIONS_UPDATE_SR:
-      const locationsDataSr = action.locations;
-      // reset tags list
-      tagsSr = [];
-      locationsDataSr.forEach(el => {
-        if (tagsSr.indexOf(el.tag) === -1) tagsSr.push(el.tag);
-      });
-      return { ...state, locations_sr: locationsDataSr, tagsSr: tagsSr };
-      break;
     case LOCATION_FILTER_CHANGE:
       return { ...state, filter: action.filter };
 
@@ -78,8 +50,9 @@ const locationsReducer = (
         places_en: action.payload.places_en,
         tourism_rs: action.payload.tourism_rs,
         tourism_en: action.payload.tourism_en,
+        tags_en: action.payload.tags_en,
+        tags_rs: action.payload.tags_rs,
        };
-      break;
       
     case FETCH_MAP_SUCCESS:
       return {
@@ -87,7 +60,6 @@ const locationsReducer = (
         map_rs: action.payload.map_rs,
         map_en: action.payload.map_en,
        };
-      break;
 
     default:
       break;

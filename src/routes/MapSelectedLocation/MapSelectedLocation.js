@@ -12,7 +12,6 @@ const timer = require("react-native-timer");
 type Props = {
   id: string,
   language: string,
-  tags: Array<string>,
   onNavigate: (route: string) => void,
   onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,

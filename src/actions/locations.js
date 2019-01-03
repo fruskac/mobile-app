@@ -52,24 +52,41 @@ export const onFetchLocations = (language: string) => (dispatch: func) => {
     const locations = parseLocationJson(result.locations);
     const places = parseLocationJson(result.places);
     const tourism = parseLocationJson(result.tourism);
+    const tags = parseTags(locations);
     dispatch(onFetchLocationsSuccess({
       locations_sr: locations.entities_rs,
       locations_en: locations.entities_en,
       places_rs: places.entities_rs,
       places_en: places.entities_en,
       tourism_rs: tourism.entities_rs,
-      tourism_en: tourism.entities_en
+      tourism_en: tourism.entities_en,
+      tags_rs: tags.tags_rs,
+      tags_en: tags.tags_en,
     }));  
   })
   .catch((error) => console.log(error));
 };
 
+export const parseTags = (locations: array<any>) => {
+  const tags_en = [];
+  const tags_rs = [];
+  if (locations.entities_en) {
+    locations.entities_en.map((location) => {
+      tags_en.push({ key: location.key, name: location.name });
+    });
+  }
+  if (locations.entities_rs) {
+    locations.entities_rs.map((location) => {
+      tags_rs.push({ key: location.key, name: location.name });
+    });
+  }
 
+  return { tags_en, tags_rs };
+}
 
 export const parseLocationJson = (entity: object) => {
   const entities_rs = [];
   const entities_en = [];
-
   for (var key in entity) {
     if (entity.hasOwnProperty(key)) {
       entities_rs.push({ key: key, id: entity[key].id, name: entity[key].name_rs, description: entity[key].desctiption_rs });
@@ -77,7 +94,7 @@ export const parseLocationJson = (entity: object) => {
     }
   }
 
-  return { entities_rs: entities_rs, entities_en: entities_en };
+  return { entities_rs, entities_en };
 }
 
 export const onFetchMapSuccess = (payload: object) =>

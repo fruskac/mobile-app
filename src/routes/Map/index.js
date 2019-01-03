@@ -13,10 +13,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     language: getLanguage(state),
     locationsForMap: state.locations['map_'+getLanguage(state)],
-    tags:
-      state.settings.language == "en"
-        ? state.locations.tagsEn
-        : state.locations.tagsSr
   };
 };
 

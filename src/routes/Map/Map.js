@@ -12,7 +12,6 @@ const timer = require("react-native-timer");
 
 type Props = {
   language: string,
-  tags: Array<string>,
   onNavigate: (route: string) => void,
   onFetchMap: (language: string) => void,
   locationsForMap: Array<any>,
@@ -66,7 +65,7 @@ class Map extends PureComponent<Props, State> {
 
   render() {
     console.disableYellowBox = true;
-    const { locationsForMap, tags, onNavigate, language } = this.props;
+    const { locationsForMap, onNavigate } = this.props;
     
     if (!this.state.showMap) return null;
     return (

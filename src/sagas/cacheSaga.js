@@ -24,7 +24,6 @@ export function* cache(action) {
     const mapCached = yield isMapCached();
     if (!mapCached) {
       const successfullyCached = yield call(startCachingMap);
-      debugger
     }
     // if (allCachingSuccess) {
     //   yield put({ type: CACHING_DONE });

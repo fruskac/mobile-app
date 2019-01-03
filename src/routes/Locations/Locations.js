@@ -4,6 +4,7 @@ import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import I18n from "react-native-i18n";
 import * as Icons from "../../styles/Icons";
+import Icon from '../../components/Icon/Icon';
 
 import { LocationFilter } from "../../types";
 import HeaderAd from "../../components/HeaderAd/";
@@ -18,7 +19,7 @@ import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
   language: string,
-  tags: Array<string>,
+  tags: Array<any>,
   filter: string,
   onNavigate: (route: string) => void,
   onLocationTypeChange: (filter: LocationFilter) => void,
@@ -36,7 +37,7 @@ class Locations extends PureComponent<Props, State> {
   }
 
   render() {
-    const { tags, filter, language, onNavigate, onLocationTypeChange, places, map } = this.props;
+    const { tags, filter,  onNavigate, onLocationTypeChange, places, map } = this.props;
     // caluclate button height for button with icons
     const buttonHeight =
       (screenHeight -
@@ -62,10 +63,10 @@ class Locations extends PureComponent<Props, State> {
     if (filter == "type") {
       listView = 
       <View style={Styles.menu}>
-        {tags.map((t, index) => (
+        {tags.map((tag, index) => (
           <TouchableOpacity
             onPress={() => {
-              onNavigate("/location/" + t);
+              onNavigate("/location/" + tag.key);
             }}
             key={index}
             style={[
@@ -75,11 +76,11 @@ class Locations extends PureComponent<Props, State> {
             ]}
           >
             <Icon style={{top: 6}}
-              name={t.replace("-", "")}
+              name={tag.key.replace("-", "")}
               size={45}
-              color={Icons.colors[t.replace("-", "")]}
+              color={Icons.colors[tag.key.replace("-", "")]}
             />
-            <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
+            <Text style={CommonStyles.text}>{tag.name}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -118,7 +119,6 @@ class Locations extends PureComponent<Props, State> {
             <Text style={CommonStyles.textTabs}>{I18n.t("place")}</Text>
           </TouchableOpacity>
         </View>
-
         {listView}
       </View>
     );

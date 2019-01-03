@@ -13,9 +13,7 @@ const mapStateToProps = state => ({
   language: getLanguage(state),
   places: state.locations["places_rs"],
   map: state.locations["map_rs"],
-  tags: state.settings.language == "en"
-      ? state.locations.tagsEn
-      : state.locations.tagsSr
+  tags: state.locations['tags_' + getLanguage(state)],
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Locations);
