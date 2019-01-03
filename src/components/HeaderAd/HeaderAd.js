@@ -20,14 +20,14 @@ class HeaderAd extends PureComponent<Props, State> {
     return (
       <TouchableOpacity onPress={()=>{
         if (small_add["internal"]) {
-          onNavigate(small_add["link_url"]);
+          onNavigate(small_add["link_url_en"]);
         } else {
-          Linking.openURL(small_add["link_url"]);
+          Linking.openURL(small_add["link_url_en"]);
         }
         }}>
         <Image
           style={Styles.adHolder}
-          source={{uri: small_add["img_url"]}}
+          source={{uri: small_add["img_url_en"]}}
         />
       </TouchableOpacity>
     );

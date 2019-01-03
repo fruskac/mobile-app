@@ -1,7 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
 import AutoHeightImage from "react-native-auto-height-image";
-import { Animated, Easing, View, Text, Image } from "react-native";
+import { Animated, Easing, Linking, View, Text, Image, TouchableOpacity } from "react-native";
 
 import Styles from "./Styles";
 import { width as ScreenWidth } from "../../utils/Screen";
@@ -15,7 +15,10 @@ type Props = {
   onFetchMap: (language: string) => void,
   onFetchLocations: (language: string) => void,
   cacheMap: () => void,
+  onFetchConfig: (language: string) => void,
   wholeStore: object,
+  onNavigate: (route: string) => void,
+  sponsor_logo: any
 };
 type State = {
   opacity: Animated.Value,
@@ -42,6 +45,7 @@ class CacheScreen extends PureComponent<Props, State> {
     this.props.onFetchMap('rs');
     this.props.onFetchLocations('rs');
     this.props.cacheMap();
+    this.props.onFetchConfig('rs');
   }
 
   componentWillReceiveProps(nextProps: Object) {
@@ -68,8 +72,8 @@ class CacheScreen extends PureComponent<Props, State> {
   }
 
   render() {
-    const { progress, error } = this.props;
-    
+    const { progress, error, onNavigate, sponsor_logo } = this.props;
+
     if (this.state.hidden) return null;
     return (
       <Animated.View style={[Styles.holder, { opacity: this.state.opacity }]}>
@@ -95,7 +99,22 @@ class CacheScreen extends PureComponent<Props, State> {
             </Text>
           )}
         </View>
-        <Text style={[CommonStyles.text, Styles.bottomText]}>Sponsor Logo</Text>
+        <TouchableOpacity onPress={()=>{
+          if (sponsor_logo["internal"]) {
+            onNavigate(sponsor_logo["link_url"]);
+          } else {
+            Linking.openURL(sponsor_logo["link_url"]);
+          }
+          }}>
+          <Image
+            style={[Styles.bottomText,{
+              width: 90,
+              padding: 21,
+              paddingTop: 0
+            }]}
+            source={{uri: sponsor_logo["img_url"]}}
+          />
+        </TouchableOpacity>
       </Animated.View>
     );
   }
