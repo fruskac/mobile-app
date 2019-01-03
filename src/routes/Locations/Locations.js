@@ -80,7 +80,7 @@ class Locations extends PureComponent<Props, State> {
               size={45}
               color={Icons.colors[tag.key.replace("-", "")]}
             />
-            <Text style={CommonStyles.text}>{tag.name}</Text>
+            <Text style={CommonStyles.text}>{I18n.t(tag.key)}</Text>
           </TouchableOpacity>
         ))}
       </View>
