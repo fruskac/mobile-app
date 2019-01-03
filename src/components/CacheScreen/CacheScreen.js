@@ -15,6 +15,7 @@ type Props = {
   onFetchMap: (language: string) => void,
   onFetchLocations: (language: string) => void,
   cacheMap: () => void,
+  onFetchConfig: (language: string) => void,
   wholeStore: object,
 };
 type State = {
@@ -42,6 +43,7 @@ class CacheScreen extends PureComponent<Props, State> {
     this.props.onFetchMap('rs');
     this.props.onFetchLocations('rs');
     this.props.cacheMap();
+    this.props.onFetchConfig('rs');
   }
 
   componentWillReceiveProps(nextProps: Object) {

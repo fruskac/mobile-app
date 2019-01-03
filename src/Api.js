@@ -16,3 +16,6 @@ export const fetchTracks = (language) =>
 
 export const fetchInfo = (language) =>
     fetchUrl(`${BASE}/${language}/json/app-info`);
+
+export const fetchConfig = (language) =>
+    fetchUrl(`${BASE}/${language}/json/app-config`);

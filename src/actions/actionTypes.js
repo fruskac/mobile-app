@@ -45,3 +45,6 @@ export const FETCH_TRACKS_SUCCESS = "FETCH_TRACKS_SUCCESS";
 
 // fetching info data
 export const FETCH_INFO_SUCCESS = "FETCH_INFO_SUCCESS";
+
+// fetching info data
+export const FETCH_CONFIG_SUCCESS = "FETCH_CONFIG_SUCCESS";
