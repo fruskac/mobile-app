@@ -18,7 +18,6 @@ import Styles, { menuHeight } from "./Styles";
 import { height as screenHeight } from "../../utils/Screen";
 
 type Props = {
-  language: string,
   tags: Array<any>,
   filter: string,
   onNavigate: (route: string) => void,
@@ -32,8 +31,8 @@ type State = {};
 
 class Locations extends PureComponent<Props, State> {
   componentDidMount = () => {
-    this.props.onFetchLocations(this.props.language === 'en' ? 'en' : 'rs');
-    this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
+    this.props.onFetchLocations('rs');
+    this.props.onFetchMap('rs');
   }
 
   render() {

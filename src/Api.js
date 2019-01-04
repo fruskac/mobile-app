@@ -3,7 +3,7 @@ import { fetchUrl } from "./utils/Fetch";
 const BASE = "https://fruskac.net";
 
 export const fetchCategories = (language) =>
-    fetchUrl(`${BASE}/${language}/json/app-categories`);
+    fetchUrl(`${BASE}/rs/json/app-categories`);
 
 export const fetchGoodToKnow = (language, page) =>
     fetchUrl(`${BASE}/${language}/json/app-good-to-know${page ? '?page=' + page : ''}`);

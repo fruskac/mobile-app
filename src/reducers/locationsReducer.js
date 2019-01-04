@@ -15,8 +15,6 @@ type LocationState = {
   tags_rs: Array<string>,
   tags_en: Array<string>,
   filter: LocationFilter,
-  locations_sr: LocationsList,
-  locations_en: LocationsList
 };
 
 const initialState = {

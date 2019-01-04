@@ -6,7 +6,6 @@ import { Animated, Easing, Linking, View, Text, Image, TouchableOpacity } from "
 import Styles from "./Styles";
 import { width as ScreenWidth } from "../../utils/Screen";
 import CommonStyles from "../../styles/CommonStyles";
-import { SCREEN_CACHING_ERROR } from "../../actions/actionTypes";
 
 type Props = {
   progress: number,

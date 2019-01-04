@@ -30,8 +30,7 @@ class TrackMap extends PureComponent<Props, State> {
     this.state = {
       showMap: false,
       userLocation: { lat: 0, lng: 0 },
-      route:
-        {
+      route: {
           "type": "FeatureCollection",
           "features": [
             {
@@ -47,30 +46,39 @@ class TrackMap extends PureComponent<Props, State> {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.map.fitBounds([45.720759, 20.683749], [44.351817, 19.237376]);
     const { trackData } = this.props;
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-    this._watchPositionId = navigator.geolocation.watchPosition(
-      position => {
-        const areValidValues = this.checkLatLong(position.coords.latitude, position.coords.longitude);
-        this.setState({
-          userLocation: {
-            lat: areValidValues ? position.coords.latitude : 45.1571,
-            lng: areValidValues ? position.coords.longitude : 19.7093,
-          }
-        });
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }
+        this.setState({ userLocation: userLocation });
       },
       error => console.log(error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
     );
-
     timer.setTimeout(
       "show",
       () => {
         this.setState({ showMap: true });
       },
       300
+    );
+
+    this._watchPositionId = navigator.geolocation.watchPosition(
+      position => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }
+        this.setState({ userLocation: userLocation });
+      },
+      error => console.log(error),
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
     );
 
     fetch(trackData.track_url)
@@ -109,8 +117,6 @@ class TrackMap extends PureComponent<Props, State> {
     navigator.geolocation.clearWatch(this._watchPositionId);
     timer.clearTimeout("show");
   }
-
-  checkLatLong = (lat, long) => lat && long && lat < 90 && lat > -90 && long < 90 && long > -90;
 
   render() {
     let userLocation = [Number(this.state.userLocation.lng), Number(this.state.userLocation.lat)];

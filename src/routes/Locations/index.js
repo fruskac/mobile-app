@@ -10,7 +10,6 @@ import { onLocationTypeChange, onFetchLocations, onFetchMap } from "../../action
 const mapDispatchToProps = { onNavigate, onLocationTypeChange, onFetchLocations, onFetchMap };
 const mapStateToProps = state => ({
   filter: state.locations.filter,
-  language: getLanguage(state),
   places: state.locations["places_rs"],
   map: state.locations["map_rs"],
   tags: state.locations['tags_' + getLanguage(state)],

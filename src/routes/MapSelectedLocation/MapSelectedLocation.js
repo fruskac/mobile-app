@@ -35,6 +35,26 @@ class MapSelectedLocation extends PureComponent<Props, State> {
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        }
+        this.setState({ userLocation: userLocation });
+      },
+      error => console.log(error),
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
+    );
+    timer.setTimeout(
+      "show",
+      () => {
+        this.setState({ showMap: true });
+      },
+      300
+    );
+
     this._watchPositionId = navigator.geolocation.watchPosition(
       position => {
         this.setState({
