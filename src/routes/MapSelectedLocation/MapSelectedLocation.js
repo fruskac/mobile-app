@@ -35,7 +35,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const userLocation = {
@@ -45,7 +45,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
         this.setState({ userLocation: userLocation });
       },
       error => console.log(error),
-      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
+      { enableHighAccuracy: true, timeout: 40000 },
     );
     timer.setTimeout(
       "show",
@@ -65,7 +65,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
         });
       },
       error => console.log(error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      { enableHighAccuracy: true, timeout: 40000, maximumAge: 1000 }
     );
 
     // show map only after navigator animation finishes

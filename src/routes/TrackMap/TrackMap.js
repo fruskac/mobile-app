@@ -59,7 +59,7 @@ class TrackMap extends PureComponent<Props, State> {
         this.setState({ userLocation: userLocation });
       },
       error => console.log(error),
-      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
+      { enableHighAccuracy: true, timeout: 20000 },
     );
     timer.setTimeout(
       "show",
@@ -78,7 +78,7 @@ class TrackMap extends PureComponent<Props, State> {
         this.setState({ userLocation: userLocation });
       },
       error => console.log(error),
-      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
 
     fetch(trackData.track_url)
