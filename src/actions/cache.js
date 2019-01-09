@@ -3,9 +3,9 @@
 import { CACHING_UPDATE, INTERNET_STATUS, CACHING_ERROR } from "./actionTypes";
 import MapBox from "@mapbox/react-native-mapbox-gl";
 import { NetInfo } from "react-native";
-
-let neLat = 45.211,
-  neLng = 19.935,
+ 
+let neLat = 45.265069,
+  neLng = 19.924718,
   swLat = 45.112557,
   swLng = 19.32377;
 
@@ -44,8 +44,8 @@ export const cacheMap = () => async (dispatch, getState) => {
   MapBox.offlineManager.createPack(
     {
       name: "FruskaGora",
-      minZoom: 12,
-      maxZoom: 20,
+      minZoom: 10,
+      maxZoom: 22,
       bounds: [[neLng, neLat], [swLng, swLat]],
       styleURL: MapBox.StyleURL.Street,
     },

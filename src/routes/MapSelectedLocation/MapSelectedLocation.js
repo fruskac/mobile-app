@@ -109,8 +109,8 @@ class MapSelectedLocation extends PureComponent<Props, State> {
         <MapBox.MapView
           zoomLevel={15}
           ref={(ref) => (this.map = ref)}
-          minZoomLevel={12}
-          maxZoomLevel={21}
+          minZoomLevel={10}
+          maxZoomLevel={22}
           compassEnabled={true}
           zoomEnabled={true}
           showUserLocation={true}

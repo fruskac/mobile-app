@@ -98,7 +98,8 @@ class CacheScreen extends PureComponent<Props, State> {
             </Text>
           )}
         </View>
-        <TouchableOpacity onPress={()=>{
+        { sponsor_logo ? 
+          <TouchableOpacity onPress={()=>{
           if (sponsor_logo["internal"]) {
             onNavigate(sponsor_logo["link_url"]);
           } else {
@@ -114,6 +115,9 @@ class CacheScreen extends PureComponent<Props, State> {
             source={{uri: sponsor_logo["img_url"]}}
           />
         </TouchableOpacity>
+        : null
+        }
+       
       </Animated.View>
     );
   }

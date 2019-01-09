@@ -73,8 +73,8 @@ class Map extends PureComponent<Props, State> {
         pitch={15}
         zoomLevel={18}
         ref={c => (this._map = c)}
-        minZoomLevel={12}
-        maxZoomLevel={21}
+        minZoomLevel={10}
+        maxZoomLevel={22}
         compassEnabled={true}
         zoomEnabled={true}
         showUserLocation={true}

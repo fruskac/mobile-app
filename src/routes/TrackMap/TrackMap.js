@@ -152,8 +152,8 @@ class TrackMap extends PureComponent<Props, State> {
           ref={(ref) => (this.map = ref)}
           pitch={15}
           zoomLevel={16}
-          minZoomLevel={12}
-          maxZoomLevel={21}
+          minZoomLevel={10}
+          maxZoomLevel={22}
           centerCoordinate={userLocation}
           style={styles.container}
           showUserLocation={true}

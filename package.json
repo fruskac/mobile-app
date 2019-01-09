@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
-    "@mapbox/react-native-mapbox-gl": "^6.0.3-rc1",
+    "@mapbox/react-native-mapbox-gl": "^6.1.3",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "parse-gpx": "^1.2.0",
