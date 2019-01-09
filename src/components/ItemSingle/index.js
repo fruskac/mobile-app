@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { Dimensions, Text, ScrollView, Image } from "react-native";
 import * as Screen from "../../utils/Screen";
 import HTML from 'react-native-render-html';

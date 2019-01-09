@@ -7,7 +7,6 @@ import { onFetchLocations, onFetchMap } from "../../actions/locations";
 import { cacheMap } from "../../actions/cache";
 import { onFetchConfig } from "../../actions/ads";
 import { getSponsorLogo } from "../../selectors/settings";
-import { onNavigate } from "../../actions/navigation";
 
 const mapDispatchToProps = { onFetchInfos, onFetchLocations, onFetchMap, cacheMap, onFetchConfig };
 const mapStateToProps = state => ({

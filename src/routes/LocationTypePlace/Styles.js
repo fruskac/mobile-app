@@ -2,7 +2,7 @@
  * @flow
  */
 import { StyleSheet } from "react-native";
-import { textColor, bgColorHeaderAd } from "../../styles/CommonStyles";
+import { textColor } from "../../styles/CommonStyles";
 
 export default StyleSheet.create({
   text: {

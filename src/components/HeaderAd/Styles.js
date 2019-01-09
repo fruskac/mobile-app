@@ -1,9 +1,8 @@
 /**
  * @flow
  */
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 import {
-  textColor,
   bgColorHeaderAd,
   headerAdHeight
 } from "../../styles/CommonStyles";

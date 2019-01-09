@@ -1,10 +1,8 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { Linking, Image, TouchableOpacity, Text } from "react-native";
 
-import CommonStyles from "../../styles/CommonStyles";
 import Styles from "./Styles";
 
 type Props = {
@@ -16,7 +14,7 @@ type State = {};
 
 class HeaderAd extends PureComponent<Props, State> {
   render() {
-    const { onOpenAd, onNavigate, small_add } = this.props;
+    const { onNavigate, small_add } = this.props;
     return (
       <TouchableOpacity onPress={()=>{
         if (small_add["internal"]) {

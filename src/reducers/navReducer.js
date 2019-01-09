@@ -7,7 +7,6 @@ const initialState = AppNavigator.router.getStateForAction(firstAction);
 
 const navReducer = (state = initialState, action) => {
   let nextState;
-  // console.log("nav red", action);
 
   switch (action.type) {
     case NAVIGATE_BACK:
@@ -18,11 +17,9 @@ const navReducer = (state = initialState, action) => {
       break;
     case NAVIGATE:
       nextState = AppNavigator.router.getStateForAction(
-        // NavigationActions.navigate({ routeName: action.route }),
-        AppNavigator.router.getActionForPathAndParams(action.route),
-        action.reset ? initialState : state
+      AppNavigator.router.getActionForPathAndParams(action.route),
+      action.reset ? initialState : state
       );
-
       break;
   }
 

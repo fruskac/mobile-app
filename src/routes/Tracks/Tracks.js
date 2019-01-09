@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { View } from "react-native";
 
 import HeaderAd from "../../components/HeaderAd/";

@@ -1,5 +1,3 @@
-import { accentColor } from "../../styles/CommonStyles";
-
 export default drawerStyles = {
     drawer: {
         shadowColor: "#000",

@@ -1,9 +1,7 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { View, Text, TouchableOpacity } from "react-native";
-import AutoHeightImage from "react-native-auto-height-image";
+import { View } from "react-native";
 
 import Menu from "../../components/Menu";
 import CommonStyles from "../../styles/CommonStyles";
@@ -15,7 +13,6 @@ class Home extends PureComponent<Props, State> {
   render() {
     return (
       <View style={CommonStyles.container}>
-        {/* TODO replace with image supplied by API */}
         <Menu />
       </View>
     );

@@ -2,9 +2,7 @@
  * @flow
  */
 import { StyleSheet } from "react-native";
-
 import { textColor } from "../../styles/CommonStyles";
-import * as Screen from "../../utils/Screen";
 
 export default StyleSheet.create({
   textTitle: {

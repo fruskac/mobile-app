@@ -3,7 +3,7 @@
 import { connect } from "react-redux";
 import HeaderAd from "./HeaderAd";
 import { onOpenAd, onNavigate } from "../../actions/navigation";
-import { getLanguage, getSmallAd } from "../../selectors/settings";
+import { getSmallAd } from "../../selectors/settings";
 
 const mapDispatchToProps = {
   onOpenAd,

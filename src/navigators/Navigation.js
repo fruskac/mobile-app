@@ -23,7 +23,6 @@ import TrackSingleScreen from "../routes/TrackSingle";
 import TrackMapScreen from "../routes/TrackMap"; 
 import InfoScreen from "../routes/Info";
 import InfoSingleScreen from "../routes/InfoSingle";
-import DonateScreen from "../routes/Donate";
 import Styles from "./Styles";
 
 import BackButton from "../components/BackButton";
@@ -200,17 +199,6 @@ export const AppNavigator = StackNavigator({
         headerTitleStyle: Styles.headerTitle
       };
     }
-  },
-  Donate: {
-    path: "/donate",
-    screen: DonateScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("donate"),
-      headerLeft: <BackButton />,
-      headerRight: <MenuButton />,
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
   }
 });
 

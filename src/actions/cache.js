@@ -47,7 +47,7 @@ export const cacheMap = () => async (dispatch, getState) => {
       minZoom: 12,
       maxZoom: 20,
       bounds: [[neLng, neLat], [swLng, swLat]],
-      styleURL: "mapbox://styles/alexgvozden/cjcadlwfi0mez2so63ttb7hxo"
+      styleURL: MapBox.StyleURL.Street,
     },
     (offlineRegion, status) => {
       dispatch(updateProgress(status.percentage));

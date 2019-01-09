@@ -47,7 +47,6 @@ class TrackMap extends PureComponent<Props, State> {
   }
 
   async componentDidMount() {
-    this.map.fitBounds([45.720759, 20.683749], [44.351817, 19.237376]);
     const { trackData } = this.props;
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
     navigator.geolocation.getCurrentPosition(

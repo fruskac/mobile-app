@@ -1,15 +1,11 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { View, TouchableOpacity, Text, Image } from "react-native";
-import I18n from "react-native-i18n";
+import { View, TouchableOpacity, Image } from "react-native";
 import { askPermissions } from "../../actions/locations";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemSingle from "../../components/ItemSingle/";
-import * as Screen from "../../utils/Screen";
-
 import CommonStyles from "../../styles/CommonStyles";
 import type LocationData from "../../types";
 
@@ -24,7 +20,7 @@ type State = {};
 
 class TrackSingle extends PureComponent<Props, State> {
   render() {
-    const { id, data, onNavigate, language } = this.props;
+    const { id, data, onNavigate } = this.props;
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />

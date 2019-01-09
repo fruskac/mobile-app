@@ -21,7 +21,7 @@ type State = {};
 
 class LocationSingle extends PureComponent<Props, State> {
   render() {
-    const { id, data, onNavigate, language } = this.props;
+    const { id, data, onNavigate } = this.props;
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />

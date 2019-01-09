@@ -16,8 +16,6 @@ const _getMapLocationsAll = state =>
   
 const _getId = (state, props) => props.navigation.state.params.id;
 
-const _getLocationFilter = state => state.locations.filter;
-
 const _getLocationTypePlaceId = (state, props) =>
   props.navigation.state.params.id;
 

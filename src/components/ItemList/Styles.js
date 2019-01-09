@@ -1,11 +1,10 @@
 /**
  * @flow
  */
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 
 import {
   textColor,
-  bgColorHeaderAd,
   borderBottomColor
 } from "../../styles/CommonStyles";
 import * as Screen from "../../utils/Screen";
