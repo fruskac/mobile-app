@@ -16,6 +16,7 @@ target 'Fruskac' do
     # Comment out any unneeded subspecs to reduce bundle size.
     'Core',
     'DevSupport',
+    'BatchedBridge',
     'RCTActionSheet',
     'RCTAnimation',
     'RCTBlob',
@@ -31,8 +32,6 @@ target 'Fruskac' do
     'RCTWebSocket',
     'RCTLinkingIOS'
   ]
-
-  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
