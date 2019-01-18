@@ -30,7 +30,7 @@ export const cacheMap = () => async (dispatch, getState) => {
   if (cache.progress == 100) {
     return;
   }
-
+  debugger
   // check internet access
   if (!hasInternet) {
     dispatch(cachingError('No internet access.'));
@@ -60,5 +60,6 @@ export const cacheMap = () => async (dispatch, getState) => {
 
 export const getInternetStatus = async () => {
   const connectionInfo = await NetInfo.getConnectionInfo();
+  console.log(connectionInfo)
   return connectionInfo.type == "wifi" || connectionInfo.type == "cellular";
 }
