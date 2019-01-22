@@ -38,7 +38,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Fruskac would like to use your location.</string>
 	<key>LSApplicationCategoryType</key>
-	<string/>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Ionicons.ttf</string>
@@ -70,5 +70,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key></key>
+	<string></string>
 </dict>
 </plist>

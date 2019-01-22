@@ -80,7 +80,7 @@ class TrackMap extends PureComponent<Props, State> {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
 
-    fetch(trackData.track_url)
+    await fetch(trackData.track_url)
       .then(response => response.text())
       .then(data => {
         const XMLParser = require('react-xml-parser');
@@ -129,7 +129,7 @@ class TrackMap extends PureComponent<Props, State> {
     } else if(trackData['track_category'].toLowerCase() === 'hard') {
       trackColor = hardColor;
     }
-
+    console.log(this.state.route)
     return (
       <View style={styles.container}>
         <TouchableOpacity

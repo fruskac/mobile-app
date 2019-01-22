@@ -29,7 +29,6 @@ target 'Fruskac' do
     'RCTTest',
     'RCTText',
     'RCTVibration',
-    'RCTWebSocket',
     'RCTLinkingIOS'
   ]
 

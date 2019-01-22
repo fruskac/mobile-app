@@ -30,12 +30,12 @@ export const cacheMap = () => async (dispatch, getState) => {
   if (cache.progress == 100) {
     return;
   }
-  debugger
-  // check internet access
-  if (!hasInternet) {
-    dispatch(cachingError('No internet access.'));
-    return;
-  }
+  // debugger
+  // // check internet access
+  // if (!hasInternet) {
+  //   dispatch(cachingError('No internet access.'));
+  //   return;
+  // }
 
   // since maps are not fully downloaded, delete them
   await MapBox.offlineManager.deletePack('FruskaGora')

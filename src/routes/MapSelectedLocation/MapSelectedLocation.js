@@ -35,7 +35,6 @@ class MapSelectedLocation extends PureComponent<Props, State> {
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-    
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const userLocation = {
@@ -44,7 +43,7 @@ class MapSelectedLocation extends PureComponent<Props, State> {
         }
         this.setState({ userLocation: userLocation });
       },
-      error => console.log(error),
+      error => console.log({error}),
       { enableHighAccuracy: true, timeout: 40000 },
     );
     timer.setTimeout(
