@@ -129,7 +129,7 @@ class TrackMap extends PureComponent<Props, State> {
     } else if(trackData['track_category'].toLowerCase() === 'hard') {
       trackColor = hardColor;
     }
-    console.log(this.state.route)
+
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -162,9 +162,12 @@ class TrackMap extends PureComponent<Props, State> {
           compassEnabled={true}
           logoEnabled={false}
         >
+          {this.state.route.features[0].geometry.coordinates.length > 0 ? 
           <MapBox.ShapeSource id='line1' shape={this.state.route}>
             <MapBox.LineLayer id='linelayer1' style={{lineColor: trackColor, lineWidth: 3}} />
+
           </MapBox.ShapeSource>
+          : null }
           {locationsForMap.map((location, index) => (
             <MapBox.PointAnnotation
               key={index}
