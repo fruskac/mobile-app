@@ -1,7 +1,6 @@
 // @flow
 
 import React from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   addNavigationHelpers,
@@ -211,12 +210,6 @@ const AppWithNavigationState = ({ dispatch, nav, language }) => (
     })}
   />
 );
-
-AppWithNavigationState.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-  language: PropTypes.string.isRequired
-};
 
 const mapStateToProps = state => ({
   nav: state.nav,

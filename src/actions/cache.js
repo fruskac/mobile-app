@@ -24,19 +24,19 @@ export const cacheMap = () => async (dispatch, getState) => {
   const cache = getState().cache;
   // reseting error
   dispatch(cachingError(''));
-  const hasInternet = await getInternetStatus();
-  dispatch(onInternetStatus(hasInternet))
   // checking if maps are already downloaded
   if (cache.progress == 100) {
     return;
   }
-  // debugger
-  // // check internet access
-  // if (!hasInternet) {
-  //   dispatch(cachingError('No internet access.'));
-  //   return;
-  // }
 
+  let hasInternet = false;
+  // check internet access
+  while(!hasInternet) {
+    await timeout(3000);
+    hasInternet = await getInternetStatus();
+    if (!hasInternet) dispatch(cachingError('No internet access.'));
+    dispatch(onInternetStatus(hasInternet))
+  }
   // since maps are not fully downloaded, delete them
   await MapBox.offlineManager.deletePack('FruskaGora')
 
@@ -56,10 +56,15 @@ export const cacheMap = () => async (dispatch, getState) => {
       dispatch(cachingError('Error while downloading maps.'))
     }
   );
+  return;
 };
 
 export const getInternetStatus = async () => {
   const connectionInfo = await NetInfo.getConnectionInfo();
   console.log(connectionInfo)
   return connectionInfo.type == "wifi" || connectionInfo.type == "cellular";
+}
+
+const timeout = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
