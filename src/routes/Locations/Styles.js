@@ -1,28 +1,33 @@
-/**
- * @flow
- */
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from 'react-native';
 import {
   textColor,
   borderBottomColor,
   borderColor
-} from "../../styles/CommonStyles";
+} from '../../styles/CommonStyles';
 
-export const menuHeight: number = 40;
+export const menuHeight = 40;
 
 export default StyleSheet.create({
   topMenu: {
-    width: "100%",
+    width: '100%',
     height: menuHeight,
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   topMenuItem: {
-    width: "50%",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '50%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderBottomColor: borderBottomColor,
     borderBottomWidth: 2
+  },
+  menuItem: {
+    width: '50%',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomColor: borderBottomColor,
+    borderBottomWidth: 1
   },
   withRightBorder: {
     borderRightColor: borderColor,
@@ -32,16 +37,19 @@ export default StyleSheet.create({
     flex: 1
   },
   menu: {
-    width: "100%",
-    flexDirection: "row",
-    flexWrap: "wrap"
+    width: '100%',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   textPlacesList: {
     color: textColor,
-    fontFamily: "Merriweather-Light",
+    fontFamily: 'Merriweather-Light',
     fontSize: 12,
     lineHeight: 21,
     padding: 9,
     paddingTop: 0
+  },
+  textTitle: {
+    marginTop: 6,
   }
 });

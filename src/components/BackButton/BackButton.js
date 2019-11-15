@@ -1,20 +1,19 @@
-// @flow
-import React, { PureComponent } from "react";
-import { TouchableOpacity, Image } from "react-native";
+import React, { PureComponent } from 'react';
+import { TouchableOpacity } from 'react-native';
+import Icon from '../Icon/Icon';
 
-import Styles from "./Styles";
+import Styles from './Styles';
 
-type Props = {
-  onNavigateBack: () => void
-};
-type State = {};
-
-class BackButton extends PureComponent<Props, State> {
+class BackButton extends PureComponent {
   render() {
     const { onNavigateBack } = this.props;
     return (
       <TouchableOpacity style={Styles.buttonHolder} onPress={onNavigateBack}>
-        <Image source={require('../../assets/menu-icons-png/icons8-back-to-32.png')} />
+        <Icon 
+          name={'icon-left'}
+          size={32}
+          style={Styles.icon}
+        />
       </TouchableOpacity>
     );
   }

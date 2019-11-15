@@ -28,5 +28,10 @@
   "medium": "Medium",
   "hard": "Hard",
   "marathon": "Marathon",
-  "walks": "Walks"
+  "walks": "Walks",
+  "show-more-details": "Show more details",
+  "wineries": "Wineries",
+  "households": "Households",
+  "restaurants": "Restaurants",
+  "mountain-huts": "Mountain huts"
 }

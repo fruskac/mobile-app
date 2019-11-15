@@ -1,37 +1,38 @@
-import "regenerator-runtime/runtime";
-// Redux Store Configuration
-import { createStore, applyMiddleware } from "redux";
+import React, {Component} from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from "remote-redux-devtools";
-
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-
-import createSagaMiddleware from "redux-saga";
-
-import rootReducer from "../reducers";
-import rootSaga from "../sagas";
-
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, thunk];
-const composeEnhancers = composeWithDevTools({ suppressConnectErrors: false });
-const middleware = applyMiddleware(...middlewares);
+import { composeWithDevTools } from 'remote-redux-devtools';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { createReduxContainer, createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
+import { AppNavigator } from '../navigation/Navigation';
+import appReducer from './reducers/appReducer';
 
 const persistConfig = {
-  key: "root",
-  storage,
-};
+    key: 'root',
+    storage,
+}
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const initialState = {};
+const persistedReducer = persistReducer(persistConfig, appReducer)
 
-export const store = createStore(
-  persistedReducer,
-  initialState,
-  composeEnhancers(middleware)
+const navigationWithReduxMiddleware = createReactNavigationReduxMiddleware(
+    state => state.nav,
 );
 
-sagaMiddleware.run(rootSaga);
+const middlewares = [navigationWithReduxMiddleware, thunk];
+const middleware = applyMiddleware(...middlewares);
+const composeEnhancers = composeWithDevTools({ suppressConnectErrors: false });
+
+const App = createReduxContainer(AppNavigator);
+const mapStateToProps = (state) => ({
+    state: state.nav
+});
+export const AppWithNavigationState = connect(mapStateToProps)(App);
+
+export const store = createStore(
+    persistedReducer,
+    composeEnhancers(middleware),
+);
 
 export const persistor = persistStore(store);

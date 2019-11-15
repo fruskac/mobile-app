@@ -1,24 +1,13 @@
-// @flow
+import React, { PureComponent } from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import { askPermissions } from '../../store/actions/locations';
+import { colors } from '../../styles/Icons';
+import HeaderAd from '../../components/HeaderAd/';
+import ItemSingle from '../../components/ItemSingle/';
+import CommonStyles from '../../styles/CommonStyles';
+import Styles from './Styles';
 
-import React, { PureComponent } from "react";
-import { View, TouchableOpacity, Image } from "react-native";
-import { askPermissions } from "../../actions/locations";
-
-import HeaderAd from "../../components/HeaderAd/";
-import ItemSingle from "../../components/ItemSingle/";
-import CommonStyles from "../../styles/CommonStyles";
-import type LocationData from "../../types";
-
-type Props = {
-  id: string,
-  data: any,
-  onNavigate: (route: string) => void,
-  language: string,
-  askPermissions: () => void,
-};
-type State = {};
-
-class TrackSingle extends PureComponent<Props, State> {
+class TrackSingle extends PureComponent {
   render() {
     const { id, data, onNavigate } = this.props;
     return (
@@ -28,13 +17,29 @@ class TrackSingle extends PureComponent<Props, State> {
           onPress={async () => {
             const resp = await askPermissions();
             if (resp) {
-              onNavigate("/track-map/"+data.id);
+              onNavigate('/track-map/'+data.id);
             }
           }}
           key={id}
           style={CommonStyles.onMapBtn}
         >
-          <Image source={require('../../assets/menu-icons-png/icons8-baby-feet-30.png')} />
+           <Icon 
+            name={'icon-start'}
+            size={30}
+            color={colors.darkGrey}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            const resp = await askPermissions();
+            if (resp) {
+              onNavigate('/map/'+data.id);
+            }
+          }}
+          key={id}
+          style={CommonStyles.onMapBtnTxt}
+        >
+          <Text style={Styles.startText}>START</Text>
         </TouchableOpacity>
         <ItemSingle
           image={data.image}

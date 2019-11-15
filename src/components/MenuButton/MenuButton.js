@@ -1,18 +1,16 @@
-// @flow
-import React, { PureComponent } from "react";
-import Hamburger from "./Hamburger";
+import React, { PureComponent } from 'react';
+import { View } from 'react-native';
+import Hamburger from './Hamburger';
 
-type Props = {
-  onToggleDrawer: () => void,
-  drawerOpen: boolean,
-};
-type State = {};
+import Styles from './Styles';
 
-class MenuButton extends PureComponent<Props, State> {
+class MenuButton extends PureComponent {
   render() {
     const { onToggleDrawer, drawerOpen } = this.props;
     return (
-      <Hamburger active={drawerOpen} onPress={onToggleDrawer}/>
+      <View style={Styles.buttonHolder}>
+        <Hamburger active={drawerOpen} onPress={onToggleDrawer} />
+      </View>
     );
   }
 }

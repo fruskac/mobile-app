@@ -1,10 +1,8 @@
-// @flow
-
-import { connect } from "react-redux";
-import LocationTypePlace from "./LocationTypePlace";
-import { getLanguage } from "../../selectors/settings";
-import { getLocationsFiltered, getPlaceOrCategory } from "../../selectors/locations";
-import { onFetchMap } from "../../actions/locations";
+import { connect } from 'react-redux';
+import LocationTypePlace from './LocationTypePlace';
+import { getLanguage } from '../../selectors/settings';
+import { getLocationsFiltered, getPlaceOrCategory } from '../../selectors/locations';
+import { onFetchMap } from '../../store/actions/locations';
 
 const mapDispatchToProps = {onFetchMap};
 

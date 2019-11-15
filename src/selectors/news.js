@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const _getNews = state => state.goodToKnow.articles;
 const _getNewsId = (state, props) => props.navigation.state.params.id;

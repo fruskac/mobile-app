@@ -1,34 +1,13 @@
-// @flow
-import React, { PureComponent } from "react";
-import AutoHeightImage from "react-native-auto-height-image";
-import { Animated, Easing, Linking, View, Text, Image, TouchableOpacity } from "react-native";
+import React, { PureComponent } from 'react';
+import AutoHeightImage from 'react-native-auto-height-image';
+import { Animated, Easing, Linking, View, Text, Image, TouchableOpacity } from 'react-native';
 
-import Styles from "./Styles";
-import { width as ScreenWidth } from "../../utils/Screen";
-import CommonStyles from "../../styles/CommonStyles";
+import Styles from './Styles';
+import { width as ScreenWidth } from '../../utils/Screen';
+import CommonStyles from '../../styles/CommonStyles';
 
-type Props = {
-  progress: number,
-  error: string,
-  onFetchInfos: (language: string) => void,
-  onFetchMap: (language: string) => void,
-  onFetchLocations: (language: string) => void,
-  cacheMap: () => void,
-  onFetchConfig: (language: string) => void,
-  wholeStore: object,
-  onNavigate: (route: string) => void,
-  sponsor_logo: any
-};
-type State = {
-  opacity: Animated.Value,
-  hidden: boolean
-};
-
-class CacheScreen extends PureComponent<Props, State> {
-  onFadeOutStart: Function;
-  onFadeOutFinish: Function;
-
-  constructor(props: Props) {
+class CacheScreen extends PureComponent {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -43,11 +22,14 @@ class CacheScreen extends PureComponent<Props, State> {
     this.props.onFetchInfos('rs');
     this.props.onFetchMap('rs');
     this.props.onFetchLocations('rs');
-    this.props.cacheMap();
     this.props.onFetchConfig('rs');
+    this.props.onFetchTracks('rs');
+    this.props.onFetchGoodToKnow('rs', 0);
+    this.props.onFetchGoodToKnow('en', 0);
+    this.props.cacheMap();
   }
 
-  componentWillReceiveProps(nextProps: Object) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.progress == 100) {
       this.onFadeOutStart();
     }
@@ -80,18 +62,26 @@ class CacheScreen extends PureComponent<Props, State> {
         <View style={Styles.loader}>
           <AutoHeightImage
             width={ScreenWidth * 0.32}
-            source={require("../../assets/volem-logo.png")}
+            source={require('../../assets/volem-logo.png')}
           />
           {error ? (
-            <Text
-              style={[
-                CommonStyles.text,
-                Styles.progressText,
-                CommonStyles.errorText
-              ]}
-            >
-              {error}
-            </Text>
+            <View style={Styles.loader}>
+              <Text style={[CommonStyles.text, Styles.progressText]}>
+                {progress.toFixed(0)}%
+              </Text>
+              <Text
+                style={[
+                  CommonStyles.text,
+                  Styles.progressText,
+                  CommonStyles.errorText
+                ]}
+              >
+                {error}
+              </Text>
+              <TouchableOpacity style={Styles.reloadButton} onPress={() => {this.props.resetDownload();  this.props.cacheMap();}}>
+                <Text style={[CommonStyles.text, Styles.reloadButtonText]}>reload map</Text>
+              </TouchableOpacity>
+            </View>
           ) : (
             <Text style={[CommonStyles.text, Styles.progressText]}>
               {progress.toFixed(0)}%
@@ -100,24 +90,21 @@ class CacheScreen extends PureComponent<Props, State> {
         </View>
         { sponsor_logo ? 
           <TouchableOpacity onPress={()=>{
-          if (sponsor_logo["internal"]) {
-            onNavigate(sponsor_logo["link_url"]);
-          } else {
-            Linking.openURL(sponsor_logo["link_url"]);
+              if (sponsor_logo['internal']) {
+                onNavigate(sponsor_logo['link_url']);
+              } else {
+                Linking.openURL(sponsor_logo['link_url']);
+              }
+            }
           }
-          }}>
-          <Image
-            style={[Styles.bottomText,{
-              width: 90,
-              padding: 21,
-              paddingTop: 0
-            }]}
-            source={{uri: sponsor_logo["img_url"]}}
-          />
-        </TouchableOpacity>
+          >
+            <Image
+              style={[Styles.bottomText, ]}
+              source={{uri: sponsor_logo['img_url']}}
+            />
+          </TouchableOpacity>
         : null
         }
-       
       </Animated.View>
     );
   }

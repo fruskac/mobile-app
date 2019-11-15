@@ -71,6 +71,7 @@ export default class Hamburger extends Component {
             justifyContent: 'center',
             alignItems: 'center',
             height: 35,
+            borderRadius: 6,
             transform: [
               {
                 rotate: this.containerAnim.interpolate ({
@@ -88,6 +89,7 @@ export default class Hamburger extends Component {
               width: this.width,
               marginBottom: this.topBarMargin,
               backgroundColor: color ? color : 'black',
+              borderRadius: 6,
               transform: [
                 {
                   rotate: this.topBar.interpolate ({
@@ -104,6 +106,7 @@ export default class Hamburger extends Component {
               width: 25,
               opacity: this.middleBarOpacity,
               backgroundColor: color ? color : 'black',
+              borderRadius: 6,
               marginTop: 4,
             }}
           />
@@ -113,6 +116,7 @@ export default class Hamburger extends Component {
               marginLeft: this.marginLeft,
               width: this.width,
               backgroundColor: color ? color : 'black',
+              borderRadius: 6,
               marginTop: this.bottomBarMargin,
               transform: [
                 {

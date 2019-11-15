@@ -1,10 +1,8 @@
-// @flow
-
-import { connect } from "react-redux";
-import Tracks from "./Tracks";
-import { getLanguage } from "../../selectors/settings";
-import { getTracksByCategoryName } from "../../selectors/locations";
-import { onNavigate } from "../../actions/navigation";
+import { connect } from 'react-redux';
+import Tracks from './Tracks';
+import { getLanguage } from '../../selectors/settings';
+import { getTracksByCategoryName } from '../../selectors/locations';
+import { onNavigate } from '../../store/actions/navigation';
 
 
 const mapDispatchToProps = { onNavigate };

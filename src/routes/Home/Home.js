@@ -1,15 +1,10 @@
-// @flow
+import React, { PureComponent } from 'react';
+import { View } from 'react-native';
 
-import React, { PureComponent } from "react";
-import { View } from "react-native";
+import Menu from '../../components/Menu';
+import CommonStyles from '../../styles/CommonStyles';
 
-import Menu from "../../components/Menu";
-import CommonStyles from "../../styles/CommonStyles";
-
-type Props = {};
-type State = {};
-
-class Home extends PureComponent<Props, State> {
+class Home extends PureComponent {
   render() {
     return (
       <View style={CommonStyles.container}>

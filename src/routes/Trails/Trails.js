@@ -1,116 +1,131 @@
-// @flow
+import React, {PureComponent} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
+import I18n from 'react-native-i18n';
+import HeaderAd from '../../components/HeaderAd/';
 
-import React, { PureComponent } from "react";
-import { Image, View, Text, TouchableOpacity, ScrollView } from "react-native";
-import I18n from "react-native-i18n";
-import HeaderAd from "../../components/HeaderAd/";
+import CommonStyles, {accentColor} from '../../styles/CommonStyles';
+import Styles from './Styles';
 
-import CommonStyles, { accentColor } from "../../styles/CommonStyles";
-import Styles from "./Styles";
-
-type Props = {
-    onNavigate: (route: string) => void,
-    onFetchTracks: (language: string) => void,
-    language: string,
-    tracks: Array<any>,
-};
-type State = {};
-
-class Trails extends PureComponent<Props, State> {
-  constructor(props){
-    super(props);
+class Trails extends PureComponent {
+  constructor (props) {
+    super (props);
     this.state = {
-        filter: "walks"
+      menu: [
+        {
+          id: 1,
+          title: 'easy',
+          type: 'hiking',
+          color: '#808900',
+        },
+        {
+          id: 2,
+          title: 'easy',
+          type: 'rides',
+          color: '#808900',
+        },
+        {
+          id: 3,
+          title: 'medium',
+          type: 'hiking',
+          color: '#FCB900',
+        },
+        {
+          id: 4,
+          title: 'medium',
+          type: 'rides',
+          color: '#FCB900',
+        },
+        {
+          id: 3,
+          title: 'hard',
+          type: 'hiking',
+          color: '#B80000',
+        },
+        {
+          id: 4,
+          title: 'hard',
+          type: 'rides',
+          color: '#B80000',
+        },
+        {
+          id: 5,
+          title: 'marathon',
+          type: 'hiking',
+          color: '#000',
+        },
+      ],
     };
-  };
-  
-  componentDidMount() {
-    this.props.onFetchTracks(this.props.language === 'en' ? 'en' : 'rs');
   }
 
-  render() {
-    const { onNavigate, tracks } = this.props;
-    let walkStyle = {},
-    mtbStyle = {},
-    listView = {};
-    const underlineStyle = {
-      borderBottomColor: accentColor,
-      borderBottomWidth: 2
-    };
+  componentDidMount () {
+    this.props.onFetchTracks (this.props.language === 'en' ? 'en' : 'rs');
+  }
 
-    this.state.filter == "walks"
-      ? (walkStyle = underlineStyle)
-      : (mtbStyle = underlineStyle);
-
-    if (this.state.filter == "walks") {
-      listView = 
-        <View style={Styles.menu}>
-            <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/easy')} }>
-                <View style={Styles.circlesBox}>
-                    <View style={[Styles.circle, Styles.colorEasy]} />
-                </View>
-                <Text style={Styles.menuItemText}> {I18n.t("easy")} </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/medium')} }>
-                <View style={Styles.circlesBox}>
-                    <View style={[Styles.circle, Styles.colorMedium]} />
-                    <View style={[Styles.circle, Styles.colorMedium]} />
-                </View>
-                <Text style={Styles.menuItemText}> {I18n.t("medium")} </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.menuItem} onPress={() => {onNavigate('/tracks/hard')} }>
-                <View style={Styles.circlesBox}>
-                    <View style={[Styles.circle, Styles.colorHard]} />
-                    <View style={[Styles.circle, Styles.colorHard]} />
-                    <View style={[Styles.circle, Styles.colorHard]} />
-                </View>
-                <Text style={Styles.menuItemText}> {I18n.t("hard")} </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.menuItem}>
-                <Image source={require('../../assets/menu-icons-png/icons8-running-30.png')} />
-                <Text style={Styles.menuItemText}> {I18n.t("marathon")} </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={Styles.menuItem}>
-                <Image source={require('../../assets/menu-icons-png/icons8-info-30.png')} />
-                <Text style={Styles.menuItemText}> {I18n.t("info")} </Text>
-            </TouchableOpacity>
-        </View>
-    } else {
-      listView = 
-        <ScrollView>
-            {tracks.map((track) => 
-                <TouchableOpacity key={track.id} style={Styles.menuItem} onPress={() => {onNavigate('/track-single/'+track.id)}} >
-                    <Image 
-                        style={{width: "100%", height: 90, borderRadius: 30}}
-                        source={{ uri: track.image }}
-                        resizeMode="cover" />
-                    <Text style={Styles.menuItemText}>{track.title}</Text>
-                </TouchableOpacity>    
-            )}
-        </ScrollView>
-    }
+  render () {
+    const {onNavigate, tracks} = this.props;
 
     return (
-        <View>
-            <HeaderAd />
-            <View style={Styles.topMenu}>
-                <TouchableOpacity
-                    key="walks"
-                    style={[Styles.topMenuItem, walkStyle]}
-                    onPress={() => this.setState({filter: "walks"})}
-                >
-                    <Text style={CommonStyles.textTabs}> {I18n.t("walks")} </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    key="mtb"
-                    style={[Styles.topMenuItem, mtbStyle]}
-                    onPress={() => this.setState({filter: "MTB"})}
-                >
-                    <Text style={CommonStyles.textTabs}> MTB </Text>
-                </TouchableOpacity>
-            </View>
-            {listView}
-        </View>);
+      <View>
+        <HeaderAd />
+        <View style={Styles.trailsContainer}>
+          {this.state.menu.map (item => (
+            <TouchableOpacity
+              key={item.id}
+              onPress={() => {
+                tracks.filter (
+                  track =>
+                    track.track_category.toLowerCase () ===
+                      item.title.toLowerCase () &&
+                    track.track_type.toLowerCase () === item.type.toLowerCase ()
+                ).length > 0
+                  ? onNavigate ('/tracks/' + item.title + '/' + item.type)
+                  : null;
+              }}
+              style={[
+                Styles.menuItem,
+                item.type !== 'rides' ? Styles.borderRightWidth : {},
+              ]}
+            >
+              <Icon
+                style={{top: 6}}
+                name={item.type === 'rides' ? 'icon-bicycle' : 'icon-walk'}
+                size={45}
+                color={item.color}
+                style={
+                  tracks.filter (
+                    track =>
+                      track.track_category.toLowerCase () ===
+                        item.title.toLowerCase () &&
+                      track.track_type.toLowerCase () ===
+                        item.type.toLowerCase ()
+                  ).length > 0
+                    ? {}
+                    : {opacity: 0.3}
+                }
+              />
+              <Text
+                style={[
+                  CommonStyles.text,
+                  {marginTop: 6},
+                  tracks.filter (
+                    track =>
+                      track.track_category.toLowerCase () ===
+                        item.title.toLowerCase () &&
+                      track.track_type.toLowerCase () ===
+                        item.type.toLowerCase ()
+                  ).length > 0
+                    ? {}
+                    : {opacity: 0.3},
+                ]}
+              >
+                {I18n.t (item.title)}
+              </Text>
+            </TouchableOpacity>
+          ))}
+
+        </View>
+      </View>
+    );
   }
 }
 

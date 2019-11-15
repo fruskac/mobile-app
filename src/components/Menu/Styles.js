@@ -1,18 +1,16 @@
-/**
- * @flow
- */
-import { StyleSheet, Platform } from "react-native";
-import CommonStyles, { textColor } from "../../styles/CommonStyles";
+import { StyleSheet } from 'react-native';
+import { textColor } from '../../styles/CommonStyles';
 
 export default StyleSheet.create({
   menuHolder: {
-    flexDirection: "column",
-    justifyContent: "space-between",
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     flex: 1
   },
   menuItem: {
     color: textColor,
-    fontFamily: "Merriweather-Light",
+    fontFamily: 'Merriweather-Light',
+    fontSize: 15,
     marginBottom: 8
   }
 });

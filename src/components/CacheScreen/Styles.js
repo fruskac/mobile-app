@@ -1,18 +1,12 @@
-/**
- * @flow
- */
-import { StyleSheet, Platform } from "react-native";
-import * as Screen from "../../utils/Screen";
-import CommonStyles, {
-  textColor,
-  bgColorHeaderAd,
-  backgroundColor,
-  headerAdHeight
-} from "../../styles/CommonStyles";
+import { StyleSheet } from 'react-native';
+import * as Screen from '../../utils/Screen';
+import { backgroundColor } from '../../styles/CommonStyles';
+import { width as ScreenWidth } from '../../utils/Screen';
+
 
 export default StyleSheet.create({
   holder: {
-    position: "absolute",
+    position: 'absolute',
     left: 0,
     zIndex: 40,
     top: 0,
@@ -20,17 +14,17 @@ export default StyleSheet.create({
     bottom: 0,
     backgroundColor: backgroundColor,
     height: Screen.height,
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   topText: {
     marginTop: Screen.height * 0.17
   },
   loader: {
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center",
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     marginBottom: 20
   },
   progressText: {
@@ -39,5 +33,18 @@ export default StyleSheet.create({
   },
   bottomText: {
     marginBottom: Screen.height * 0.12
+  },
+  reloadButton: {
+    padding: 15,
+  },
+  reloadButtonText: {
+    fontSize: 18,
+  },
+  sponsorLogo: {
+    width: ScreenWidth / 3,
+    height: ScreenWidth / 3,
+    resizeMode: 'contain',
+    padding: 21,
+    paddingTop: 0
   }
 });

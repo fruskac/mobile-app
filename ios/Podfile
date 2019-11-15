@@ -1,60 +1,54 @@
 # Uncomment the next line to define a global platform for your project
-# 
-#platform :ios, '9.0'
+# platform :ios, '9.0'
 
 target 'Fruskac' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+  pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+  pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+  pod 'Folly', :podspec =>'../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  # Pods for Fruskac
-
-  # Flexbox Layout Manager Used By React Natve
   pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
+  pod 'React', :path => '../node_modules/react-native'
+
 
   # React Native
   pod 'React', path: '../node_modules/react-native', subspecs: [
     # Comment out any unneeded subspecs to reduce bundle size.
     'Core',
     'DevSupport',
-    'BatchedBridge',
-    'RCTActionSheet',
-    'RCTAnimation',
-    'RCTBlob',
-    'RCTCameraRoll',
-    'RCTGeolocation',
-    'RCTImage',
-    'RCTNetwork',
-    'RCTPushNotification',
-    'RCTSettings',
-    'RCTTest',
-    'RCTText',
-    'RCTVibration',
-    'RCTLinkingIOS'
+    'CxxBridge',
+    'RCTImage'
   ]
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+  # Mapbox
+  pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
+  
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
+
+
 
   post_install do |installer|
-    installer.pods_project.targets.each do |target|
-      if target.name == 'yoga'
-        target.build_configurations.each do |config|
-          config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
-          config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
-        end
+      installer.pods_project.targets.each do |target|
+          if target.name == 'yoga'
+              target.build_configurations.each do |config|
+                  config.build_settings['GCC_TREAT_WARNINGS_AS_ERRORS'] = 'NO'
+                  config.build_settings['GCC_WARN_64_TO_32_BIT_CONVERSION'] = 'NO'
+              end
+          end
+          if target.name == "React"
+            target.remove_from_project
+          end
+          if target.name == "RNSVG"
+              target.build_configurations.each do |config|
+                  config.build_settings['GCC_NO_COMMON_BLOCKS'] = 'NO'
+              end
+          end
       end
-      if target.name == "RNSVG"
-        target.build_configurations.each do |config|
-            config.build_settings['GCC_NO_COMMON_BLOCKS'] = 'NO'
-        end
-      end
-    end
   end
-	
+
 
 end
-
-

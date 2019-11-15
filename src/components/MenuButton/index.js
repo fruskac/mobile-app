@@ -1,8 +1,6 @@
-// @flow
-
-import { connect } from "react-redux";
-import MenuButton from "./MenuButton";
-import { onToggleDrawer } from "../../actions/settings";
+import { connect } from 'react-redux';
+import MenuButton from './MenuButton';
+import { onToggleDrawer } from '../../store/actions/settings';
 
 const mapDispatchToProps = { onToggleDrawer };
 const mapStateToProps = state => ({ drawerOpen: state.settings.drawerOpen });

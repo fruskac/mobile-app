@@ -1,137 +1,123 @@
-// @flow
-
-import React, { PureComponent } from "react";
-import MapBox from "@mapbox/react-native-mapbox-gl";
-import { Image, TouchableOpacity, View } from "react-native";
-import CommonStyles from "../../styles/CommonStyles";
-import { Location } from "../../types";
+import React, { PureComponent, Fragment } from 'react';
+import MapBox from '@react-native-mapbox-gl/maps';
+import { View } from 'react-native';
+import CommonStyles from '../../styles/CommonStyles';
 import Icon from '../../components/Icon/Icon';
-import * as Icons from "../../styles/Icons";
-const timer = require("react-native-timer");
+import * as Icons from '../../styles/Icons';
+import Styles from './Styles';
+import MapCallout from '../../components/MapCallout/MapCallout';
+import MapFilters from '../../components/Filters/MapFilters';
+import MapButton from '../../components/MapButton/MapButton';
+import { getUserLocation, setWatchPosition } from '../../store/actions/maps';
 
-type Props = {
-  id: string,
-  language: string,
-  onNavigate: (route: string) => void,
-  onFetchMap: (language: string) => void,
-  locationsForMap: Array<any>,
-};
-type State = {
-  showMap: boolean,
-  userLocation: Location
-};
+const neLat = 45.265069,
+  neLng = 19.924718,
+  swLat = 45.112557,
+  swLng = 19.32377;
 
-class MapSelectedLocation extends PureComponent<Props, State> {
-  _map: MapBox;
-  _watchPositionId: number;
-
-  constructor(props: Props) {
+class MapSelectedLocation extends PureComponent {
+  constructor(props) {
     super(props);
     this.state = {
-      showMap: false,
-      userLocation: { lat: 0, lng: 0 }
+      userLocation: { lat: 0, lng: 0 },
+      filters: ['lookouts', 'monuments', 'lakes', 'monasteries', 'picnic-areas',
+        'misc', 'meadows', 'mountain-huts', 'restaurants', 'households', 'wineries'
+      ],
     };
   }
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const userLocation = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        }
-        this.setState({ userLocation: userLocation });
-      },
-      error => console.log({error}),
-      { enableHighAccuracy: true, timeout: 40000 },
-    );
-    timer.setTimeout(
-      "show",
-      () => {
-        this.setState({ showMap: true });
-      },
-      300
-    );
-
-    this._watchPositionId = navigator.geolocation.watchPosition(
-      position => {
-        this.setState({
-          userLocation: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          }
-        });
-      },
-      error => console.log(error),
-      { enableHighAccuracy: true, timeout: 40000, maximumAge: 1000 }
-    );
-
-    // show map only after navigator animation finishes
-    timer.setTimeout(
-      "show",
-      () => {
-        this.setState({ showMap: true });
-      },
-      300
-    );
+    getUserLocation(this.setUserLocation);
+    this._watchPositionId = setWatchPosition(this.setUserLocation);
   }
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this._watchPositionId);
-    timer.clearTimeout("show");
   }
+
+  setUserLocation = (userLocation) => {
+    this.setState({ userLocation: userLocation})
+  }
+
+  updateFilters = (newFilters) => {
+    this.setState({ filters: newFilters });
+  }
+
+  isUserInBounds = () => this.state.userLocation && neLat >= this.state.userLocation.lat && swLat <= this.state.userLocation.lat &&
+    neLng >= this.state.userLocation.lng && swLng <= this.state.userLocation.lng;
 
   render() {
     console.disableYellowBox = true;
-    const { locationsForMap, id } = this.props;
+    const { locationsForMap, id, onNavigate } = this.props;
+    const { showFilterBox, userLocation, filters } = this.state;
     let selectedLocation = locationsForMap.filter(loc => loc.id === id)[0];
-    if (!this.state.showMap) return null;
     return (
-      <View style={{flex: 1}}>
-        <TouchableOpacity
-          style={CommonStyles.onMapBtn}
-          onPress={()=>{
-            this.map.flyTo([Number(selectedLocation.lng), Number(selectedLocation.lat)], 5500);
-          }}
-        >
-          <Image source={require('../../assets/menu-icons-png/icons8-marker-24.png')} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[CommonStyles.onMapBtn,{top: 104}]}
-          onPress={()=>{
-            this.map.flyTo([Number(this.state.userLocation.lng), Number(this.state.userLocation.lat)], 5500)
-          }}
-        >
-          <Image source={require('../../assets/menu-icons-png/icons8-street-view-24.png')} />
-        </TouchableOpacity>
+      <View style={Styles.container}>
+        <MapButton
+          iconName={'icon-menu'}
+          onPress={() => this.setState({ showFilterBox: !showFilterBox })}
+          styles={CommonStyles.onMapBtn}
+        />
+        {showFilterBox ? null :
+          <Fragment>
+            <MapButton
+              iconName={'icon-marker'}
+              onPress={() => this._camera.flyTo([Number(selectedLocation.lng), Number(selectedLocation.lat)], 5500)}
+              styles={[CommonStyles.onMapBtn, { top: 101 }]}
+            />
+            <MapButton
+              iconName={'icon-current'}
+              onPress={() => this._camera.flyTo([userLocation.lng, userLocation.lat], 5500)}
+              styles={[CommonStyles.onMapBtn, { top: 148 }]}
+            />
+          </Fragment>
+        }
+        {showFilterBox ?
+          <MapFilters
+            activeFilters={filters}
+            updateActiveFilters={this.updateFilters}
+          />
+          : null}
         <MapBox.MapView
-          zoomLevel={15}
           ref={(ref) => (this.map = ref)}
-          minZoomLevel={10}
-          maxZoomLevel={22}
           compassEnabled={true}
           zoomEnabled={true}
-          showUserLocation={true}
-          centerCoordinate={[Number(selectedLocation.lng), Number(selectedLocation.lat)]}
           style={CommonStyles.container}
-          userTrackingMode={MapBox.UserTrackingModes.FollowWithHeading}
         >
+          <MapBox.Camera
+            ref={(ref) => (this._camera = ref)}
+            zoomLevel={10}
+            centerCoordinate={[Number(selectedLocation.lng), Number(selectedLocation.lat)]}
+            animationDuration={2000}
+          />
+          <MapBox.UserLocation />
+
           {locationsForMap.map((location, index) => (
-            <MapBox.PointAnnotation
-              key={index}
-              id={"Map"+index}
-              coordinate={[Number(location.lng), Number(location.lat)]}
+            filters.includes(location['category']) ?
+              <MapBox.PointAnnotation
+                key={index}
+                id={'Map' + index}
+                coordinate={[Number(location.lng), Number(location.lat)]}
+                onSelected={() => {
+                  this._camera.moveTo([Number(location.lng), (Number(location.lat))], 3000);
+                }}
               >
-              <View style={(location == selectedLocation) ? [CommonStyles.annotationContainerMini, CommonStyles.selectedMarker] : [CommonStyles.annotationContainerMini, {backgroundColor: Icons.colors[location['category'].replace("-", "")]}]}>
-                <Icon 
-                  name={[location['category'].replace("-", "")]}
-                  size={(location == selectedLocation) ? 24 : 15}
-                  color={(location == selectedLocation) ? Icons.colors[location['category'].replace("-", "")] : "#fff"}
+                <View style={(location == selectedLocation) ? [CommonStyles.annotationContainerMini, CommonStyles.selectedMarker] : [CommonStyles.annotationContainerMini, { backgroundColor: Icons.colors[location['category'].replace('-', '')] }]}>
+                  <Icon
+                    name={[location['category'].replace('-', '')]}
+                    size={(location == selectedLocation) ? 24 : 15}
+                    color={(location == selectedLocation) ? Icons.colors[location['category'].replace('-', '')] : '#fff'}
+                  />
+                </View>
+                <MapCallout
+                  image={location.image}
+                  title={location.title}
+                  place={location.place}
+                  onPress={() => { onNavigate('/location-single/' + Number(location.id)); }}
                 />
-              </View>
-              <MapBox.Callout title={location.title+', '+location.place} />
-            </MapBox.PointAnnotation>
+              </MapBox.PointAnnotation>
+              : null
           ))}
         </MapBox.MapView>
       </View>

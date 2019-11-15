@@ -1,31 +1,23 @@
-// @flow
+import React, { PureComponent } from 'react';
+import { Linking, TouchableOpacity } from 'react-native';
+import AutoHeightImage from 'react-native-auto-height-image';
+import { width as ScreenWidth } from '../../utils/Screen';
 
-import React, { PureComponent } from "react";
-import { Linking, Image, TouchableOpacity, Text } from "react-native";
-
-import Styles from "./Styles";
-
-type Props = {
-  onOpenAd: () => void,
-  onNavigate: (route: string) => void,
-  small_add: any
-};
-type State = {};
-
-class HeaderAd extends PureComponent<Props, State> {
+class HeaderAd extends PureComponent {
   render() {
-    const { onNavigate, small_add } = this.props;
+    const { onNavigate, small_ad } = this.props;
+
     return (
       <TouchableOpacity onPress={()=>{
-        if (small_add["internal"]) {
-          onNavigate(small_add["link_url_en"]);
+        if (small_ad['internal']) {
+          onNavigate(small_ad['link_url_en']);
         } else {
-          Linking.openURL(small_add["link_url_en"]);
+          Linking.openURL(small_ad['link_url_en']);
         }
         }}>
-        <Image
-          style={Styles.adHolder}
-          source={{uri: small_add["img_url_en"]}}
+        <AutoHeightImage
+          width={ScreenWidth}
+          source={{uri: small_ad['img_url_en']}}
         />
       </TouchableOpacity>
     );

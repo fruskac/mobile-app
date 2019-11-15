@@ -1,18 +1,18 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const _getLocations = state =>
-  state.locations["locations_" + state.settings.language];
+  state.locations['locations_' + state.settings.language];
 
 const _getLocationsAll = state => {
   return state.locations && state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`] ? 
   state.locations[`locations_${state.settings.language == 'en' ? 'en' : 'sr'}`]
-    .concat(state.locations["places_" + (state.settings.language == 'en' ? 'en' : 'rs')])
-    .concat(state.locations["tourism_" + (state.settings.language == 'en' ? 'en' : 'rs')])
+    .concat(state.locations['places_' + (state.settings.language == 'en' ? 'en' : 'rs')])
+    .concat(state.locations['tourism_' + (state.settings.language == 'en' ? 'en' : 'rs')])
     : [];
 }
 
 const _getMapLocationsAll = state =>
-  state.locations["map_" + (state.settings.language == 'en' ? 'en' : 'rs')];
+  state.locations['map_' + (state.settings.language == 'en' ? 'en' : 'rs')];
   
 const _getId = (state, props) => props.navigation.state.params.id;
 
@@ -21,6 +21,9 @@ const _getLocationTypePlaceId = (state, props) =>
 
 const _getCategoryName = (state, props) =>
   props.navigation.state.params.category;
+
+const _getTrackType = (state, props) =>
+props.navigation.state.params.type;
 
 export const getLocations = createSelector(
   [_getLocations],
@@ -42,7 +45,7 @@ export const getLocationsFiltered = createSelector(
       .filter(item => item.tag == locationTypePlaceId || item.category == locationTypePlaceId || item.place == locationTypePlaceId)
 );
 
-const _getTracks = (state, props) => props.screenProps.language === 'en' ? 
+const _getTracks = (state, props) => state.settings.language === 'en' ? 
   state.tracks['tracks_en'] : state.tracks['tracks_rs'];
 
 export const getTracks = createSelector(
@@ -51,9 +54,9 @@ export const getTracks = createSelector(
 );
 
 export const getTracksByCategoryName = createSelector(
-  [_getTracks, _getCategoryName],
-  (tracks, categoryName) => 
-    tracks.filter(track => track.track_category.toLowerCase() === categoryName.toLowerCase())  
+  [_getTracks, _getCategoryName, _getTrackType],
+  (tracks, categoryName, trackType) => 
+    tracks.filter(track => track.track_category.toLowerCase() === categoryName.toLowerCase() && track.track_type.toLowerCase() === trackType.toLowerCase())  
 );
 
 export const getTrackSingle = createSelector(
@@ -62,7 +65,7 @@ export const getTrackSingle = createSelector(
     tracks.filter(item => item.id === trackId)[0]
 );
 
-const _getInfos = (state, props) => props.screenProps.language === 'en' ? 
+const _getInfos = (state, props) => state.settings.language === 'en' ? 
     state.infos['info_en'] : state.infos['info_rs'];
 
 export const getInfos = createSelector(
@@ -86,15 +89,15 @@ export const getPlaceOrCategory = createSelector(
 export const getLocationsForMap = createSelector(
   [_getLocations],
   locations => ({
-    type: "FeatureCollection",
-    features: locations.filter(l => l.tag !== "waterfalls").map(l => ({
-      type: "Feature",
+    type: 'FeatureCollection',
+    features: locations.filter(l => l.tag !== 'waterfalls').map(l => ({
+      type: 'Feature',
       id: l.data.id,
       properties: {
-        icon: l.tag.replace("-", "") + "Map"
+        icon: l.tag.replace('-', '') + 'Map'
       },
       geometry: {
-        type: "Point",
+        type: 'Point',
         coordinates: [parseFloat(l.lng), parseFloat(l.lat)]
       }
     }))

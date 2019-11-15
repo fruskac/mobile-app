@@ -1,6 +1,6 @@
-import { fetchUrl } from "./utils/Fetch";
+import { fetchUrl } from './utils/Fetch';
 
-const BASE = "https://fruskac.net";
+const BASE = 'https://fruskac.net';
 
 export const fetchCategories = (language) =>
     fetchUrl(`${BASE}/rs/json/app-categories`);

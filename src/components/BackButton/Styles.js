@@ -1,20 +1,13 @@
-/**
- * @flow
- */
-import { StyleSheet, Platform } from "react-native";
-import { tintColor } from "../../styles/CommonStyles";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   buttonHolder: {
-    marginLeft: 8,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center"
+    marginLeft: 12,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   icon: {
-    color: tintColor,
-    marginRight: 8,
-    top: Platform.OS === "ios" ? 2 : 1
-  },
-  text: { color: tintColor, fontSize: 16 }
+    color: 'black'
+  }
 });

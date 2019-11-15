@@ -1,23 +1,12 @@
-// @flow
+import React, { PureComponent } from 'react';
+import { View } from 'react-native';
 
-import React, { PureComponent } from "react";
-import { View } from "react-native";
+import HeaderAd from '../../components/HeaderAd/';
+import ItemSingle from '../../components/ItemSingle/';
 
-import HeaderAd from "../../components/HeaderAd/";
-import ItemSingle from "../../components/ItemSingle/";
+import CommonStyles from '../../styles/CommonStyles';
 
-import CommonStyles from "../../styles/CommonStyles";
-
-type Props = {
-  id: string,
-  data: any,
-  onNavigate: (route: string) => void,
-  navigation: any,
-  language: string
-};
-type State = {};
-
-class InfoSingle extends PureComponent<Props, State> {
+class InfoSingle extends PureComponent {
   render() {
     const { data } = this.props;
     return (

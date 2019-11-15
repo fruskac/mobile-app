@@ -1,25 +1,14 @@
-// @flow
+import React, { PureComponent } from 'react';
+import { View, Text } from 'react-native';
+import I18n from 'react-native-i18n';
 
-import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
-import I18n from "react-native-i18n";
+import HeaderAd from '../../components/HeaderAd/';
+import ItemList from '../../components/ItemList/';
 
-import HeaderAd from "../../components/HeaderAd/";
-import ItemList from "../../components/ItemList/";
+import CommonStyles from '../../styles/CommonStyles';
+import Styles from './Styles';
 
-import CommonStyles from "../../styles/CommonStyles";
-import Styles from "./Styles";
-import type LocationData from "../../types";
-
-type Props = {
-  language: string,
-  items: Array<LocationData>,
-  data: any,
-  onFetchMap: (language: string) => void,
-};
-type State = {};
-
-class LocationTypePlace extends PureComponent<Props, State> {
+class LocationTypePlace extends PureComponent {
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
   }
@@ -35,13 +24,13 @@ class LocationTypePlace extends PureComponent<Props, State> {
           <ItemList
             header={
               <Text style={Styles.text}>
-                {data ? data.description : I18n.t("loading")}
+                {data ? data.description : I18n.t('loading')}
               </Text>
             }
             items={items}
-            slug="/location-single/"
+            slug={'/location-single/'}
         />
-        : <Text>{I18n.t("loading")}</Text>
+        : <Text>{I18n.t('loading')}</Text>
         }
       </View>
     );

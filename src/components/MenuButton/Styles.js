@@ -1,12 +1,8 @@
-/**
- * @flow
- */
-import { StyleSheet } from "react-native";
-import { tintColor } from "../../styles/CommonStyles";
+import { StyleSheet } from 'react-native';
+import { tintColor } from '../../styles/CommonStyles';
 
 export default StyleSheet.create({
   buttonHolder: {
-    marginRight: 8
+    marginRight: 11,
   },
-  text: { color: tintColor, fontSize: 16 }
 });
