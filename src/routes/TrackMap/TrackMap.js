@@ -1,14 +1,22 @@
 import React, { PureComponent, Fragment } from 'react';
-import MapBox from '@react-native-mapbox-gl/maps';
+import MapboxGL from '@react-native-mapbox-gl/maps';
 import { View } from 'react-native';
 import CommonStyles from '../../styles/CommonStyles';
-import * as Icons from '../../styles/Icons';
-import Icon from '../../components/Icon/Icon';
 import MapCallout from '../../components/MapCallout/MapCallout';
 import { easyColor, mediumColor, hardColor } from '../Trails/Styles';
 import MapFilters from '../../components/Filters/MapFilters';
 import MapButton from '../../components/MapButton/MapButton';
+import miscImage from "../../assets/icons-png/misc.png";
+import lakesImage from "../../assets/icons-png/lakes.png";
+import lookoutsImage from "../../assets/icons-png/lookouts.png";
+import monumentsImage from "../../assets/icons-png/monuments.png";
+import monasteriesImage from "../../assets/icons-png/monasteries.png";
+import picnicAreasImage from "../../assets/icons-png/picnic-areas.png";
+import meadowsImage from "../../assets/icons-png/meadows.png";
+import restaurantsImage from "../../assets/icons-png/restaurants.png";
+import householdsImage from "../../assets/icons-png/households.png";
 import { getUserLocation, getTrack, setWatchPosition } from '../../store/actions/maps';
+
 import Styles from './Styles';
 
 const neLat = 45.265069,
@@ -80,6 +88,42 @@ class TrackMap extends PureComponent {
     });
   }
 
+  getImage = value => {
+    let image = null;
+    switch (value) {
+      case "lakes":
+        image = lakesImage;
+        break;
+      case "misc":
+        image = miscImage;
+        break;
+      case "lookouts":
+        image = lookoutsImage;
+        break;
+      case "monuments":
+        image = monumentsImage;
+        break;
+      case "monasteries":
+        image = monasteriesImage;
+        break;
+      case "picnic-areas":
+        image = picnicAreasImage;
+        break;
+      case "meadows":
+        image = meadowsImage;
+        break;
+      case "restaurants":
+        image = restaurantsImage;
+        break;
+      case "households":
+        image = householdsImage;
+        break;
+      default:
+        image = miscImage;
+    }
+    return image;
+  };
+
   updateFilters = (newFilters) => {
     this.setState({ filters: newFilters });
   }
@@ -91,6 +135,7 @@ class TrackMap extends PureComponent {
     console.disableYellowBox = true;
     const { trackData, locationsForMap, onNavigate } = this.props;
     const { showFilterBox, filters, routeCenterCoordinate, userLocation, route } = this.state;
+    console.log('coordinates: ', routeCenterCoordinate[0]);
     let trackColor = '#f00';
     if (trackData['track_category'].toLowerCase() === 'easy') {
       trackColor = easyColor;
@@ -126,7 +171,7 @@ class TrackMap extends PureComponent {
             updateActiveFilters={this.updateFilters}
           />
           : null}
-        <MapBox.MapView
+        <MapboxGL.MapView
           ref={(ref) => (this.map = ref)}
           pitch={15}
           style={Styles.container}
@@ -134,45 +179,87 @@ class TrackMap extends PureComponent {
           compassEnabled={true}
           logoEnabled={false}
         >
-          <MapBox.Camera
+          <MapboxGL.Camera
             ref={(ref) => (this._camera = ref)}
             zoomLevel={12}
-            centerCoordinate={routeCenterCoordinate}
+            centerCoordinate={routeCenterCoordinate != [] ? (routeCenterCoordinate[0] && routeCenterCoordinate[1] ? [Number(routeCenterCoordinate[0]), Number(routeCenterCoordinate[1])]: [19.7093, 45.1571]) : [19.7093, 45.1571]}
+            //centerCoordinate={[19.7093, 45.1571]}
             animationDuration={2000}
           />
-          <MapBox.UserLocation />
+          <MapboxGL.UserLocation />
           {route.features[0].geometry.coordinates.length > 0 ?
-            <MapBox.ShapeSource id='line1' shape={route}>
-              <MapBox.LineLayer id='linelayer1' style={{ lineColor: trackColor, lineWidth: 3 }} />
-            </MapBox.ShapeSource>
+            <MapboxGL.ShapeSource id='line1' shape={route}>
+              <MapboxGL.LineLayer id='linelayer1' style={{ lineColor: trackColor, lineWidth: 3 }} />
+            </MapboxGL.ShapeSource>
             : null}
           {locationsForMap.map((location, index) => (
             filters.includes(location['category']) ?
-              <MapBox.PointAnnotation
-                key={index}
-                id={'Map' + index}
-                coordinate={[Number(location.lng), Number(location.lat)]}
-                onSelected={() => {
-                  this._camera.moveTo([Number(location.lng), (Number(location.lat))], 3000);
-                }}
-              >
-                <View style={[CommonStyles.annotationContainerMini, { backgroundColor: Icons.colors[location['category'].replace('-', '')] }]}>
-                  <Icon
-                    name={[location['category'].replace('-', '')]}
-                    size={15}
-                    color={'#fff'}
+
+            <Fragment>
+                <MapboxGL.ShapeSource
+                  id={"Map" + index}
+                  key={index}
+                  onPress={() => {
+                    //this.setState({selectedIndex: location.id});
+                    this.selectedIndex = location.id;
+                    this.forceUpdate();
+                  }}
+                  shape={{
+                    type: "Feature",
+                    id: index,
+                    geometry: {
+                      type: "Point",
+                      coordinates: [Number(location.lng), Number(location.lat)]
+                    }
+                  }}
+                >
+                  <MapboxGL.SymbolLayer
+                    id={location.id}
+                    aboveLayerID="linelayer1"
+                    style={{
+                      iconImage: this.getImage(location["category"]),
+                      symbolZOrder: "source",
+                      iconAllowOverlap:
+                        this.selectedIndex === location.id,
+                      iconSize:
+                        this.selectedIndex === location.id ? 0.57 : 0.35
+                    }}
                   />
-                </View>
-                <MapCallout
-                  image={location.image}
-                  title={location.title}
-                  place={location.place}
-                  onPress={() => { onNavigate('/location-single/' + Number(location.id)); }}
-                />
-              </MapBox.PointAnnotation>
+                </MapboxGL.ShapeSource>
+
+                {this.selectedIndex === location.id && (
+                  <MapboxGL.PointAnnotation
+                    ref={(value) => this._point = value}
+                    key={index + location.id}
+                    id={"Point" + location.id}
+                    coordinate={[Number(location.lng), Number(location.lat)]}
+                    onSelected={() => this._camera.moveTo(
+                      [Number(location.lng), Number(location.lat)],
+                      3000
+                    )}
+                    style={{
+                      opacity: this.selectedIndex === location.id ? 0 : 1
+                    }}
+                    onDeselected={() => {
+                      this.selectedIndex = null; 
+                      this.forceUpdate();
+                    }}
+                    title={location.title}
+                  >
+                    <MapCallout
+                      image={location.image}
+                      title={location.title}
+                      place={location.place}
+                      onPress={() => {
+                        onNavigate("/location-single/" + Number(location.id));
+                      }}
+                    />
+                  </MapboxGL.PointAnnotation>
+                )}
+              </Fragment>
               : null
           ))}
-        </MapBox.MapView>
+        </MapboxGL.MapView>
       </View>
     );
   }

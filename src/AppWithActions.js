@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { View, NetInfo, BackHandler } from 'react-native';
+import { View, NetInfo, BackHandler, DeviceEventEmitter  } from 'react-native';
 import { connect } from 'react-redux';
 import { onNavigateBack } from './store/actions/navigation';
-
+import ReactNativeHeading  from 'react-native-heading';
 import { onInternetStatus } from './store/actions/cache';
 import { AppWithNavigationState } from './store/configureStore';
 import CacheScreen from './components/CacheScreen/';
@@ -23,6 +23,19 @@ class AppWithActions extends PureComponent {
     // add network connection listeners
     this.setupListenerOnline();
     this.setupBackHandler();
+    
+    // ReactNativeHeading.start(1)
+    // .then(didStart => {
+    //     this.setState({
+    //         headingIsSupported: didStart,
+    //     })
+    // })
+    
+    // DeviceEventEmitter.addListener('headingUpdated', data => {
+    // 	console.log('New heading is:', data);
+    // });
+
+    console.log('orientation: ');
     setTimeout(() => this.setState({ showSplashScreen: false }), 3000);
   }
 
@@ -31,8 +44,14 @@ class AppWithActions extends PureComponent {
       'connectionChange',
       this.handleConnectionChange
     );
+    // ReactNativeHeading.stop();
+  	// DeviceEventEmitter.removeAllListeners('headingUpdated');
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
     this.mounted = false;
+  }
+
+  _orientationDidChange(orientation) {
+    console.log(orientation)
   }
 
   setupBackHandler() {

@@ -6,6 +6,7 @@ import { CachedImage, ImageCacheProvider } from 'react-native-cached-image';
 class MyImage extends Component {  
   render() {
     const { hasInternet, imgUrl, styles } = this.props;
+    
     return (
       <Fragment>
         {hasInternet ?

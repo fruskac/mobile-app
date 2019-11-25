@@ -33,9 +33,10 @@ export const getTrack = async (trackUrl, setCenter, setCoordinates) => {
     const XMLParser = require('react-xml-parser');
     let xml = new XMLParser().parseFromString(data);
     const trkptList = xml.getElementsByTagName('trkseg')[0].children;
+    console.log('tack list: ', trkptList);
     let coordinatesList = [];
     trkptList.forEach(element => {
-      let latLngPair = [Number(element.attributes.lon), Number(element.attributes.lat)];
+      let latLngPair = [+element.attributes.lon, +element.attributes.lat];
       coordinatesList.push(latLngPair);
     });
     setCenter(coordinatesList[parseInt(coordinatesList.length / 2)]);

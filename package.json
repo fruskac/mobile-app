@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@react-native-community/netinfo": "^3.1.0",
-    "@react-native-mapbox-gl/maps": "^7.0.0-rc3",
+    "@react-native-mapbox-gl/maps": "7.0.0-rc3",
     "react": "16.8.3",
     "react-native": "0.59.5",
     "react-native-auto-height-image": "^1.0.5",
@@ -16,6 +16,7 @@
     "react-native-drawer": "^2.5.1",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.2.1",
+    "react-native-heading": "^1.1.1",
     "react-native-i18n": "^2.0.15",
     "react-native-image-cache-hoc": "^2.0.0",
     "react-native-permissions": "^1.1.1",
