@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import CommonStyles from '../../styles/CommonStyles';
 import Styles from './Styles';
 import MapCallout from '../../components/MapCallout/MapCallout';
@@ -15,6 +15,7 @@ import picnicAreasImage from "../../assets/icons-png/picnic-areas.png";
 import meadowsImage from "../../assets/icons-png/meadows.png";
 import restaurantsImage from "../../assets/icons-png/restaurants.png";
 import householdsImage from "../../assets/icons-png/households.png";
+import markerImage from "../../assets/icons-png/marker_icon.png";
 import { getUserLocation, setWatchPosition } from '../../store/actions/maps';
 
 const neLat = 45.265069,
@@ -38,7 +39,7 @@ class MapSelectedLocation extends PureComponent {
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-    getUserLocation(this.setUserLocation);
+    getUserLocation(this.setUserLocation, Platform.OS != 'ios');
     this._watchPositionId = setWatchPosition(this.setUserLocation);
   }
 
@@ -99,7 +100,7 @@ class MapSelectedLocation extends PureComponent {
 
   render() {
     console.disableYellowBox = true;
-    const { locationsForMap, id, onNavigate } = this.props;
+    const { orientation, id, onNavigate } = this.props;
     const { showFilterBox, userLocation, filters } = this.state;
     //let selectedLocation = locationsForMap.filter(loc => loc.id === id)[0];
     return (
@@ -145,7 +146,20 @@ class MapSelectedLocation extends PureComponent {
             centerCoordinate={[Number(this.selectedLocation.lng), Number(this.selectedLocation.lat)]}
             animationDuration={2000}
           />
-          <MapboxGL.UserLocation />
+          <MapboxGL.UserLocation 
+              renderMode={'custom'}
+          >
+            <MapboxGL.SymbolLayer
+              id={`ownPosition-symbol`}
+              style={{
+                iconImage: markerImage,
+                iconSize: 0.4,
+                iconRotate: orientation,
+                iconRotationAlignment: 'map',
+                iconAllowOverlap: true,
+              }}
+            />
+         </MapboxGL.UserLocation>
 
           {this.locations.map((location, index) => (
             filters.includes(location['category']) ?

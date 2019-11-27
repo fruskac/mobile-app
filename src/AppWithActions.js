@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { View, NetInfo, BackHandler, DeviceEventEmitter  } from 'react-native';
+import { View, NetInfo, BackHandler, DeviceEventEmitter, Platform  } from 'react-native';
 import { connect } from 'react-redux';
 import { onNavigateBack } from './store/actions/navigation';
+import { onChangeOrientation } from './store/actions/maps'
 import ReactNativeHeading  from 'react-native-heading';
 import { onInternetStatus } from './store/actions/cache';
 import { AppWithNavigationState } from './store/configureStore';
@@ -24,18 +25,17 @@ class AppWithActions extends PureComponent {
     this.setupListenerOnline();
     this.setupBackHandler();
     
-    // ReactNativeHeading.start(1)
-    // .then(didStart => {
-    //     this.setState({
-    //         headingIsSupported: didStart,
-    //     })
-    // })
+    ReactNativeHeading.start(5)
+    .then(didStart => {
+        this.setState({
+            headingIsSupported: didStart,
+        })
+    })
     
-    // DeviceEventEmitter.addListener('headingUpdated', data => {
-    // 	console.log('New heading is:', data);
-    // });
+    DeviceEventEmitter.addListener('headingUpdated', data => {
+    	this.props.onChangeOrientation(Platform.OS == 'ios' ? data.heading : data);
+    });
 
-    console.log('orientation: ');
     setTimeout(() => this.setState({ showSplashScreen: false }), 3000);
   }
 
@@ -44,14 +44,10 @@ class AppWithActions extends PureComponent {
       'connectionChange',
       this.handleConnectionChange
     );
-    // ReactNativeHeading.stop();
-  	// DeviceEventEmitter.removeAllListeners('headingUpdated');
+    ReactNativeHeading.stop();
+  	DeviceEventEmitter.removeAllListeners('headingUpdated');
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
     this.mounted = false;
-  }
-
-  _orientationDidChange(orientation) {
-    console.log(orientation)
   }
 
   setupBackHandler() {
@@ -104,7 +100,7 @@ class AppWithActions extends PureComponent {
   }
 }
 
-const mapDispatchToProps = { onInternetStatus, onNavigateBack };
+const mapDispatchToProps = { onInternetStatus, onNavigateBack, onChangeOrientation };
 const mapStateToProps = state => ({ routes: state.nav.routes, cachingDone: state.cache.done });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppWithActions);

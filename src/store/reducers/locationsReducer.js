@@ -2,6 +2,7 @@ import {
   LOCATION_FILTER_CHANGE,
   FETCH_CATEGORIES_SUCCESS,
   FETCH_MAP_SUCCESS,
+  ORIENTATION_CHANGE
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -16,12 +17,16 @@ const initialState = {
   tourism_en: [],
   map_rs: [],
   map_en: [],
+  orientation: 0
 };
 
 const locationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOCATION_FILTER_CHANGE:
       return { ...state, filter: action.filter };
+
+    case ORIENTATION_CHANGE:
+      return { ...state, orientation: action.payload };
 
     case FETCH_CATEGORIES_SUCCESS:
       return {

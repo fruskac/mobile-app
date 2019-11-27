@@ -24,7 +24,7 @@ target 'Fruskac' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   # Mapbox
-  pod 'react-native-mapbox-gl', :path => '../node_modules/@mapbox/react-native-mapbox-gl'
+  pod 'react-native-mapbox-gl', :path => '../node_modules/@react-native-mapbox-gl/maps'
   
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
 

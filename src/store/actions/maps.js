@@ -1,4 +1,6 @@
-export const getUserLocation = async (setUserLocation) => {
+import { ORIENTATION_CHANGE } from './actionTypes';
+
+export const getUserLocation = async (setUserLocation, enableHighAccuracy) => {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const userLocation = {
@@ -7,8 +9,8 @@ export const getUserLocation = async (setUserLocation) => {
       }
       setUserLocation(userLocation);
     },
-    error => console.log({ error }),
-    { enableHighAccuracy: true, timeout: 40000 },
+    error => console.log(JSON.stringify({ error })),
+    { enableHighAccuracy: enableHighAccuracy, timeout: 40000 },
   );
 }
 
@@ -21,7 +23,7 @@ export const setWatchPosition = async (setUserLocation) => {
       }
       setUserLocation(userLocation);
     },
-    error => console.log(error),
+    error => console.log(error), 
     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
   );
 }
@@ -42,4 +44,8 @@ export const getTrack = async (trackUrl, setCenter, setCoordinates) => {
     setCenter(coordinatesList[parseInt(coordinatesList.length / 2)]);
     setCoordinates(coordinatesList);
   });
+}
+
+export function onChangeOrientation(orientation) {
+  return { type: ORIENTATION_CHANGE, payload: orientation};
 }

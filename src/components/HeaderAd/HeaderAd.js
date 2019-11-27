@@ -8,7 +8,7 @@ class HeaderAd extends PureComponent {
     const { onNavigate, small_ad } = this.props;
 
     return (
-      <TouchableOpacity onPress={()=>{
+      small_ad && <TouchableOpacity onPress={()=>{
         if (small_ad['internal']) {
           onNavigate(small_ad['link_url_en']);
         } else {

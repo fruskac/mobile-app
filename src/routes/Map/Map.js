@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from "react";
-import { View, StyleSheet, DeviceEventEmitter } from "react-native";
+import { View, StyleSheet, DeviceEventEmitter, Platform } from "react-native";
 import MapboxGL from "@react-native-mapbox-gl/maps";
 import Styles from "./Styles";
 import MapCallout from "../../components/MapCallout/MapCallout";
@@ -61,34 +61,18 @@ class Map extends PureComponent {
         "households",
         "wineries"
       ],
-      orientation: 0
     };
     this.selectedIndex = null  
   }
 
   componentDidMount() {
     this.props.onFetchMap(this.props.language === "en" ? "en" : "rs");
-    getUserLocation(this.setUserLocation);
+    getUserLocation(this.setUserLocation, Platform.OS != 'ios');
     this._watchPositionId = setWatchPosition(this.setUserLocation);
-
-    ReactNativeHeading.start(1)
-    .then(didStart => {
-        this.setState({
-            headingIsSupported: didStart,
-        })
-    })
-    
-    DeviceEventEmitter.addListener('headingUpdated', data => {
-      console.log('New heading is:', data);
-      this.setState({orientation: data});
-    });
   }
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this._watchPositionId);
-
-    ReactNativeHeading.stop();
-  	DeviceEventEmitter.removeAllListeners('headingUpdated');
   }
 
   setUserLocation = userLocation => {
@@ -137,7 +121,7 @@ class Map extends PureComponent {
 
   render() {
     console.disableYellowBox = true;
-    const { onNavigate, locationsForMap } = this.props;
+    const { onNavigate, locationsForMap, orientation } = this.props;
     const { showFilterBox, userLocation, filters } = this.state;
     return (
       <View style={Styles.container}>
@@ -149,11 +133,12 @@ class Map extends PureComponent {
         {showFilterBox ? null : (
           <MapButton
             iconName={"icon-current"}
-            onPress={() =>
+            onPress={() => {
               this._camera.flyTo(
                 [Number(userLocation.lng), Number(userLocation.lat)],
                 5500
-              )
+              );
+            }
             }
             styles={[CommonStyles.onMapBtn, Styles.currentPosition]}
           />
@@ -185,14 +170,14 @@ class Map extends PureComponent {
               style={{
                 iconImage: markerImage,
                 iconSize: 0.4,
-                iconRotate: this.state.orientation,
+                iconRotate: orientation,
                 iconRotationAlignment: 'map',
                 iconAllowOverlap: true,
               }}
             />
          </MapboxGL.UserLocation>
           {locationsForMap.map((location, index) =>
-            filters.includes(location["category"]) ? (
+            filters.includes(location['category']) ? (
               <Fragment>
                 <MapboxGL.ShapeSource
                   id={"Map" + index}
@@ -213,8 +198,7 @@ class Map extends PureComponent {
                   <MapboxGL.SymbolLayer
                     id={location.id}
                     style={{
-                      iconImage: this.getImage(location["category"]),
-                      symbolZOrder: "source",
+                      iconImage: this.getImage(location['category']),
                       iconAllowOverlap:
                         this.selectedIndex === location.id,
                       iconSize:
@@ -222,9 +206,6 @@ class Map extends PureComponent {
                     }}
                   />
 
-                  <MapboxGL.SymbolLayer id={location.id + index}>
-                    <View style={styles.annotationContainer} />
-                  </MapboxGL.SymbolLayer>
                 </MapboxGL.ShapeSource>
 
                 {this.selectedIndex === location.id && (

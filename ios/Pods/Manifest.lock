@@ -8,7 +8,7 @@ PODS:
   - glog (0.3.5)
   - React (0.59.5):
     - React/Core (= 0.59.5)
-  - react-native-mapbox-gl (6.1.4):
+  - react-native-mapbox-gl (7.0.0-rc3):
     - React
   - react-native-netinfo (3.1.0):
     - React
@@ -62,8 +62,8 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - React (from `../node_modules/react-native`)
-  - "react-native-mapbox-gl (from `../node_modules/@mapbox/react-native-mapbox-gl`)"
-  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-mapbox-gl (from `../node_modules/@react-native-mapbox-gl/maps`)
+  - react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -72,42 +72,38 @@ DEPENDENCIES:
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - boost-for-react-native
-
 EXTERNAL SOURCES:
   DoubleConversion:
-    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+    :podspec: ../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec
   Folly:
-    :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+    :podspec: ../node_modules/react-native/third-party-podspecs/Folly.podspec
   glog:
-    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+    :podspec: ../node_modules/react-native/third-party-podspecs/glog.podspec
   React:
-    :path: "../node_modules/react-native"
+    :path: ../node_modules/react-native
   react-native-mapbox-gl:
-    :path: "../node_modules/@mapbox/react-native-mapbox-gl"
+    :path: ../node_modules/@react-native-mapbox-gl/maps
   react-native-netinfo:
-    :path: "../node_modules/@react-native-community/netinfo"
+    :path: ../node_modules/@react-native-community/netinfo
   RNI18n:
-    :path: "../node_modules/react-native-i18n"
+    :path: ../node_modules/react-native-i18n
   RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
+    :path: ../node_modules/react-native-vector-icons
   yoga:
-    :path: "../node_modules/react-native/ReactCommon/yoga/Yoga.podspec"
+    :path: ../node_modules/react-native/ReactCommon/yoga/Yoga.podspec
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
-  React: 90adac468c7b72bf1fa6c64bf230650f851a8388
-  react-native-mapbox-gl: a01d1781ac71d2a1a85b465436dbe741b28d873a
-  react-native-netinfo: bb6019953e06182c376be748bdfdde92e13840ce
-  RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
-  RNVectorIcons: b6b131d2fdc2e240f7aba41296df869141443793
-  yoga: 2e571f113e8cbeb0eb752aeebc86c1bfe7a8200c
+  React: 1d605e098d69bdf08960787f3446f0a9dc2e2ccf
+  react-native-mapbox-gl: 099d223de88d75815e3a5a0a04b64c970b929105
+  react-native-netinfo: f4039dc64d3a55da59d6d03d4bd667d0a9f5450e
+  RNI18n: 46b8694063fbd699f2c06a4dc8e835b3176763b1
+  RNVectorIcons: 8c52e1e8da1153613fdef44748e865c25556cb9c
+  yoga: 128daf064cacaede0c3bb27424b6b4c71052e6cd
 
-PODFILE CHECKSUM: d0d63ec05bcc55ebddf2a4428ac19ac43e952de9
+PODFILE CHECKSUM: 61b5f3fa61d439c9f211e1ba70e1bd8a4183b16a
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.4.0

@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import CommonStyles from '../../styles/CommonStyles';
 import MapCallout from '../../components/MapCallout/MapCallout';
 import { easyColor, mediumColor, hardColor } from '../Trails/Styles';
@@ -15,6 +15,7 @@ import picnicAreasImage from "../../assets/icons-png/picnic-areas.png";
 import meadowsImage from "../../assets/icons-png/meadows.png";
 import restaurantsImage from "../../assets/icons-png/restaurants.png";
 import householdsImage from "../../assets/icons-png/households.png";
+import markerImage from "../../assets/icons-png/marker_icon.png";
 import { getUserLocation, getTrack, setWatchPosition } from '../../store/actions/maps';
 
 import Styles from './Styles';
@@ -52,7 +53,7 @@ class TrackMap extends PureComponent {
   async componentDidMount() {
     const { trackData } = this.props;
     this.props.onFetchMap(this.props.language === 'en' ? 'en' : 'rs');
-    getUserLocation(this.setUserLocation);
+    getUserLocation(this.setUserLocation, Platform.OS != 'ios');
     await getTrack(trackData.track_url, this.setRouteCenterCoordinate, this.setCoordinates);
     this._watchPositionId = setWatchPosition(this.setUserLocation);
   }
@@ -133,7 +134,7 @@ class TrackMap extends PureComponent {
 
   render() {
     console.disableYellowBox = true;
-    const { trackData, locationsForMap, onNavigate } = this.props;
+    const { trackData, locationsForMap, onNavigate, orientation } = this.props;
     const { showFilterBox, filters, routeCenterCoordinate, userLocation, route } = this.state;
     console.log('coordinates: ', routeCenterCoordinate[0]);
     let trackColor = '#f00';
@@ -186,7 +187,21 @@ class TrackMap extends PureComponent {
             //centerCoordinate={[19.7093, 45.1571]}
             animationDuration={2000}
           />
-          <MapboxGL.UserLocation />
+          <MapboxGL.UserLocation 
+              renderMode={'custom'}
+          >
+            <MapboxGL.SymbolLayer
+              id={`ownPosition-symbol`}
+              style={{
+                iconImage: markerImage,
+                iconSize: 0.4,
+                iconRotate: orientation,
+                iconRotationAlignment: 'map',
+                iconAllowOverlap: true,
+              }}
+            />
+         </MapboxGL.UserLocation>
+
           {route.features[0].geometry.coordinates.length > 0 ?
             <MapboxGL.ShapeSource id='line1' shape={route}>
               <MapboxGL.LineLayer id='linelayer1' style={{ lineColor: trackColor, lineWidth: 3 }} />
