@@ -1,5 +1,13 @@
-export function fetchUrl(url) {
-  return fetch(url)
+const DEFAULT_TIMEOUT_MS = 10000;
+
+function timeoutPromise(timeoutMs) {
+  return new Promise((_, reject) => {
+    setTimeout(() => reject(new Error("Request timeout")), timeoutMs);
+  });
+}
+
+export function fetchUrl(url, timeoutMs = DEFAULT_TIMEOUT_MS) {
+  return Promise.race([fetch(url), timeoutPromise(timeoutMs)])
     .then(statusHelper)
     .then(response => response.json())
     .catch(error => Promise.resolve(error))

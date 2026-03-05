@@ -1,19 +1,20 @@
 /**
  * @flow
  */
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
+import { theme } from "../design-system/theme";
 
-export const fontSizeHeader = Platform.OS === "ios" ? 18 : 16;
-export const backgroundColor = "#F6F7F1";
-export const defaultMargin = 20;
-export const navHeaderHeight = 45;
-export const headerAdHeight = 40;
-export const textColor = "#454546";
-export const tintColor = "#0066ff";
-export const accentColor = "#D51A5E";
-export const borderColor = "#E2E3DE";
-export const borderBottomColor = "#E0E1DC";
-export const bgColorHeaderAd = "#d0d0d0";
+export const fontSizeHeader = theme.typography.fontSizeHeader;
+export const backgroundColor = theme.colors.background;
+export const defaultMargin = theme.spacing.defaultMargin;
+export const navHeaderHeight = theme.spacing.navHeaderHeight;
+export const headerAdHeight = theme.spacing.headerAdHeight;
+export const textColor = theme.colors.text;
+export const tintColor = theme.colors.tint;
+export const accentColor = theme.colors.accent;
+export const borderColor = theme.colors.border;
+export const borderBottomColor = theme.colors.borderBottom;
+export const bgColorHeaderAd = theme.colors.headerAd;
 
 export default StyleSheet.create({
   viewMargin: {
@@ -27,7 +28,7 @@ export default StyleSheet.create({
   },
   text: {
     color: textColor,
-    fontFamily: "Merriweather-Light"
+    fontFamily: theme.typography.fontFamily
   },
   errorText: {
     backgroundColor: "red",

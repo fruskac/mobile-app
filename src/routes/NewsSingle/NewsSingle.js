@@ -2,7 +2,8 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemSingle from "../../components/ItemSingle/";
@@ -21,7 +22,17 @@ type State = {};
 
 class NewsItem extends PureComponent<Props, State> {
   render() {
-    const { data, language, navigation } = this.props;
+    const { data, language } = this.props;
+
+    if (!data) {
+      return (
+        <View style={CommonStyles.container}>
+          <HeaderAd />
+          <Text style={CommonStyles.text}>{I18n.t("news")}</Text>
+        </View>
+      );
+    }
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />

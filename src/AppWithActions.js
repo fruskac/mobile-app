@@ -1,16 +1,17 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View, NetInfo } from "react-native";
+import { View } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 import { connect } from "react-redux";
 
 import { onInternetStatus } from "./actions/cache";
 import Navigation from "./navigators/Navigation";
-import Drawer from "./components/Drawer/";
-import CacheScreen from "./components/CacheScreen/";
+import Drawer from "./components/Drawer";
 
 class AppWithActions extends PureComponent {
   setupListenerOnline: () => void;
   handleConnectionChange: (connectionInfo: {}) => void;
+  netInfoUnsubscribe: ?Function;
 
   constructor(props: {}) {
     super(props);
@@ -25,53 +26,52 @@ class AppWithActions extends PureComponent {
   }
 
   componentWillUnmount() {
-    NetInfo.removeEventListener(
-      "connectionChange",
-      this.handleConnectionChange
-    );
+    if (this.netInfoUnsubscribe) {
+      this.netInfoUnsubscribe();
+      this.netInfoUnsubscribe = null;
+    }
     this.mounted = false;
   }
 
   setupListenerOnline() {
     if (!this.mounted) {
       // inital connection info
-      NetInfo.getConnectionInfo().then(this.handleConnectionChange);
+      NetInfo.fetch().then(this.handleConnectionChange);
       // listen for internet connection changes
-      NetInfo.addEventListener("connectionChange", this.handleConnectionChange);
+      this.netInfoUnsubscribe = NetInfo.addEventListener(
+        this.handleConnectionChange
+      );
       this.mounted = true;
     }
   }
 
   handleConnectionChange(connectionInfo) {
-    console.log("CONNECTION INFO", connectionInfo);
-    // dispatch action only if connection is known
-    if (connectionInfo.type != "unknown")
+    // dispatch action only if connection state is known
+    if (typeof connectionInfo.isConnected === "boolean") {
+      this.props.onInternetStatus(connectionInfo.isConnected);
+      return;
+    }
+
+    if (connectionInfo.type != "unknown") {
       this.props.onInternetStatus(
         connectionInfo.type == "wifi" || connectionInfo.type == "cellular"
       );
+    }
   }
 
   render() {
-    const { cachingDone } = this.props;
     return (
-      <View
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          bottom: 0,
-          right: 0
-        }}
-      >
-        <Navigation />
+      <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <Navigation />
+        </View>
         <Drawer />
-        <CacheScreen />
       </View>
     );
   }
 }
 
 const mapDispatchToProps = { onInternetStatus };
-const mapStateToProps = state => ({ cachingDone: state.cache.done });
+const mapStateToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppWithActions);

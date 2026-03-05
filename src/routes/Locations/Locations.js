@@ -4,11 +4,11 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import I18n from "react-native-i18n";
-import SvgUri from "react-native-svg-uri";
 
 import HeaderAd from "../../components/HeaderAd/";
 
 import CommonStyles, {
+  defaultMargin,
   navHeaderHeight,
   headerAdHeight,
   accentColor
@@ -33,7 +33,7 @@ class Locations extends PureComponent<Props, State> {
         navHeaderHeight -
         headerAdHeight -
         menuHeight -
-        2 * CommonStyles.viewMargin -
+        2 * defaultMargin -
         10) /
       Math.floor((tags.length + 1) / 2);
 
@@ -67,27 +67,29 @@ class Locations extends PureComponent<Props, State> {
         </View>
 
         <View style={Styles.menu}>
-          {tags.map((t, index) => (
-            <TouchableOpacity
-              onPress={() => {
-                onNavigate("/location/" + t);
-              }}
-              key={index}
-              style={[
-                Styles.topMenuItem,
-                { height: buttonHeight },
-                index % 2 === 0 ? Styles.withRightBorder : {}
-              ]}
-            >
-              <SvgUri
-                width={50}
-                height={45}
-                source={Icons[t.replace("-", "")]}
-                fill={Icons.colors[t.replace("-", "")]}
-              />
-              <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
-            </TouchableOpacity>
-          ))}
+          {tags.map((t, index) => {
+            const iconKey = `${t.replace("-", "")}Map`;
+            const iconSource = Icons[iconKey] || Icons.miscMap;
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  onNavigate("/location/" + t);
+                }}
+                key={index}
+                style={[
+                  Styles.topMenuItem,
+                  { height: buttonHeight },
+                  index % 2 === 0 ? Styles.withRightBorder : {}
+                ]}
+              >
+                <Image
+                  source={iconSource}
+                  style={{ width: 50, height: 45, resizeMode: "contain" }}
+                />
+                <Text style={CommonStyles.text}>{I18n.t(t)}</Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </View>
     );

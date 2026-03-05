@@ -2,16 +2,9 @@
 
 exports[`renders correctly 1`] = `
 <View
-  accessibilityComponentType={undefined}
-  accessibilityLabel={undefined}
-  accessibilityTraits={undefined}
   accessible={true}
-  collapsable={undefined}
-  hasTVPreferredFocus={undefined}
-  hitSlop={undefined}
-  isTVSelectable={true}
-  nativeID={undefined}
-  onLayout={undefined}
+  focusable={false}
+  onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
   onResponderRelease={[Function]}
@@ -27,38 +20,19 @@ exports[`renders correctly 1`] = `
       "opacity": 1,
     }
   }
-  testID={undefined}
-  tvParallaxProperties={undefined}
 >
-  <Text
-    accessible={true}
-    allowFontScaling={false}
-    ellipsizeMode="tail"
+  <Icon
+    name="ios-arrow-back"
+    size={30}
     style={
-      Array [
-        Object {
-          "color": undefined,
-          "fontSize": 30,
-        },
-        Object {
-          "color": "#0066ff",
-          "marginRight": 8,
-          "top": 2,
-        },
-        Object {
-          "fontFamily": "Ionicons",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-        },
-      ]
+      Object {
+        "color": "#0066ff",
+        "marginRight": 8,
+        "top": 2,
+      }
     }
-  >
-    
-  </Text>
+  />
   <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
     style={
       Object {
         "color": "#0066ff",
@@ -66,7 +40,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    [missing "en.back" translation]
+    back
   </Text>
 </View>
 `;

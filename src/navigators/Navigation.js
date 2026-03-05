@@ -3,11 +3,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
-  addNavigationHelpers,
-  StackNavigator,
-  DrawerNavigator
-} from "react-navigation";
+import { SafeAreaView, Text, View } from "react-native";
 import I18n from "react-native-i18n";
 
 import HomeScreen from "../routes/Home";
@@ -24,110 +20,85 @@ import Styles from "./Styles";
 
 import BackButton from "../components/BackButton";
 import MenuButton from "../components/MenuButton";
+import { backgroundColor } from "../styles/CommonStyles";
 
-export const AppNavigator = StackNavigator({
-  Home: {
-    path: "/",
-    screen: HomeScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("home"),
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
-  },
-  News: {
-    path: "/news",
-    screen: NewsScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("news"),
-      headerLeft: <BackButton />,
-      headerRight: <MenuButton />,
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
-  },
-  Map: {
-    path: "/map",
-    screen: MapScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("map"),
-      headerLeft: <BackButton />,
-      headerRight: <MenuButton />,
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
-  },
-  SingleNews: {
-    path: "/news/:id",
-    screen: SingleNewsScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("news"),
-      headerLeft: <BackButton />,
-      headerRight: <MenuButton />,
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
-  },
-  Locations: {
-    path: "/locations",
-    screen: LocationsScreen,
-    navigationOptions: navigation => ({
-      title: I18n.t("locations"),
-      headerLeft: <BackButton />,
-      headerRight: <MenuButton />,
-      headerStyle: Styles.header,
-      headerTitleStyle: Styles.headerTitle
-    })
-  },
-  LocationTypePlace: {
-    path: "/location/:id",
-    screen: LocationTypePlaceScreen,
-    navigationOptions: navigation => {
-      console.log("NAVIGATION", navigation);
-      return {
-        title: I18n.t(navigation.navigation.state.params.id),
-        headerLeft: <BackButton />,
-        headerRight: <MenuButton />,
-        headerStyle: Styles.header,
-        headerTitleStyle: Styles.headerTitle
-      };
-    }
-  },
-  LocationSingle: {
-    path: "/location-single/:id",
-    screen: LocationSingleScreen,
-    navigationOptions: navigation => {
-      console.log("NAVIGATION", navigation);
-      return {
-        title: I18n.t("location"),
-        headerLeft: <BackButton />,
-        headerRight: <MenuButton />,
-        headerStyle: Styles.header,
-        headerTitleStyle: Styles.headerTitle
-      };
-    }
+const routeComponents = {
+  Home: HomeScreen,
+  News: NewsScreen,
+  SingleNews: SingleNewsScreen,
+  Map: MapScreen,
+  Locations: LocationsScreen,
+  LocationTypePlace: LocationTypePlaceScreen,
+  LocationSingle: LocationSingleScreen,
+  Trails: TrailsScreen,
+  Info: InfoScreen,
+  Donate: DonateScreen
+};
+
+function getRouteTitle(routeName, params) {
+  switch (routeName) {
+    case "Home":
+      return I18n.t("home");
+    case "News":
+    case "SingleNews":
+      return I18n.t("news");
+    case "Map":
+      return I18n.t("map");
+    case "Locations":
+      return I18n.t("locations");
+    case "LocationTypePlace":
+      return I18n.t((params && params.id) || "locations");
+    case "LocationSingle":
+      return I18n.t("location");
+    case "Trails":
+      return I18n.t("trails");
+    case "Info":
+      return I18n.t("info");
+    case "Donate":
+      return I18n.t("donate");
+    default:
+      return I18n.t("home");
   }
-});
+}
 
-const AppWithNavigationState = ({ dispatch, nav, language }) => (
-  <AppNavigator
-    screenProps={{ language: language }}
-    navigation={addNavigationHelpers({
-      dispatch,
-      state: nav
-    })}
-  />
-);
+function renderScreen(routeName, params) {
+  const ScreenComponent = routeComponents[routeName] || HomeScreen;
+  return <ScreenComponent navigation={{ state: { params: params || {} } }} />;
+}
+
+const AppWithNavigationState = ({ nav }) => {
+  const activeRoute =
+    nav && Array.isArray(nav.routes) && typeof nav.index === "number"
+      ? nav.routes[nav.index]
+      : { routeName: "Home", params: {} };
+  const routeName = (activeRoute && activeRoute.routeName) || "Home";
+  const showHeaderActions = routeName !== "Home";
+  const title = getRouteTitle(routeName, activeRoute && activeRoute.params);
+
+  return (
+    <View style={{ flex: 1, backgroundColor }}>
+      <SafeAreaView style={{ backgroundColor }}>
+        <View style={Styles.header}>
+          <View style={{ position: "absolute", left: 0, top: 0, bottom: 0 }}>
+            {showHeaderActions ? <BackButton /> : null}
+          </View>
+          <Text style={Styles.headerTitle}>{title}</Text>
+          <View style={{ position: "absolute", right: 0, top: 0, bottom: 0 }}>
+            {showHeaderActions ? <MenuButton /> : null}
+          </View>
+        </View>
+      </SafeAreaView>
+      <View style={{ flex: 1 }}>{renderScreen(routeName, activeRoute && activeRoute.params)}</View>
+    </View>
+  );
+};
 
 AppWithNavigationState.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
-  language: PropTypes.string.isRequired
+  nav: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  nav: state.nav,
-  language: state.settings.language
+  nav: state.nav
 });
 
 export default connect(mapStateToProps)(AppWithNavigationState);

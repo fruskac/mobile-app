@@ -11,7 +11,7 @@ import Styles from "./Styles";
 
 type Props = {
   title: string,
-  image: string,
+  image: ?string,
   text: string
 };
 type State = {};
@@ -21,7 +21,9 @@ class ItemSingle extends PureComponent<Props, State> {
     const { title, image, text } = this.props;
     return (
       <ScrollView>
-        <AutoHeightImage width={Screen.width} source={{ uri: image }} />
+        {image ? (
+          <AutoHeightImage width={Screen.width} source={{ uri: image }} />
+        ) : null}
         <Text style={Styles.textTitle}>{title}</Text>
         <Text style={Styles.text}>{text}</Text>
       </ScrollView>

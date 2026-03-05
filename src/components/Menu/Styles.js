@@ -1,10 +1,13 @@
 /**
  * @flow
  */
-import { StyleSheet, Platform } from "react-native";
-import CommonStyles, { textColor } from "../../styles/CommonStyles";
+import { StyleSheet } from "react-native";
+import { textColor } from "../../styles/CommonStyles";
 
 export default StyleSheet.create({
+  heroImage: {
+    backgroundColor: "#E5E6E2"
+  },
   menuHolder: {
     flexDirection: "column",
     justifyContent: "space-between",

@@ -1,13 +1,11 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { Animated, Easing, View, Text } from "react-native";
+import { Animated, Easing } from "react-native";
 
 import * as Screen from "../../utils/Screen";
 import Menu from "../Menu";
 
 type Props = {
-  onToggleDrawer: () => void,
   drawerOpen: boolean
 };
 type State = {
@@ -22,17 +20,18 @@ class Drawer extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
-      panelTranslateX: new Animated.Value(-Screen.widthDrawer)
+      panelTranslateX: new Animated.Value(
+        props.drawerOpen ? 0 : -Screen.widthDrawer
+      )
     };
 
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: Object) {
-    console.log("drawer ", nextProps);
-    if (this.props.drawerOpen != nextProps.drawerOpen) {
-      if (nextProps.drawerOpen) {
+  componentDidUpdate(prevProps: Props) {
+    if (prevProps.drawerOpen !== this.props.drawerOpen) {
+      if (this.props.drawerOpen) {
         this.openDrawer();
       } else {
         this.closeDrawer();
@@ -41,7 +40,6 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   openDrawer() {
-    console.log("Open drwaer");
     Animated.timing(
       this.state.panelTranslateX, // The animated value to drive
       {
@@ -54,7 +52,6 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   closeDrawer() {
-    console.log("Close drwaer");
     Animated.timing(
       this.state.panelTranslateX, // The animated value to drive
       {
@@ -67,10 +64,9 @@ class Drawer extends PureComponent<Props, State> {
   }
 
   render() {
-    const { onToggleDrawer } = this.props;
-
     return (
       <Animated.View
+        pointerEvents={this.props.drawerOpen ? "auto" : "none"}
         style={[
           {
             position: "absolute",
@@ -78,13 +74,12 @@ class Drawer extends PureComponent<Props, State> {
             zIndex: 30,
             top: 80,
             bottom: 0,
-            height: Screen.height - 40,
+            width: Screen.widthDrawer,
             transform: [{ translateX: this.state.panelTranslateX }]
           }
         ]}
       >
         <Menu inDrawer />
-        <Text>asdaD</Text>
       </Animated.View>
     );
   }

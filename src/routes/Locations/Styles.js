@@ -8,7 +8,7 @@ import {
   borderColor
 } from "../../styles/CommonStyles";
 
-export const menuHeight: number = 40;
+export const menuHeight = 40;
 
 export default StyleSheet.create({
   topMenu: {

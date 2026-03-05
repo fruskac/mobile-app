@@ -1,11 +1,9 @@
 import "regenerator-runtime/runtime";
 // Redux Store Configuration
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
-import { composeWithDevTools } from "remote-redux-devtools";
+import { createStore, applyMiddleware, compose } from "redux";
 
 import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import AsyncStorage from "@react-native-community/async-storage";
 
 import createSagaMiddleware from "redux-saga";
 
@@ -15,13 +13,12 @@ import rootSaga from "../sagas";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = composeWithDevTools({ suppressConnectErrors: false });
 const middleware = applyMiddleware(sagaMiddleware);
 
 const persistConfig = {
-  key: "root",
-  storage,
-  blacklist: ["cache"]
+  key: "root_v2",
+  storage: AsyncStorage,
+  blacklist: ["cache", "nav"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -30,7 +27,7 @@ const initialState = {};
 export const store = createStore(
   persistedReducer,
   initialState,
-  composeEnhancers(middleware)
+  compose(middleware)
 );
 
 sagaMiddleware.run(rootSaga);

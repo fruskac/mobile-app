@@ -1,47 +1,83 @@
-import { select, put, all, take, call } from "redux-saga/effects";
-import { delay, buffers, eventChannel, END } from "redux-saga";
-import MapBox from "@mapbox/react-native-mapbox-gl";
-import { CACHING_UPDATE } from "../actions/actionTypes";
-
-let neLat = 45.211,
-  neLng = 19.935,
-  swLat = 45.112557,
-  swLng = 19.32377;
+import { put, take, call } from "redux-saga/effects";
+import { buffers, eventChannel, END } from "redux-saga";
+import MapBox from "../maps/mapboxSafe";
+import {
+  OFFLINE_PACK_NAME,
+  OFFLINE_MAPBOX_STYLE_URL,
+  OFFLINE_REGION_BOUNDS,
+  OFFLINE_REGION_MIN_ZOOM,
+  OFFLINE_REGION_MAX_ZOOM
+} from "../maps/offlineConfig";
+import { CACHING_UPDATE, SCREEN_CACHING_ERROR } from "../actions/actionTypes";
 
 export function* isMapCached() {
-  // get cached packs
+  try {
+    if (!MapBox || !MapBox.offlineManager) {
+      return false;
+    }
 
-  // delete current cache
-  // yield MapBox.offlineManager.deletePack("FruskaGora");
+    // get cached packs
+    // delete current cache
+    // yield MapBox.offlineManager.deletePack("FruskaGora");
+    // get number of cached packs, we only cache one
+    const offlineMaps = yield MapBox.offlineManager.getPacks();
+    if (!Array.isArray(offlineMaps) || offlineMaps.length === 0) {
+      return false;
+    }
 
-  // get number of cached packs, we only cache one
-  const offlineMaps = yield MapBox.offlineManager.getPacks();
-
-  return offlineMaps.length > 0;
+    return offlineMaps.some(pack => {
+      if (!pack || typeof pack !== "object") return false;
+      return pack.name === OFFLINE_PACK_NAME;
+    });
+  } catch (err) {
+    console.log("isMapCached error", err);
+    return false;
+  }
 }
 
 export function* startCachingMap() {
-  // create channel for caching map
-  const channel = yield call(cacheMap);
+  let channel;
+  try {
+    // create channel for caching map
+    channel = yield call(cacheMap);
 
-  while (true) {
-    const { progress = 0, err, success } = yield take(channel);
-    if (err) {
-      yield put({
-        type: CACHING_UPDATE,
-        payload: { screen: SCREEN_CACHING_ERROR }
-      });
-      return false;
+    while (true) {
+      const { progress = 0, err, success } = yield take(channel);
+      if (err) {
+        console.log("startCachingMap error", err);
+        yield put({
+          type: CACHING_UPDATE,
+          payload: { screen: SCREEN_CACHING_ERROR }
+        });
+        return false;
+      }
+      if (success) {
+        return true;
+      }
+      yield put({ type: CACHING_UPDATE, payload: { progress: progress } });
     }
-    if (success) {
-      return true;
+  } catch (err) {
+    console.log("startCachingMap fatal error", err);
+    yield put({
+      type: CACHING_UPDATE,
+      payload: { screen: SCREEN_CACHING_ERROR }
+    });
+    return false;
+  } finally {
+    if (channel && channel.close) {
+      channel.close();
     }
-    yield put({ type: CACHING_UPDATE, payload: { progress: progress } });
   }
 }
 
 function cacheMap() {
   return eventChannel(emitter => {
+    if (!MapBox || !MapBox.offlineManager) {
+      emitter({ err: new Error("MapBox offline manager unavailable") });
+      emitter(END);
+      return () => {};
+    }
+
     const onOfflineMapProgress = (offlineRegion, status) => {
       emitter({ progress: status.percentage });
       if (status.percentage == 100) {
@@ -55,22 +91,26 @@ function cacheMap() {
       emitter(END);
     };
 
-    MapBox.offlineManager.createPack(
-      {
-        name: "FruskaGora",
-        minZoom: 12,
-        maxZoom: 13,
-        bounds: [[neLng, neLat], [swLng, swLat]],
-        // styleURL: "mapbox://styles/alexgvozden/cjc7l0w1y3jcr2snwkmzb8vm2"
-        styleURL: "mapbox://styles/alexgvozden/cjcadlwfi0mez2so63ttb7hxo"
-      },
-      (offlineRegion, status) => {
-        onOfflineMapProgress(offlineRegion, status);
-      },
-      (offlineRegion, err) => {
-        onOfflineMapError(offlineRegion, err);
-      }
-    );
+    try {
+      MapBox.offlineManager.createPack(
+        {
+          name: OFFLINE_PACK_NAME,
+          minZoom: OFFLINE_REGION_MIN_ZOOM,
+          maxZoom: OFFLINE_REGION_MAX_ZOOM,
+          bounds: OFFLINE_REGION_BOUNDS,
+          styleURL: OFFLINE_MAPBOX_STYLE_URL
+        },
+        (offlineRegion, status) => {
+          onOfflineMapProgress(offlineRegion, status);
+        },
+        (offlineRegion, err) => {
+          onOfflineMapError(offlineRegion, err);
+        }
+      );
+    } catch (err) {
+      emitter({ err });
+      emitter(END);
+    }
 
     return () => {};
   }, buffers.sliding(2));

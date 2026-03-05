@@ -2,33 +2,37 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { View } from "react-native";
+import { View, Text } from "react-native";
+import I18n from "react-native-i18n";
 
 import HeaderAd from "../../components/HeaderAd/";
 import ItemSingle from "../../components/ItemSingle/";
 import * as Screen from "../../utils/Screen";
 
 import CommonStyles from "../../styles/CommonStyles";
-import type LocationData from "../../types";
 
-type Props = {
-  id: string,
-  data: LocationData,
-  navigation: any
-};
-type State = {};
-
-class LocationSingle extends PureComponent<Props, State> {
+class LocationSingle extends PureComponent {
   render() {
-    const { data } = this.props;
+    const { data, language } = this.props;
+    const item = Array.isArray(data) ? data[0] : data;
+
+    if (!item) {
+      return (
+        <View style={CommonStyles.container}>
+          <HeaderAd />
+          <Text style={CommonStyles.text}>{I18n.t("location")}</Text>
+        </View>
+      );
+    }
+
+    const title = item.title || item[`title_${language}`] || "";
+    const text = item.description || item[`description_${language}`] || "";
+    const image = item.image || item.imageUrl || null;
+
     return (
       <View style={CommonStyles.container}>
         <HeaderAd />
-        <ItemSingle
-          image={data.image}
-          title={data.title}
-          text={data.description}
-        />
+        <ItemSingle image={image} title={title} text={text} />
       </View>
     );
   }

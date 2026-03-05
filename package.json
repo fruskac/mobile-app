@@ -1,46 +1,68 @@
 {
   "name": "Fruskac",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "start": "bash scripts/start-metro-stable.sh",
+    "start:reset": "watchman watch-del-all || true && npx react-native start --reset-cache",
+    "start:stable": "bash scripts/start-metro-stable.sh",
+    "ios:stable": "bash scripts/run-ios-stable.sh",
+    "android:stable": "bash scripts/run-android-stable.sh",
+    "clean:stable": "bash scripts/clean-stable.sh",
+    "jetify:stable": "npx jetify",
+    "prepare:legacy": "node scripts/patch-rn-cli-ios-config.js && node scripts/patch-rn-ios-ruby4-erb.js && node scripts/patch-rn-ios-boost-checksum.js && node scripts/patch-legacy-android-modules.js && node scripts/patch-mapbox-stylesheet-syntax.js && node scripts/patch-auto-height-image-syntax.js && node scripts/patch-react-redux-lifecycles.js && node scripts/patch-netinfo-native-event-emitter.js && node scripts/patch-react-native-svg-pointer-events.js && node scripts/patch-react-native-vector-icons-react-native-exports.js",
     "test": "jest",
     "flow": "node_modules/.bin/flow",
-    "flow-stop": "node_modules/.bin/flow stop"
+    "flow-stop": "node_modules/.bin/flow stop",
+    "postinstall": "yarn jetify:stable && node scripts/patch-rn-cli-ios-config.js && node scripts/patch-rn-ios-ruby4-erb.js && node scripts/patch-rn-ios-boost-checksum.js && node scripts/patch-legacy-android-modules.js && node scripts/patch-mapbox-stylesheet-syntax.js && node scripts/patch-auto-height-image-syntax.js && node scripts/patch-react-redux-lifecycles.js && node scripts/patch-netinfo-native-event-emitter.js && node scripts/patch-react-native-svg-pointer-events.js && node scripts/patch-react-native-vector-icons-react-native-exports.js"
   },
   "dependencies": {
+    "@babel/runtime": "^7.12.5",
     "@mapbox/react-native-mapbox-gl": "6.0.3-rc1",
+    "@react-native-community/async-storage": "1.6.3",
+    "@react-native-community/geolocation": "^3.4.0",
+    "@react-native-community/netinfo": "4.7.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
-    "react": "16.2.0",
-    "react-native": "0.52.1",
+    "jsc-android": "^250231.0.0",
+    "react": "19.2.3",
+    "react-native": "0.84.1",
     "react-native-auto-height-image": "1.0.0",
     "react-native-i18n": "2.0.10",
+    "react-native-webview": "13.16.1",
     "react-navigation": "1.0.0-beta.27",
+    "react-redux": "8.1.3",
+    "redux": "4.2.1",
     "redux-logger": "3.0.6",
     "redux-persist": "5.7.0",
     "redux-saga": "0.16.0",
     "reselect": "3.0.1"
   },
   "devDependencies": {
-    "babel-jest": "22.1.0",
-    "babel-preset-react-native": "4.0.0",
+    "@babel/core": "^7.12.9",
+    "@react-native-community/cli": "20.1.2",
+    "@react-native-community/cli-platform-android": "20.1.2",
+    "@react-native-community/cli-platform-ios": "20.1.2",
+    "@react-native/babel-preset": "0.84.1",
+    "@react-native/metro-config": "0.84.1",
+    "babel-jest": "26.6.3",
     "enzyme-to-json": "3.3.1",
     "flow-bin": "^0.61",
-    "jest": "22.3.0",
-    "jest-cli": "22.3.0",
-    "react-native-svg": "6.1.3",
-    "react-native-svg-uri": "1.2.3",
+    "jest": "26.6.3",
+    "jest-cli": "26.6.3",
+    "jetifier": "2.0.0",
+    "metro-react-native-babel-preset": "^0.70.3",
+    "react-native-svg": "12.5.0",
     "react-native-timer": "1.3.1",
     "react-native-vector-icons": "4.5.0",
-    "react-redux": "5.0.6",
-    "react-test-renderer": "16.2.0",
-    "redux": "3.7.2",
+    "react-test-renderer": "19.2.3",
     "remote-redux-devtools": "0.5.12"
   },
   "jest": {
     "preset": "react-native",
-    "setupTestFrameworkScriptFile": "./src/setupTests.js",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ],
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*Style*.js"
@@ -59,5 +81,8 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
+  },
+  "engines": {
+    "node": ">=22.11.0"
   }
 }

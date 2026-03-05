@@ -1,8 +1,7 @@
 // @flow
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import AutoHeightImage from "react-native-auto-height-image";
-import { Animated, Easing, View, Text, Image } from "react-native";
+import { Animated, Easing, View, Text } from "react-native";
 
 import Styles from "./Styles";
 import { width as ScreenWidth } from "../../utils/Screen";
@@ -35,8 +34,8 @@ class CacheScreen extends PureComponent<Props, State> {
     this.onFadeOutFinish = this.onFadeOutFinish.bind(this);
   }
 
-  componentWillReceiveProps(nextProps: Object) {
-    if (this.props.done != nextProps.done && nextProps.done) {
+  componentDidUpdate(prevProps: Props) {
+    if (!prevProps.done && this.props.done) {
       this.onFadeOutStart();
     }
   }

@@ -24,7 +24,12 @@ class ItemList extends PureComponent<Props> {
     footer: null
   };
 
-  _keyExtractor = (item, index) => index;
+  _keyExtractor = (item, index) => {
+    if (item && item.id != null) {
+      return `${String(item.id)}-${index}`;
+    }
+    return `row-${index}`;
+  };
 
   _renderItem = ({ item }) => {
     const { slug, onNavigate, language } = this.props;
@@ -55,11 +60,12 @@ class ItemList extends PureComponent<Props> {
 
   render() {
     const { items, language, header, footer } = this.props;
+    const safeItems = Array.isArray(items) ? items : [];
 
     return (
       <FlatList
         style={{ flex: 1 }}
-        data={[header].concat(items).concat(footer)}
+        data={[header].concat(safeItems).concat(footer)}
         extraData={{ language }}
         keyExtractor={this._keyExtractor}
         renderItem={this._renderItem}
